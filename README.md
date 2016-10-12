@@ -8,8 +8,8 @@ Założenia:
 - lokalizacje z danymi właściwościami typu "bezpieczne", "miejsce z możliwością detonacji", 
 
 =====
-Raport
-opis postępu w tygodniu
+Raporty przyrostowe
+opis postępu w danym tygodniu
 zamierzenia na najbliższy okres
 
 =====
