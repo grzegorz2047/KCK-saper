@@ -16,3 +16,8 @@ zamierzenia na najbliższy okres
 Obiekty na mapie
 bomba generowana losowo
 lokalizacje typu las, miasto, dom, pole (wstępnie tylko jedna lokalizacja)
+
+=====
+Rozmiar mapy:
+- 64 x 64
+- 
