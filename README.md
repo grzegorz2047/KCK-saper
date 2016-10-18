@@ -1,4 +1,4 @@
-# KCK-saper
+﻿# KCK-saper
 
 Założenia:
 - Poł-automatyczne poruszanie się do celu, który został wyznaczony
@@ -21,3 +21,4 @@ lokalizacje typu las, miasto, dom, pole (wstępnie tylko jedna lokalizacja)
 Rozmiar mapy:
 - 64 x 64
 - 
+- jedna mapa
