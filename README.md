@@ -13,6 +13,8 @@ Założenia:
 Raporty przyrostowe
 opis postępu w danym tygodniu
 zamierzenia na najbliższy okres
+cel uzasadnić argumentem
+w razie nieukończenia jakiegoś postępu uzasadnić dlaczego
 
 =====
 Obiekty na mapie
