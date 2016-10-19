@@ -1,4 +1,6 @@
 ﻿# KCK-saper
+email naglowek:
+KCK-SR-GR2
 
 Założenia:
 - Poł-automatyczne poruszanie się do celu, który został wyznaczony
