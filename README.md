@@ -17,9 +17,26 @@ cel uzasadnić argumentem
 w razie nieukończenia jakiegoś postępu uzasadnić dlaczego
 
 =====
-Obiekty na mapie
-bomba generowana losowo
-lokalizacje typu las, miasto, dom, pole (wstępnie tylko jedna lokalizacja)
+Lista umiejętności sapera
+
+poruszanie się
+obracanie się 
+przenoszenie
+rozpoznawanie bomb wg zagrożenia
+przyjmowanie poleceń
+przetwarzanie poleceń
+rozpoznawanie cech otoczenia
+
+Lokalizacje na mapie
+
+Scena złożnona z wnętrza domu podzielonego na pokoje.
+Będą znajdowały się tam różne przeszkody typu krzesła, stół, szafki itd.
+Saper będzie napotykał przeszkody i je rozpoznawał poprzez pewne właściwości typu kolor
+Możliwość obrotu i poruszania w pewnym kierunku przez określony czas
+
+
+
+
 
 =====
 Rozmiar mapy:
