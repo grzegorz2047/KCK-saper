@@ -1,4 +1,4 @@
-﻿# KCK-saper
+﻿# KCK-saper edytowane przeze mnie :D
 email naglowek:
 KCK-SR-GR2
 
