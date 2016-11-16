@@ -1,0 +1,53 @@
+Sposoby tworzenia zmiennej
+_dawdwa - zmienia status sta³ej na zmienn¹
+Adtae - zmienne oznacza siê poprzez wielk¹ literê na pocz¹tku
+
+Mo¿na operowaæ nazwach sta³ych Wielkimi literami pod warunkiem, ¿e weŸmie siê je w cudzys³ów ''
+np. 
+write('QDdawdawdaw').
+
+listing. - jaki kod jest w przestrzeni roboczej
+listing(Nazwa relacji) - wyœwietla dan¹ relacjê
+
+Relacja zachodzi pomiêdzy sk a ciê¿aj to 'jest'
+jest(sk, ciê¿ar).
+
+je¿eli chcemy 
+; - czy znasz inne rozwi¹zania
+
+:-  - implikacja, tylko warunkiem wystarczaj¹cym C <- B 
+
+
+¿eby wykona³a siê procedura C musi wykonaæ najpierw A a potem B (patrz metoda odrywania)
+w logice A i B -> C  w prologu liczy siê kolejnoœæ
+C :- A,B
+
+przyk³ad gdzie kolejnoœæ ma znaczenie
+C(X,Z) :- A(X,Y), B(Y,Z)
+
+w [] nie stosujemy wielkich liter, zamiast spacji stosujemy przecinek
+
+np.
+rozkaz(Akcja,Obiekt,P,[podnies,skrzyniê,na,10,m],[]).
+
+akcja(A,B,C,X0,X1) :-
+	X0=['podnieœ'|X1],
+	s()
+	
+Zad sprawdŸ kod z emaila, potestuj,
+wczytaj kod do prologu /*komendarz*/  albo %komendarz
+je¿eli mamy u¿yæ zmiennej, u¿yj samo nazywaj¹cej
+------------------------------------------------------
+Sk³adnia poleceñ
+nazwa(...,...,...)
+listing. 
+klauzula lewa strona :- prawa strona
+po prawej lista podprocedur
+procedura() :- podprocedura(), podprocedura2()
+ci¹g w nawiasach kwadratowych albo
+[element | zmienna]
+[1,2,3,4]=[1,2|X]
+zwraca X=[3,4]
+
+Zadanie domowe
+2 lub 3 czynnnoœci dla sapera po polsku polecenia na wyjœciu istotne parametry typu czynnosc=costam
