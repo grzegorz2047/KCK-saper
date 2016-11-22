@@ -1,0 +1,62 @@
+Sposoby tworzenia zmiennej
+_dawdwa - zmienia status stałej na zmienną
+Adtae - zmienne oznacza się poprzez wielką literę na początku
+
+Można operować nazwach stałych Wielkimi literami pod warunkiem, że weźmie się je w cudzysłów ''
+np. 
+write('QDdawdawdaw').
+
+listing. - jaki kod jest w przestrzeni roboczej
+listing(Nazwa relacji) - wyświetla daną relację
+
+Relacja zachodzi pomiędzy sk a ciężaj to 'jest'
+jest(sk, ciężar).
+
+jeżeli chcemy 
+; - czy znasz inne rozwiązania
+
+:-  - implikacja, tylko warunkiem wystarczającym C <- B 
+
+
+żeby wykonała się procedura C musi wykonać najpierw A a potem B (patrz metoda odrywania)
+w logice A i B -> C  w prologu liczy się kolejność
+C :- A,B
+
+przykład gdzie kolejność ma znaczenie
+C(X,Z) :- A(X,Y), B(Y,Z)
+
+w [] nie stosujemy wielkich liter, zamiast spacji stosujemy przecinek
+
+np.
+rozkaz(Akcja,Obiekt,P,[podnies,skrzynię,na,10,m],[]).
+
+akcja(A,B,C,X0,X1) :-
+	X0=['podnieś'|X1],
+	s()
+	
+Zad sprawdź kod z emaila, potestuj,
+wczytaj kod do prologu /*komendarz*/  albo %komendarz
+jeżeli mamy użyć zmiennej, użyj samo nazywającej
+------------------------------------------------------
+Składnia poleceń
+nazwa(...,...,...)
+listing. 
+klauzula lewa strona :- prawa strona
+po prawej lista podprocedur
+procedura() :- podprocedura(), podprocedura2()
+ciąg w nawiasach kwadratowych albo
+[element | zmienna]
+[1,2,3,4]=[1,2|X]
+zwraca X=[3,4]
+
+Zadanie domowe
+2 lub 3 czynnności dla sapera po polsku polecenia na wyjściu istotne parametry typu czynnosc=costam
+
+
+--Zadanie domowe wg. notatek Mikołaja dunno --
+krótki przykład związany z tematem po polsku polcenia
+np. przynieś kompot,
+krótki słownik
+na wzór kodu z ćwiczeń napisać kod
+na wyjśiu parametry istotne które będą sterowały/wygenerować wizualizację
+rozbudować o dalsze 3-4 komendy
