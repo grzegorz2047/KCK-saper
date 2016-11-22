@@ -1,53 +1,62 @@
 Sposoby tworzenia zmiennej
-_dawdwa - zmienia status sta³ej na zmienn¹
-Adtae - zmienne oznacza siê poprzez wielk¹ literê na pocz¹tku
+_dawdwa - zmienia status staÅ‚ej na zmiennÄ…
+Adtae - zmienne oznacza siÄ™ poprzez wielkÄ… literÄ™ na poczÄ…tku
 
-Mo¿na operowaæ nazwach sta³ych Wielkimi literami pod warunkiem, ¿e weŸmie siê je w cudzys³ów ''
+MoÅ¼na operowaÄ‡ nazwach staÅ‚ych Wielkimi literami pod warunkiem, Å¼e weÅºmie siÄ™ je w cudzysÅ‚Ã³w ''
 np. 
 write('QDdawdawdaw').
 
 listing. - jaki kod jest w przestrzeni roboczej
-listing(Nazwa relacji) - wyœwietla dan¹ relacjê
+listing(Nazwa relacji) - wyÅ›wietla danÄ… relacjÄ™
 
-Relacja zachodzi pomiêdzy sk a ciê¿aj to 'jest'
-jest(sk, ciê¿ar).
+Relacja zachodzi pomiÄ™dzy sk a ciÄ™Å¼aj to 'jest'
+jest(sk, ciÄ™Å¼ar).
 
-je¿eli chcemy 
-; - czy znasz inne rozwi¹zania
+jeÅ¼eli chcemy 
+; - czy znasz inne rozwiÄ…zania
 
-:-  - implikacja, tylko warunkiem wystarczaj¹cym C <- B 
+:-  - implikacja, tylko warunkiem wystarczajÄ…cym C <- B 
 
 
-¿eby wykona³a siê procedura C musi wykonaæ najpierw A a potem B (patrz metoda odrywania)
-w logice A i B -> C  w prologu liczy siê kolejnoœæ
+Å¼eby wykonaÅ‚a siÄ™ procedura C musi wykonaÄ‡ najpierw A a potem B (patrz metoda odrywania)
+w logice A i B -> C  w prologu liczy siÄ™ kolejnoÅ›Ä‡
 C :- A,B
 
-przyk³ad gdzie kolejnoœæ ma znaczenie
+przykÅ‚ad gdzie kolejnoÅ›Ä‡ ma znaczenie
 C(X,Z) :- A(X,Y), B(Y,Z)
 
 w [] nie stosujemy wielkich liter, zamiast spacji stosujemy przecinek
 
 np.
-rozkaz(Akcja,Obiekt,P,[podnies,skrzyniê,na,10,m],[]).
+rozkaz(Akcja,Obiekt,P,[podnies,skrzyniÄ™,na,10,m],[]).
 
 akcja(A,B,C,X0,X1) :-
-	X0=['podnieœ'|X1],
+	X0=['podnieÅ›'|X1],
 	s()
 	
-Zad sprawdŸ kod z emaila, potestuj,
+Zad sprawdÅº kod z emaila, potestuj,
 wczytaj kod do prologu /*komendarz*/  albo %komendarz
-je¿eli mamy u¿yæ zmiennej, u¿yj samo nazywaj¹cej
+jeÅ¼eli mamy uÅ¼yÄ‡ zmiennej, uÅ¼yj samo nazywajÄ…cej
 ------------------------------------------------------
-Sk³adnia poleceñ
+SkÅ‚adnia poleceÅ„
 nazwa(...,...,...)
 listing. 
 klauzula lewa strona :- prawa strona
 po prawej lista podprocedur
 procedura() :- podprocedura(), podprocedura2()
-ci¹g w nawiasach kwadratowych albo
+ciÄ…g w nawiasach kwadratowych albo
 [element | zmienna]
 [1,2,3,4]=[1,2|X]
 zwraca X=[3,4]
 
 Zadanie domowe
-2 lub 3 czynnnoœci dla sapera po polsku polecenia na wyjœciu istotne parametry typu czynnosc=costam
+2 lub 3 czynnnoÅ›ci dla sapera po polsku polecenia na wyjÅ›ciu istotne parametry typu czynnosc=costam
+
+
+--Zadanie domowe wg. notatek MikoÅ‚aja dunno --
+krÃ³tki przykÅ‚ad zwiÄ…zany z tematem po polsku polcenia
+np. przynieÅ› kompot,
+krÃ³tki sÅ‚ownik
+na wzÃ³r kodu z Ä‡wiczeÅ„ napisaÄ‡ kod
+na wyjÅ›iu parametry istotne ktÃ³re bÄ™dÄ… sterowaÅ‚y/wygenerowaÄ‡ wizualizacjÄ™
+rozbudowaÄ‡ o dalsze 3-4 komendy
