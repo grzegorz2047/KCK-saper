@@ -1,0 +1,12 @@
+Pojedź do przodu o 10 metrów.
+Obródź się o 90 stopni.
+Podnieś bombę.
+Postaw bombę.
+Zdetonuj bombę.
+Rozbrój bombę.
+Oznacz przedmiot jako niebezpieczny.
+Za skrzynką skręć w prawo.
+Przez 5 sekund jedź do przodu.
+Ustal narzędzie do detonacji.
+Wróć do lokalizacji startowej.
+Ustaw poziom zagrożenia na 2.
