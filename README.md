@@ -2,6 +2,15 @@
 email naglowek:
 KCK-SR-GR2
 
+INSTALACJA:
+
+pyswip 32 bit https://code.google.com/archive/p/pyswip/downloads
+prolog 32 bit http://www.swi-prolog.org/download/stable?show=all
+python27 32 bit 
+do zmiennej środowiskowej PATH dodaj C:\Program Files\pl\bin
+najlepiej to zainstaluj pyswip w ścieżce C:\Program Files\pl
+
+
 Założenia:
 - Poł-automatyczne poruszanie się do celu, który został wyznaczony
 - Automatyczne znajdowanie celu
