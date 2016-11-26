@@ -18,16 +18,15 @@ Poprawi jednoliterowe zmiany, np. Podnieś na podnieś. Komunikat to ostatnia li
 
 
 
+
 /* Oznaczenia
 
 rodzaj czynności:
 
 liftna - przemieszczanie w górę bomby na określoną wysokość
 lifto - przemieszczanie w górę bomby o określony odcinek
-moveforward - poruszenie się prosto o określony odcinek
-moveback - poruszenie się tył o określony odcinek
-rotateright - obrócenie się w prawo o zadany kąt
-rotateleft - obrócenie się w lewo o zadany kąt
+move - poruszanie się B (przód, tył) o określoną długość
+rotate - obrócenie (prawo,lewo)się w prawo o zadany kąt
 takebomb - chwycenie bomby
 dropbomb - upuszczenie bomby
 set_danger - ustalenie poziomu zagrożenia
@@ -55,10 +54,8 @@ s(<rodzaj_czynności>,<typ_obiektu>,<parametr>)*/
 
 s(liftna,ciężar,wysokość(na),['podnieś'|X],X).
 s(lifto,ciężar,wysokość(o),['podnieś'|X],X).
-s(moveforward,długość(o),['pojedźdoprzodu'|X],X).
-s(moveback,długość(o),['pojedźdotyłu'|X],X).
-s(rotater,kąt(o),['obróćwprawo'|X],X).
-s(rotatel,kąt(o),['obróćwlewo'|X],X).
+s(move,kierunek,długość(o),['pojedź'|X],X).
+s(rotate,rotatekierunek,kąt(o),['obróć'|X],X).
 s(takebomb,ciężar,['chwyć'|X],X).
 s(dropbomb,ciężar,['upuść'|X],X).
 s(set_danger,poziom(na),['ustaw'|X],X).
@@ -78,6 +75,14 @@ s(jd,['jeden'|X],X).
 s(dw,['dwa'|X],X).
 s(tr,['trzy'|X],X).
 s(sp,['sapera'|X],X).
+s(przód,['przód'|X],X).
+s(tył,['tył'|X],X).
+s(tył,['tyłu'|X],X).
+s(przód,['przodu'|X],X).
+s(przód,['do','przodu'|X],X).
+s(tył,['do','tyłu'|X],X).
+s(lewo,['lewo'|X],X).
+s(prawo,['prawo'|X],X).
 
 jest(sk,ciężar). /*skrzynia jest ciężarem*/
 jest(pk,ciężar). /*paczka jest ciężarem*/
@@ -87,6 +92,10 @@ jest(jd,poziom).
 jest(dw,poziom).
 jest(tr,poziom).
 jest(sp,element).
+jest(przód,kierunek).
+jest(tył,kierunek).
+jest(lewo,rotatekierunek).
+jest(prawo,rotatekierunek).
 
 s(j_miary(metry),['m'|X],X).
 s(j_miary(metry),['metr'|X],X).
@@ -104,7 +113,7 @@ miara(M,X0,X1) :- s(j_miary(M),X0,X1).
 s(liczba(L),[L|X],X) :- number(L).
 /* number rozpoznaje liczby całkowite oraz dziesiętne dodatnie i ujemne */
 
-/*ROZKAZ z parametrami funkcja,obiekt,parametr*/
+/*ROZKAZ z parametrami funkcja,obiekt/kierunek,parametr*/
 
 rozkaz(A,B,C,Polecenie,[]) :-
     akcja(A,B1,C1,Polecenie,X1),
@@ -113,6 +122,14 @@ rozkaz(A,B,C,Polecenie,[]) :-
 
 akcja(A,B,C,X0,X1) :-
     X0=['podnieś'|X1],
+    s(A,B,C,X0,X1).
+	
+akcja(A,B,C,X0,X1) :-
+    X0=['pojedź'|X1],
+    s(A,B,C,X0,X1).
+		
+	akcja(A,B,C,X0,X1) :-
+	X0=['obróć'|X1],
     s(A,B,C,X0,X1).
 	
 
@@ -127,9 +144,59 @@ obiekt(B1,B,X0,X1):-
     jest(B,B1).
 	
 	obiekt(B1,B,X0,X1):-
+    X0=['bomba'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
+	
+	obiekt(B1,B,X0,X1):-
+    X0=['bombie'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
+	obiekt(B1,B,X0,X1):-
     X0=['sapera'|X1],
     s(B,X0,X1),
     jest(B,B1).
+	
+obiekt(B1,B,X0,X1):-
+    X0=['przód'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
+	obiekt(B1,B,X0,X1):-
+    X0=['prawo'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
+	obiekt(B1,B,X0,X1):-
+    X0=['lewo'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
+	
+obiekt(B1,B,X0,X1):-
+    X0=['tył'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
+
+	obiekt(B1,B,X0,X1):-
+    X0=['do','przodu'|X1],
+    s(B,X0,X1),
+    jest(B,B1)
+	
+
+	obiekt(B1,B,X0,X1):-
+    X0=['do','tyłu'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
+	obiekt(B1,B,X0,X1):-
+    X0=['do'|X1],
+    s(B,X0,X1),
+    jest(B,B1).
+	
 
 
 parametry_akcji(wysokość(na),wys(W,M),['na','wysokość',W|X1],X2) :-
@@ -148,6 +215,11 @@ parametry_akcji(kąt(o),kąt_wzgl(W,M),['o',W|X1],X2) :-
 parametry_akcji(kąt(o),kąt_wzgl(W,M),['o','kąt',W|X1],X2) :-
     s(liczba(W),[W|X1],X1),
     miara(M,X1,X2).
+	
+parametry_akcji(długość(o),dys_wzgl(W,M),['o',W|X1],X2) :-
+    s(liczba(W),[W|X1],X1),
+    miara(M,X1,X2).
+	
 
 
 
@@ -180,36 +252,8 @@ parametry_akcji(kąt(o),kąt_wzgl(W,M),['o','kąt',W|X1],X2) :-
     s(B,X0,X1),
     jest(B,B1).
 	
-  
+ 
 	
-	akcja(A,B,X0,X1) :-
-    X0=['pojedźdoprzodu'|X1],
-    s(A,B,X0,X1).
-	
-	akcja(A,B,X0,X1) :-
-    X0=['pojedźdotyłu'|X1],
-    s(A,B,X0,X1).
-	
-	akcja(A,B,X0,X1) :-
-    X0=['obróćwlewo'|X1],
-    s(A,B,X0,X1).
-	
-	akcja(A,B,X0,X1) :-
-    X0=['obróćwprawo'|X1],
-    s(A,B,X0,X1).
-	
-	
-
-parametry_akcji(długość(o),dys_wzgl(W,M),['o',W|X1],X2) :-
-    s(liczba(W),[W|X1],X1),
-    miara(M,X1,X2).
-	
-parametry_akcji(kąt(o),kąt_wzgl(W,M),['o',W|X1],X2) :-
-    s(liczba(W),[W|X1],X1),
-    miara(M,X1,X2).
-parametry_akcji(kąt(o),kąt_wzgl(W,M),['o','kąt',W|X1],X2) :-
-    s(liczba(W),[W|X1],X1),
-    miara(M,X1,X2).
 	
 
 	
