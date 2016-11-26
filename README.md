@@ -14,6 +14,7 @@ do zmiennej środowiskowej PATH dodaj C:\Program Files\pl\bin
 
 najlepiej to zainstaluj pyswip w ścieżce C:\Program Files\pl
 
+No i trzeba skopiować swipl.dll i zamienić kopię na libpl.dll
 
 Założenia:
 - Poł-automatyczne poruszanie się do celu, który został wyznaczony
