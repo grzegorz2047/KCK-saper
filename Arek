@@ -1,0 +1,24 @@
+Nie mam uprawnień żeby wrzucić pliki więc wkleje to co zrobiłem tutaj
+
+Podzielenie wprowadzanego stringa:
+
+import sys
+rozkaz = raw_input('Czekam na komende: ')
+podzielonyrozkaz = rozkaz.split()
+for i in range(len(podzielonyrozkaz)):
+	sys.stdout.write(podzielonyrozkaz[i])
+  
+Jak to robiłem doszedłem do wniosku że da się to też zrobić lepiej, bez podziału.
+Biorę stringa, rozdzielam go przecinkami i przerabiam w taka forme w jakiej powinien
+być odebrany przez prologa. Myślę że to rozwiązanie jest lepsze, ponieważ wystarczy 
+przekazać tylko jedną zmienną pod którą kryje sie gotowy string.
+Po wykonaniu rozkaz1 ma postać:
+rozkaz(A,B,C,[słowo1,słowo2,słowo3,itd],[])
+
+import sys
+rozkaz = raw_input('Czekam na komende: ')
+rozkaz = rozkaz.replace(' ',',')
+rozkaz1 = ('A,B,C,[')
+rozkaz1 = rozkaz1+rozkaz
+rozkaz1 = rozkaz1+('],[])')
+sys.stdout.write(rozkaz1)
