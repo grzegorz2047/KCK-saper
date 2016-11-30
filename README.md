@@ -1,6 +1,6 @@
 ﻿# KCK-saper
 email naglowek:
-KCK-SR-GR2
+KCK-sr-SAPER-Data
 
 INSTALACJA:
 
