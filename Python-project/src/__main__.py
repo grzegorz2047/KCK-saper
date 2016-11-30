@@ -4,7 +4,7 @@ from extract_actions import *
 
 
 def main():
-    saveToFile(getSentenceFromInputToList())
+    save_to_file(get_sentence_from_input_to_list())
 
 
 main()
