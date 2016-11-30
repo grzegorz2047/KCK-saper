@@ -9,6 +9,6 @@ def getSentenceFromInputToList():
     return podzielonyrozkaz
 
 def saveToFile(list):
-    file = open('output/test.txt', 'w')
+    file = open('../output/test.txt', 'w')
     for item in list:
         file.write("%s\n" % item)

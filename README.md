@@ -4,18 +4,11 @@ KCK-sr-SAPER-Data
 
 INSTALACJA:
 
-pyswip 32 bit https://code.google.com/archive/p/pyswip/downloads
-
-prolog 32 bit http://www.swi-prolog.org/download/stable?show=all
-
-python27 32 bit 
-
-do zmiennej środowiskowej PATH dodaj C:\Program Files\pl\bin
-
-najlepiej to zainstaluj pyswip w ścieżce C:\Program Files\pl
-
-No i trzeba skopiować swipl.dll i zamienić kopię na libpl.dll
-
+ - Środowisko/Env: python 2.7
+ - Biblioteka/Lib: pygame
+ - Opcjonalnie/Optional: pycharm
+ 
+===== 
 Założenia:
 - Poł-automatyczne poruszanie się do celu, który został wyznaczony
 - Automatyczne znajdowanie celu
@@ -31,7 +24,7 @@ cel uzasadnić argumentem
 w razie nieukończenia jakiegoś postępu uzasadnić dlaczego
 
 =====
-Lista umiejętności sapera
+Lista umiejętności sapera:
 
 poruszanie się
 obracanie się 
@@ -41,19 +34,7 @@ przyjmowanie poleceń
 przetwarzanie poleceń
 rozpoznawanie cech otoczenia
 
-Lokalizacje na mapie
-
-Scena złożnona z wnętrza domu podzielonego na pokoje.
 Będą znajdowały się tam różne przeszkody typu krzesła, stół, szafki itd.
 Saper będzie napotykał przeszkody i je rozpoznawał poprzez pewne właściwości typu kolor
 Możliwość obrotu i poruszania w pewnym kierunku przez określony czas
 
-
-
-
-
-=====
-Rozmiar mapy:
-- 64 x 64
-- 
-- jedna mapa
