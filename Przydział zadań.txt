@@ -3,7 +3,8 @@ Przetwarzanie języka - MIKOŁAJ, AREK, GRZEGORZ
 Wizualizacja - PIOTR PAWEŁ
 
 LINKI:
-http://pygame.org/
-https://www.tutorialspoint.com/python/index.htm
-https://www.youtube.com/watch?v=AI2zs3nKHgg
-http://www.sonarlearning.co.uk/coursepage.php?topic=game&course=pygame
+http://pygame.org/ - strona główna z pygame
+https://www.tutorialspoint.com/python/index.htm - tut do pythona
+https://www.youtube.com/watch?v=AI2zs3nKHgg - jakiś tut z tworzenia mapy
+http://www.sonarlearning.co.uk/coursepage.php?topic=game&course=pygame - tutorial do pygame
+http://nedbatchelder.com/text/unipain.html - kodowanie znaków
