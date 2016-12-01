@@ -16,14 +16,18 @@
 import pygame, pygame.font, pygame.event, pygame.draw, string
 from pygame.locals import *
 
-ACCEPTED = string.ascii_letters+string.digits+string.punctuation+"ążźćł"+" "
+ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁ" + " "  # bedzie trzeba pokombinowac
 ACCEPTED = ACCEPTED.decode("utf-8")
+
 
 def get_key():
     while 1:
         event = pygame.event.poll()
-        if event.unicode in ACCEPTED:
-            return event.unicode
+        if event.type == KEYDOWN:
+            if event.unicode in ACCEPTED:
+                return event.unicode
+            else:
+                return event.key
 
 
 def display_box(screen, message):
@@ -56,8 +60,8 @@ def ask(screen, question):
             break
         elif inkey == K_MINUS:
             current_string.append("_")
-        elif inkey <= 127:
-            current_string.append(unichr(inkey))
+        else:
+            current_string.append(inkey)
         display_box(screen, question + ": " + string.join(current_string, ""))
     return string.join(current_string, "")
 

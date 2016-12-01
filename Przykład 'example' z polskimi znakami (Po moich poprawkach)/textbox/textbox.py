@@ -3,7 +3,7 @@ import string
 import pygame as pg
 
 
-ACCEPTED = string.ascii_letters+string.digits+string.punctuation+"ążźćł"+" "
+ACCEPTED = string.ascii_letters+string.digits+string.punctuation+"ążźćł"+" "+"\r"
 ACCEPTED = ACCEPTED.decode("utf-8")
 
 class TextBox(object):
