@@ -2,10 +2,10 @@
 email naglowek:
 KCK-sr-SAPER-Data
 
-INSTALACJA:
+Wymagania/Requirements:
 
- - Środowisko/Env: python 2.7
- - Biblioteka/Lib: pygame
+ - Środowisko/Enviroment: python 2.7
+ - Biblioteka/Library: pygame
  - Opcjonalnie/Optional: pycharm
  
 ===== 
@@ -33,6 +33,22 @@ rozpoznawanie bomb wg zagrożenia
 przyjmowanie poleceń
 przetwarzanie poleceń
 rozpoznawanie cech otoczenia
+
+=====
+Propozycja przetwarzania języka
+
+1. Wyszukiwanie typu akcji wykorzystując słownik np. podnieś, bierze
+
+2. Znalezienie szablonu do danej akcji (wyszukanie wymaganych informacji typu odległość, czas)
+
+3. Dodanie do kolejki znalezioną akcję wraz ze szczegółami, aby zachować kolejność wykonania polecenia np. jedź do przodu a potem skręć w prawo
+
+Albo inaczej:
+
+Szukasz w zdaniu słowa czasownika, jest np. podnieś, masz napisane że podnieś bierze obiekt i odległość, szukasz w zdaniu obiekt i odległość?
+
+=====
+Inne 
 
 Będą znajdowały się tam różne przeszkody typu krzesła, stół, szafki itd.
 Saper będzie napotykał przeszkody i je rozpoznawał poprzez pewne właściwości typu kolor
