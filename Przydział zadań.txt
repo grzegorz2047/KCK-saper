@@ -1,0 +1,9 @@
+﻿Przydział na dzień 30.11.16
+Przetwarzanie języka - MIKOŁAJ, AREK, GRZEGORZ
+Wizualizacja - PIOTR PAWEŁ
+
+LINKI:
+http://pygame.org/
+https://www.tutorialspoint.com/python/index.htm
+https://www.youtube.com/watch?v=AI2zs3nKHgg
+http://www.sonarlearning.co.uk/coursepage.php?topic=game&course=pygame
