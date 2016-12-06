@@ -30,7 +30,7 @@ def visualize():
 
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption('Saper')
-    ball = pygame.image.load('../assets/ball.bmp')
+    ball = pygame.image.load('assets/ball.bmp')
     ballrect = ball.get_rect()
     input_value = get_textfield_value(screen, 'Polecenie')
     print 'Wpisales', input_value
