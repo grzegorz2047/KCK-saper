@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<parametry>
+    <parametr name = "Wysokosc">
+        <nazwa>Wysokosc</nazwa>
+        <typ>Wysokosc</typ>
+        <spelling>m</spelling>
+        <spelling>metrów</spelling>
+        <spelling>metrow</spelling>
+        <spelling>Metrow</spelling>
+        <spelling>Metrów</spelling>
+    </parametr>
+    <parametr name = "Liczba">
+        <nazwa>Liczba</nazwa>
+        <typ>Liczba</typ>
+        <spelling>[1-999999]</spelling>
+        <spelling>jeden</spelling>
+        <spelling>dwa</spelling>
+        <spelling>trzy</spelling>
+        <spelling>cztery</spelling>
+        <spelling>piec</spelling>
+        <spelling>pięć</spelling>
+        <spelling>sześć</spelling>
+        <spelling>szesc</spelling>
+        <spelling>siedem</spelling>
+        <spelling>osiem</spelling>
+        <spelling>dziewiec</spelling>
+        <spelling>dziewięć</spelling>
+        <spelling>dziesięć</spelling>
+        <spelling>dziesiec</spelling>
+    </parametr>
+</parametry>

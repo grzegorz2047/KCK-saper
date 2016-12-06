@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<obiekty>
+    <obiekt name = "Bomba">
+        <nazwa>Bomba</nazwa>
+        <typ>Przedmiot</typ>
+        <typ>Bomba</typ>
+        <spelling>Bomba</spelling>
+        <spelling>bomba</spelling>
+        <spelling>bombie</spelling>
+        <spelling>bombię</spelling>
+        <spelling>Bombie<spelling>
+        <spelling>Bombię</spelling>
+        <spelling>Bombę</spelling>
+        <spelling>bombę</spelling>
+        <spelling>bomb$</spelling>
+        <spelling>Bomb$</spelling>
+
+    </obiekt>
+</obiekty>
