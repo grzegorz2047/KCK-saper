@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <funkcje>
     <funkcja name = "Podnies">
         <nazwa>Podnies</nazwa>
         <obiekt>Przedmiot</obiekt>
         <parametr>Liczba</parametr>
         <parametr>Wysokosc</parametr>
-
         <spelling>Podnies</spelling>
+        <spelling>Podnie.</spelling>
         <spelling>Podnieś</spelling>
         <spelling>podnies</spelling>
         <spelling>podnieś</spelling>
@@ -14,8 +14,7 @@
         <spelling>podnoszona</spelling>
         <spelling>podniesiony</spelling>
         <spelling>podniesiona</spelling>
-        <spelling>podn$</spelling>
-        <spelling>Podn$</spelling>
-
+        <spelling>podn</spelling>
+        <spelling>Podn</spelling>
     </funkcja>
 </funkcje>
