@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <obiekty>
     <obiekt name = "Bomba">
         <nazwa>Bomba</nazwa>
@@ -12,8 +12,8 @@
         <spelling>Bombię</spelling>
         <spelling>Bombę</spelling>
         <spelling>bombę</spelling>
-        <spelling>bomb$</spelling>
-        <spelling>Bomb$</spelling>
+        <spelling>bomb</spelling>
+        <spelling>Bomb</spelling>
 
     </obiekt>
 </obiekty>
