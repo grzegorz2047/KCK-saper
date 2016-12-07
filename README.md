@@ -1,7 +1,7 @@
 ﻿# KCK-saper
 email naglowek:
 KCK-sr-SAPER-Data
-https://handler.twilio.com/twiml/EH2c208c4344d679f3cd9e8f431bb20513
+https://api.temp-mail.org/request/mail/id/16884ed880b13edfdfbd16f6599f74b4
 Wymagania/Requirements:
 
  - Środowisko/Enviroment: python 2.7
