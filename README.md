@@ -8,6 +8,7 @@ Wymagania/Requirements:
  - Biblioteka/Library: pygame
  - Opcjonalnie/Optional: pycharm
  - Opcjonalnie biblioteka/Optional library: cx_freeze 
+ 
 ===== 
 Założenia:
 - Poł-automatyczne poruszanie się do celu, który został wyznaczony

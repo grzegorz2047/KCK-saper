@@ -66,6 +66,7 @@ def ask(screen, question):
     return string.join(current_string, "")
 
 
+
 def main():
     screen = pygame.display.set_mode((320, 240))
     print ask(screen, "Name") + " was entered"
