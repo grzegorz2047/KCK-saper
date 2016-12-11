@@ -7,13 +7,13 @@ options = {
         'includes': [
             'visualize_example',
             'inputbox'
-        ],"include_files":[("src/assets/ball.bmp","assets/ball.bmp")],
+        ], "include_files": [("src/assets/ball.bmp", "assets/ball.bmp")],
         'path': sys.path + ['src']
     }
 }
 
 cx_Freeze.setup(
     name="Fajne",
-      options=options,
-      executables=executables
-    )
+    options=options,
+    executables=executables
+)
