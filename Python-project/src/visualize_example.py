@@ -21,7 +21,7 @@ def create_label(screen, msg, pos):
     pygame.display.flip()
 
 
-def getCommand():
+def get_command():
     pygame.init()
 
     size = width, height = 800, 600
