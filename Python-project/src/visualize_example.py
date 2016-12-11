@@ -21,36 +21,37 @@ def create_label(screen, msg, pos):
     pygame.display.flip()
 
 
-def visualize():
+def getCommand():
     pygame.init()
 
     size = width, height = 800, 600
-    speed = [2, 2]
-    black = 0, 0, 0
+    # speed = [2, 2]
+    # black = 0, 0, 0
 
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption('Saper')
-    ball = pygame.image.load('assets/ball.bmp')
-    ballrect = ball.get_rect()
+    # ball = pygame.image.load('assets/ball.bmp')
+    # ballrect = ball.get_rect()
     input_value = get_textfield_value(screen, 'Polecenie')
-    print 'Wpisales', input_value
-    random_msg = 'To jest testowa wiadomosc, bo fajnie jest widziec cos na ekranie!'
-    while 1:
-        # print 'loop!'
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        ballrect = ballrect.move(speed)
-        if ballrect.left < 0 or ballrect.right > width:
-            speed[0] = -speed[0]
-        if ballrect.top < 0 or ballrect.bottom > height:
-            speed[1] = -speed[1]
-
-        create_label(screen, input_value, (100, 100))
-        create_label(screen, random_msg, (200, 200))
-        screen.fill(black)
-        screen.blit(ball, ballrect)
-        pygame.display.update(ballrect)  # aktualizuje pozycje kuli na ekranie
-
-        # quit()
+    return input_value
+    # print 'Wpisales', input_value
+    # random_msg = 'To jest testowa wiadomosc, bo fajnie jest widziec cos na ekranie!'
+    # while 1:
+    #     # print 'loop!'
+    #     for event in pygame.event.get():
+    #         if event.type == pygame.QUIT:
+    #             sys.exit()
+    #
+    #     ballrect = ballrect.move(speed)
+    #     if ballrect.left < 0 or ballrect.right > width:
+    #         speed[0] = -speed[0]
+    #     if ballrect.top < 0 or ballrect.bottom > height:
+    #         speed[1] = -speed[1]
+    #
+    #     create_label(screen, input_value, (100, 100))
+    #     create_label(screen, random_msg, (200, 200))
+    #     screen.fill(black)
+    #     screen.blit(ball, ballrect)
+    #     pygame.display.update(ballrect)  # aktualizuje pozycje kuli na ekranie
+    #
+    #     # quit()

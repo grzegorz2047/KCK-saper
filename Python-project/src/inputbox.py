@@ -60,6 +60,8 @@ def ask(screen, question):
             break
         elif inkey == K_MINUS:
             current_string.append("_")
+        elif inkey == K_SPACE:
+            current_string.append(" ")
         else:
             current_string.append(inkey)
         display_box(screen, question + ": " + string.join(current_string, ""))

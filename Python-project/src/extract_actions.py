@@ -3,12 +3,12 @@
 import sys
 
 
-def get_sentence_from_input_to_list():
-    print "Witaj!"
-    rozkaz = raw_input('Czekam na komende: ')
-    podzielonyrozkaz = rozkaz.split()
-    for i in range(len(podzielonyrozkaz)):
-        sys.stdout.write(podzielonyrozkaz[i])
+def get_sentence_from_input_to_list(command):
+    # rozkaz = raw_input('Czekam na komende: ')
+    # podzielonyrozkaz = rozkaz.split()
+    podzielonyrozkaz = command.split(" ")
+    # for i in range(len(podzielonyrozkaz)):
+    #     print (podzielonyrozkaz[i])
     return podzielonyrozkaz
 
 

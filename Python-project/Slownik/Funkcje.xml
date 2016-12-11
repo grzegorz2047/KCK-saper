@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <funkcje>
-    <funkcja name = "Podnies">
-        <nazwa>Podnies</nazwa>
+    <funkcja name = "Podnieś">
+        <nazwa>Podnieś</nazwa>
         <obiekt>Przedmiot</obiekt>
         <parametr>Liczba</parametr>
         <parametr>Wysokosc</parametr>
@@ -16,5 +16,18 @@
         <spelling>podniesiona</spelling>
         <spelling>podn</spelling>
         <spelling>Podn</spelling>
+    </funkcja>
+    <funkcja name = "Detonuj">
+        <nazwa>Detonuj</nazwa>
+        <spelling>Zdetonuj</spelling>
+        <spelling>zdetonuj</spelling>
+        <spelling>zdetonuj</spelling>
+    </funkcja>
+    <funkcja name = "Pojedź">
+        <nazwa>Pojedź</nazwa>
+        <spelling>Pojedz</spelling>
+        <spelling>Pojedź</spelling>
+        <spelling>pojedź</spelling>
+        <spelling>pojedz</spelling>
     </funkcja>
 </funkcje>
