@@ -5,42 +5,38 @@
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="/lib/w3-theme-blue.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+ 
 <script>
 function doFunction() {
     var polecenie = document.getElementsByName("Polecenie")[0].value;
-	
+   
     if (polecenie == "")
-	{
-			alert("Musisz podać polecenie");
-  
+    {
+            alert("Musisz podać polecenie");
+ 
   }
   else
   {
-		 alert(polecenie); 
-		 $(document).ready(function(){
-    $("button").click(function(){
+        alert(polecenie);
         $.get("http://localhost:8080/odbieram?komenda=" + polecenie, function(data, status){
             //alert("Data: " + data + "\nStatus: " + status);
         });
-    });
-});
-				
+               
   }
  }
-
-
+ 
+ 
 </script>
 </head>
-
-
+ 
+ 
 <body>
 <center>
 <div class="w3-card-4">
 <div class="w3-container w3-theme w3-card-2">
   <h1>Aplikacja - Wysyłanie rozkazów do sapera</h1>
 </div>
-
+ 
 <div class="w3-container w3-text-theme">
 <ul class="w3-ul w3-border-top">
 <li class="w3-theme-l5" style="position:relative">
@@ -53,10 +49,10 @@ function doFunction() {
 </li>
 </ul>
 </div>
-
-
-
-
+ 
+ 
+ 
+ 
 </center>
 </body>
 </html>
