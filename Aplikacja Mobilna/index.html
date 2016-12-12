@@ -9,16 +9,16 @@
 <script>
 function doFunction() {
     var polecenie = document.getElementsByName("Polecenie")[0].value;
+	var adres = document.getElementsByName("Adres")[0].value;
    
-    if (polecenie == "")
+    if (polecenie == "" || adres == "")
     {
-            alert("Musisz podać polecenie");
+            alert("Musisz podać polecenie i adres");
  
   }
   else
   {
-        alert(polecenie);
-        $.get("http://localhost:8080/odbieram?komenda=" + polecenie, function(data, status){
+        $.get("http://" + adres + ":8080/odbieram?komenda=" + polecenie, function(data, status){
             //alert("Data: " + data + "\nStatus: " + status);
         });
                
@@ -44,6 +44,7 @@ function doFunction() {
 <li>
 <p>
 <h2>Polecenie: <input type="text" id="Polecenie" name="Polecenie" value="" maxlength="100" />
+<h2>Adres: <input type="text" id="Adres" name="Adres" value="" maxlength="100" />
 <input type="submit" value="Wyślij Polecenie" onclick="doFunction();"/></h2>
 </p>
 </li>
