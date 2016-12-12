@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head> <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" > </head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="/lib/w3-theme-blue.css">
+
+
+<script>
+function doFunction() {
+    var polecenie = document.getElementsByName("Polecenie")[0].value;
+	
+    if (polecenie == "")
+	{
+			alert("Musisz podać polecenie");
+  
+  }
+  else
+  {
+		 alert(polecenie); 
+				
+  }
+ }
+
+
+</script>
+</head>
+
+
+<body>
+<center>
+<div class="w3-card-4">
+<div class="w3-container w3-theme w3-card-2">
+  <h1>Aplikacja - Wysyłanie rozkazów do sapera</h1>
+</div>
+
+<div class="w3-container w3-text-theme">
+<ul class="w3-ul w3-border-top">
+<li class="w3-theme-l5" style="position:relative">
+</li>
+<li>
+<p>
+<h2>Polecenie: <input type="text" id="Polecenie" name="Polecenie" value="" maxlength="100" />
+<input type="submit" value="Wyślij Polecenie" onclick="doFunction();"/></h2>
+</p>
+</li>
+</ul>
+</div>
+
+
+
+
+</center>
+</body>
+</html>
