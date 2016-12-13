@@ -13,19 +13,17 @@ class Function:
 
 
 def find_function(action):
-    # MIKOLAJ - Pokazuje jak korzystac ze Slownika dla Podnies Bombe na 2 metry
-    # NIE DZIALA: Polskie znaki wgl (poradzi sobie ale zignoruje odpowiedz) (send help plz)
-    # Zwraca z jakiegos powodu podwojnie
+    # MIKOLAJ - Pokazuje jak korzystac ze Slownika: szukanie słowa w funkcjach
+    # Analogicznie dla obiektów, parametrów, trzeba tylko zmienić plik
     # Zakładam, że zdanie zostało już oddzielone po kropce, i masz dostęp do pojedynczych wyrazów.
-    functions_file = ET.ElementTree(file='../Slownik/Funkcje.xml')  # odpalam plik funkcje i konwertuje na drzewo
+    functions_file = ET.ElementTree(file='../Slownik/Funkcje.xml')  #TUTAJ ZMIEŃ PLIK DLA OBIEKTÓW, PARAMETRÓW ITD..
     root = functions_file.getroot()  # poczatek drzewa
 
     for function_string in root.findall('funkcja'):  # iteruje po wszystkich funkcjach
         for spelling in function_string.findall('spelling'):  # dla kazdej mozliwej odmiany
-            if spelling.text == action:
+            if spelling.text.lower() == action.lower(): # lower by ignorowały duże/małe litery
                 return Function(function_string.find('nazwa').text)  # wypisuje nazwe funkcji do wywolania
     return Function("")
-    # KONIEC MIKOŁAJ
 
 
 def main():
