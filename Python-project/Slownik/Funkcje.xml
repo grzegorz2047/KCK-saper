@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <funkcje>
-    <funkcja name = "Podnieś">
-        <nazwa>Podnieś</nazwa>
+    <funkcja name = "Podnies">
+        <nazwa>Podnies</nazwa>
         <obiekt>Przedmiot</obiekt>
         <parametr>Liczba</parametr>
         <parametr>Wysokosc</parametr>
@@ -19,15 +19,45 @@
     </funkcja>
     <funkcja name = "Detonuj">
         <nazwa>Detonuj</nazwa>
+		<obiekt>Bomba</obiekt>
         <spelling>Zdetonuj</spelling>
-        <spelling>zdetonuj</spelling>
-        <spelling>zdetonuj</spelling>
+		<spelling>detonuj</spelling>
+		<spelling>wysadź</spelling>
+		<spelling>wysadz</spelling>
+		<spelling>zdetonować</spelling>
+		<spelling>zdetonowac</spelling>
+		<spelling>wypal</spelling>
+		<spelling>wysadzony</spelling>
+		<spelling>odpal</spelling>
+		<spelling>odpalić</spelling>
+		<spelling>odpalic</spelling>
+		<spelling>palnac</spelling>
+		<spelling>palnąć</spelling>
+		<spelling>detonowac</spelling>
+		<spelling>detonować</spelling>
+		<spelling>eksploduj</spelling>
+		<spelling>eksplodować</spelling>
+		<spelling>eksplodowac</spelling>
+		<spelling>odpal</spelling>
+		<spelling>odpalić</spelling>
+		<spelling>odpalic</spelling>
     </funkcja>
-    <funkcja name = "Pojedź">
-        <nazwa>Pojedź</nazwa>
+    <funkcja name = "Pojedz">
+        <nazwa>Pojedz</nazwa>
+		<parametr>Liczba</parametr>
+		<parametr>Wysokosc</parametr>
+		<parametr>Kierunek</parametr>
         <spelling>Pojedz</spelling>
         <spelling>Pojedź</spelling>
-        <spelling>pojedź</spelling>
-        <spelling>pojedz</spelling>
-    </funkcja>
+        <spelling>idź</spelling>
+        <spelling>idz</spelling>
+		<spelling>jedz</spelling>
+		<spelling>jedź</spelling>
+		<spelling>pojechac</spelling>
+		<spelling>pojechać</spelling>
+		<spelling>przejdz</spelling>
+		<spelling>przejdź</spelling>
+		<spelling>popędź</spelling>
+		<spelling>popedz</spelling>
+		</funkcja>
 </funkcje>
