@@ -8,6 +8,10 @@
         <spelling>metrow</spelling>
         <spelling>Metrow</spelling>
         <spelling>Metrów</spelling>
+		<spelling>m.</spelling>
+		<spelling>metr</spelling>
+		<spelling>metra</spelling>
+		<spelling>metr</spelling>
     </parametr>
     <parametr name = "Liczba">
         <nazwa>Liczba</nazwa>
@@ -28,4 +32,22 @@
         <spelling>dziesięć</spelling>
         <spelling>dziesiec</spelling>
     </parametr>
+	    <parametr name = "Kierunek">
+        <nazwa>Kierunek</nazwa>
+        <typ>Kierunek</typ>
+        <spelling>przód</spelling>
+		<spelling>przodu</spelling>
+		<spelling>przod</spelling>
+		<spelling>tylu</spelling>
+		<spelling>tył</spelling>
+		<spelling>tylu</spelling>
+		<spelling>tyłu</spelling>
+		<spelling>lewo</spelling>
+		<spelling>lewa</spelling>
+		<spelling>lewą</spelling>
+		<spelling>prawo</spelling>
+		<spelling>prawą</spelling>
+		<spelling>prawa</spelling>
+		</parametr>
 </parametry>
+
