@@ -5,7 +5,10 @@ from Queue import Queue
 from extract_actions import *
 from visualize_example import get_command
 import xml.etree.cElementTree as ET
-
+import pygame
+import map
+import saper
+import bomb
 
 class Function:
     def __init__(self, function_name):
