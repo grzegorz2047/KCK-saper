@@ -67,7 +67,19 @@ def main():
             object = find_object(word)
             if find_object(word).object_name != "":
                 print object.object_name
-
+                words.remove(word)
+            for word in words:
+                try:
+                    word += 1
+                    print word
+                    words.remove(word)
+                except TypeError:
+                #if isinstance( word, ( int, long ) )
+                #parameter = find_parameter(word)
+                #if find_parameter(word).parameter_name != "":
+                    #print parameter.parameter_name
+                    print word
+                    words.remove(word)
             # save_to_file(get_sentence_from_input_to_list())
             # visualize()
 
