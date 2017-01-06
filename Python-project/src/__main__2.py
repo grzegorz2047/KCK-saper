@@ -1,75 +1,103 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from Queue import Queue
+
+from extract_actions import *
+from visualize_example import get_command
+import xml.etree.cElementTree as ET
 import pygame
 import map
 import saper
 import bomb
 
-pygame.init()
+class Function:
+    def __init__(self, function_name):
+        self.function_name = function_name
 
-white = (255, 255, 255)
-black = (0, 0, 0)
-red = (255, 0, 0)
-green = (0, 255, 0)
-blue = (0, 0, 255)
+class Object:
+    def __init__(self, object_name):
+        self.object_name = object_name
 
-map = map.Map()
-saper = saper.Saper()
-bomb = bomb.Bomb()
+class Parameter:
+    def __init__(self, parameter_name):
+        self.parameter_name = parameter_name
 
-map.Load('example_map')
+def find_function(action):
+    # MIKOLAJ - Pokazuje jak korzystac ze Slownika: szukanie słowa w funkcjach
+    # Zakładam, że zdanie zostało już oddzielone po kropce, jest dostęp do pojedynczych wyrazów.
+    functions_file = ET.ElementTree(file='../Slownik/Funkcje.xml')  #ścieżka do pliku
+    root = functions_file.getroot()  # poczatek drzewa
 
-window_width = 800
-window_height = 600
-FPS = 15
+    for function_string in root.findall('funkcja'):  # iteruje po wszystkich funkcjach
+        for spelling in function_string.findall('spelling'):  # dla kazdej mozliwej odmiany
+            if spelling.text.lower() == action.lower(): # lower by ignorowały duże/małe litery
+                return Function(function_string.find('nazwa').text)  # wypisuje nazwe funkcji do wywolania
+    return Function("")
 
-gameDisplay = pygame.display.set_mode((window_width, window_height))
-pygame.display.set_caption('Saper')
+def find_object(action):
+    objects_file = ET.ElementTree(file='../Slownik/Obiekty.xml')  #ścieżka do pliku
+    root = objects_file.getroot()
 
-gameExit = False
+    for object_string in root.findall('obiekt'):  # iteruje po wszystkich objektach
+        for spelling in object_string.findall('spelling'):  # dla kazdej mozliwej odmiany
+            if spelling.text.lower() == action.lower(): # lower by ignorowały duże/małe litery
+                return Object(object_string.find('nazwa').text)  # wypisuje nazwe objektu do wywolania
+    return Object("")
 
-clock = pygame.time.Clock()
+def find_parameter(action):
+    parameters_file = ET.ElementTree(file='../Slownik/Parametry.xml')
+    root = parameters_file.getroot()  # poczatek drzewa
 
-while not gameExit: #game_loop
-    for event in pygame.event.get(): #event_loop
-        if event.type == pygame.QUIT:
-            gameExit = True
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                gameExit = True
+    for parameter_string in root.findall('parametr'):  # iteruje po wszystkich objektach
+        for spelling in parameter_string.findall('spelling'):  # dla kazdej mozliwej odmiany
+            if spelling.text.lower() == action.lower(): # lower by ignorowały duże/małe litery
+                return Parameter(parameter_string.find('nazwa').text)  # wypisuje nazwe objektu do wywolania
+    return Parameter("")
 
+def main():
+    queue = Queue()
+    command = get_command()
+    words = get_sentence_from_input_to_list(command)
+    for word in words:
+        function = find_function(word)
+        if find_function(word).function_name != "":
+            print function.function_name
+            words.remove(word)
+        for word in words:
+            object = find_object(word)
+            if find_object(word).object_name != "":
+                print object.object_name
+                words.remove(word)
+            for word in words:
+                try:
+                    word += 1
+                    print word
+                    words.remove(word)
+                except TypeError:
+                #if isinstance( word, ( int, long ) )
+                #parameter = find_parameter(word)
+                #if find_parameter(word).parameter_name != "":
+                    #print parameter.parameter_name
+                    print word
+                    words.remove(word)
+            # save_to_file(get_sentence_from_input_to_list())
+            # visualize()
 
-            #sterowanie strzalkami
-            if event.key == pygame.K_LEFT and saper.saper_x > 0:
-                saper.saper_x -= saper.saper_width
-                saper.direction = 3
-            if event.key == pygame.K_RIGHT and saper.saper_x < window_width - saper.saper_width:
-                saper.saper_x += saper.saper_width
-                saper.direction = 2
-            if event.key == pygame.K_DOWN and saper.saper_y < 448 - saper.saper_height:
-                saper.saper_y += saper.saper_height
-                saper.direction = 1
-            if event.key == pygame.K_UP and saper.saper_y > 0:
-                saper.saper_y -= saper.saper_height
-                saper.direction = 0
-            #---------------------
+    # if function.function_name == "Podnies":
+    #     object = find_object(word)
+    #     parameter = find_parameter(word)
+    #     if find_object(word).object_name != "" and find_parameter(word).parameter_name != "":
+    #         print (function.function_name , "(" , object.object_name , "," , parameter.parameter_name , ")")
+    #
+    # elif function.function_name == "Zdetonuj":
+    #     object = find_object(word)
+    #     parameter = find_parameter(word)
+    #     if find_object(word).object_name != "" and find_parameter(word).parameter_name != "":
+    #         print (function.function_name, "(", object.object_name, ")")
+    #
+    # elif function.function_name == "Pojedz":
+    #     parameter = find_parameter(word)
+    #     if find_parameter(word).parameter_name != "":
+    #         print (function.function_name, "(", parameter.parameter_name, ")")
 
-            #test
-            if event.key == pygame.K_t:
-                if saper.walk == False:
-                    saper.Move(5)
-            if event.key == pygame.K_r:
-                saper.Rotate()
-
-    saper.Update()
-    #bomb.Update()
-    gameDisplay.fill(blue)
-    map.Render()
-    saper.Render()
-    bomb.Render()
-    pygame.display.update()
-
-    clock.tick(FPS)
-
-
-
-pygame.quit()
-quit()
+main()

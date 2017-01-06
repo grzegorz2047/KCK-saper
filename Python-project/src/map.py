@@ -1,5 +1,6 @@
 import pygame
 import __main__
+import wall
 import linecache
 
 class Map:
@@ -31,12 +32,18 @@ class Map:
         finally:
             self.amount = self.width * self.height
             file.close()
+            for y in xrange(self.height):
+                for x in xrange(self.width):
+                    if int(self.data[x + y * self.width]) == 1:
+                        wall.Wall((x * 32, y * 32))
 
     def Render(self):
         for y in xrange(self.height):
             for x in xrange(self.width):
                 if int(self.data[x + y * self.width]) == 1:
-                    pygame.draw.rect(__main__.gameDisplay, __main__.white, [x * 32, y * 32, 32, 32]) # do zmiany to z __main__
+                    #wall.Wall((x * 32, y * 32))
+                    #pygame.draw.rect(__main__.gameDisplay, __main__.black, [x * 32, y * 32, 32, 32]) #wall
+                    for wall in __main__.walls:
+                        pygame.draw.rect(__main__.gameDisplay, __main__.black, wall.rect)
                 if int(self.data[x + y * self.width]) == 2:
-                    pygame.draw.rect(__main__.gameDisplay, __main__.black, [x * 32, y * 32, 32, 32]) # do zmiany to z __main__
-
+                    pygame.draw.rect(__main__.gameDisplay, __main__.white, [x * 32, y * 32, 32, 32])
