@@ -10,8 +10,11 @@ black = (0, 0, 0)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
-saper_color = (255, 128, 0)
+gray = (107, 113, 122)
+saper_color = (38, 51, 73)
+saper_head = (40, 0, 200)
 bomb_color = (102, 0, 51)
+floor = (249, 137, 17)
 
 map = map.Map()
 saper = saper.Saper()
@@ -63,7 +66,10 @@ while not gameExit: #game_loop
             if event.key == pygame.K_r:
                 saper.Rotate()
             if event.key == pygame.K_y:
-                saper.Pick_up()
+                if saper.bomb == False:
+                    saper.Pick_up()
+                else:
+                    saper.Drop()
 
     saper.Update()
     bomb.Update()
