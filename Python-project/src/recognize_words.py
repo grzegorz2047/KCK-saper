@@ -25,20 +25,27 @@ class Chat:
             function_word = find_word(self.functions_file, word, 'funkcja')
             if function_word != "":
                 print function_word
+                f = function_word
                 words.remove(word)
-            for word in words:
-                object_word = find_word(self.functions_file, word, 'obiekt')
-                if object_word != "":
-                    print object_word
-                    words.remove(word)
-                for word in words:
-                    try:
-                        word += 1
-                        print word
-                        words.remove(word)
-                    except TypeError:
-                        print word
-                        words.remove(word)
+        for word2 in words:
+            object_word = find_word(self.objects_file, word2, 'obiekt')
+            if object_word != "":
+                print object_word
+                o = object_word
+                words.remove(word2)
+        for word3 in words:
+            if word.isdigit():
+                print word
+                d = word3
+                words.remove(word3)
+            else:
+                parameter_word = find_word(self.parameters_file, word3, 'parametr')
+                if parameter_word != "":
+                    print parameter_word
+                    p = parameter_word
+                    words.remove(word3)
+        return Output(f,o, {{kierunek, 1}, {odleglosc,10}})
+
 
 
 def find_word(xmlfile, action, wordtype):
@@ -50,6 +57,8 @@ def find_word(xmlfile, action, wordtype):
                 return block.find('nazwa').text  # wypisuje nazwe funkcji do wywolania
     return ""
 
+class Output:
+
 
 def main():
     queue = Queue()
@@ -57,5 +66,4 @@ def main():
     words = get_sentence_from_input_to_list(command)
     chat = Chat()
     chat.find_all(words)
-
 main()

@@ -1,53 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <parametry>
-    <parametr name = "Wysokosc">
-        <nazwa>Wysokosc</nazwa>
-        <typ>Wysokosc</typ>
-        <spelling>m</spelling>
-        <spelling>metrów</spelling>
-        <spelling>metrow</spelling>
-        <spelling>Metrow</spelling>
-        <spelling>Metrów</spelling>
-		<spelling>m.</spelling>
-		<spelling>metr</spelling>
-		<spelling>metra</spelling>
-		<spelling>metr</spelling>
-    </parametr>
-    <parametr name = "Liczba">
-        <nazwa>Liczba</nazwa>
+    <!--<parametr name = "Liczba">-->
+        <!--<nazwa>Liczba</nazwa>-->
+        <!--<typ>Liczba</typ>-->
+        <!--<spelling>[1-999999]</spelling>-->
+        <!--<spelling>jeden</spelling>-->
+        <!--<spelling>dwa</spelling>-->
+        <!--<spelling>trzy</spelling>-->
+        <!--<spelling>cztery</spelling>-->
+        <!--<spelling>piec</spelling>-->
+        <!--<spelling>pięć</spelling>-->
+        <!--<spelling>sześć</spelling>-->
+        <!--<spelling>szesc</spelling>-->
+        <!--<spelling>siedem</spelling>-->
+        <!--<spelling>osiem</spelling>-->
+        <!--<spelling>dziewiec</spelling>-->
+        <!--<spelling>dziewięć</spelling>-->
+        <!--<spelling>dziesięć</spelling>-->
+        <!--<spelling>dziesiec</spelling>-->
+    <!--</parametr>-->
+	    <!--<parametr name = "Kierunek">-->
+        <!--<nazwa>Kierunek</nazwa>-->
+        <!--<typ>Kierunek</typ>-->
+        <!--<spelling>przód</spelling>-->
+		<!--<spelling>przodu</spelling>-->
+		<!--<spelling>przod</spelling>-->
+		<!--<spelling>tylu</spelling>-->
+		<!--<spelling>tył</spelling>-->
+		<!--<spelling>tylu</spelling>-->
+		<!--<spelling>tyłu</spelling>-->
+		<!--<spelling>lewo</spelling>-->
+		<!--<spelling>lewa</spelling>-->
+		<!--<spelling>lewą</spelling>-->
+		<!--<spelling>prawo</spelling>-->
+		<!--<spelling>prawą</spelling>-->
+		<!--<spelling>prawa</spelling>-->
+		<!--</parametr>-->
+    <parametr name = "1">
+        <nazwa>1</nazwa>
         <typ>Liczba</typ>
-        <spelling>[1-999999]</spelling>
         <spelling>jeden</spelling>
+    </parametr>
+    <parametr name = "2">
+        <nazwa>2</nazwa>
+        <typ>Liczba</typ>
         <spelling>dwa</spelling>
+    </parametr>
+    <parametr name = "3">
+        <nazwa>3</nazwa>
+        <typ>Liczba</typ>
         <spelling>trzy</spelling>
+    </parametr>
+    <parametr name = "4">
+        <nazwa>4</nazwa>
+        <typ>Liczba</typ>
         <spelling>cztery</spelling>
+    </parametr>
+    <parametr name = "5">
+        <nazwa>5</nazwa>
+        <typ>Liczba</typ>
         <spelling>piec</spelling>
         <spelling>pięć</spelling>
-        <spelling>sześć</spelling>
-        <spelling>szesc</spelling>
-        <spelling>siedem</spelling>
-        <spelling>osiem</spelling>
-        <spelling>dziewiec</spelling>
-        <spelling>dziewięć</spelling>
-        <spelling>dziesięć</spelling>
-        <spelling>dziesiec</spelling>
+        <spelling>pięc</spelling>
+        <spelling>pieć</spelling>
     </parametr>
-	    <parametr name = "Kierunek">
-        <nazwa>Kierunek</nazwa>
+    <parametr name = "6">
+        <nazwa>6</nazwa>
+        <typ>Liczba</typ>
+        <spelling>szesc</spelling>
+        <spelling>sześc</spelling>
+        <spelling>szesć</spelling>
+        <spelling>sześć</spelling>
+    </parametr>
+    <parametr name = "7">
+        <nazwa>7</nazwa>
+        <typ>Liczba</typ>
+        <spelling>siedem</spelling>
+    </parametr>
+    <parametr name = "8">
+        <nazwa>8</nazwa>
+        <typ>Liczba</typ>
+        <spelling>osiem</spelling>
+    </parametr>
+    <parametr name = "9">
+        <nazwa>9</nazwa>
+        <typ>Liczba</typ>
+        <spelling>dziewięć</spelling>
+        <spelling>dziewiec</spelling>
+        <spelling>dziewięc</spelling>
+        <spelling>dziewieć</spelling>
+    </parametr>
+    <parametr name = "10">
+        <nazwa>10</nazwa>
+        <typ>Liczba</typ>
+        <spelling>dziesiec</spelling>
+        <spelling>dziesięc</spelling>
+        <spelling>dziesieć</spelling>
+        <spelling>dziesięć</spelling>
+    </parametr>
+    <parametr name = "Lewo">
+        <nazwa>Lewo</nazwa>
         <typ>Kierunek</typ>
-        <spelling>przód</spelling>
-		<spelling>przodu</spelling>
-		<spelling>przod</spelling>
-		<spelling>tylu</spelling>
-		<spelling>tył</spelling>
-		<spelling>tylu</spelling>
-		<spelling>tyłu</spelling>
-		<spelling>lewo</spelling>
-		<spelling>lewa</spelling>
-		<spelling>lewą</spelling>
-		<spelling>prawo</spelling>
-		<spelling>prawą</spelling>
-		<spelling>prawa</spelling>
-		</parametr>
+        <spelling>lewo</spelling>
+        <spelling>lewą</spelling>
+        <spelling>lewa</spelling>
+    </parametr>
+    <parametr name = "Prawo">
+        <nazwa>Prawo</nazwa>
+        <typ>Kierunek</typ>
+        <spelling>prawo</spelling>
+        <spelling>prawa</spelling>
+        <spelling>prawą</spelling>
+    </parametr>
+    <parametr name = "Tył">
+        <nazwa>Tył</nazwa>
+        <typ>Kierunek</typ>
+        <spelling>tył</spelling>
+        <spelling>tyłu</spelling>
+        <spelling>tylnym</spelling>
+        <spelling>tyl</spelling>
+        <spelling>tylu</spelling>
+    </parametr>
 </parametry>
 

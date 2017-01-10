@@ -3,8 +3,6 @@
     <funkcja name = "Podnies">
         <nazwa>Podnies</nazwa>
         <obiekt>Przedmiot</obiekt>
-        <parametr>Liczba</parametr>
-        <parametr>Wysokosc</parametr>
         <spelling>Podnies</spelling>
         <spelling>Podnie.</spelling>
         <spelling>Podnieś</spelling>
@@ -45,8 +43,6 @@
     <funkcja name = "Pojedz">
         <nazwa>Pojedz</nazwa>
 		<parametr>Liczba</parametr>
-		<parametr>Wysokosc</parametr>
-		<parametr>Kierunek</parametr>
         <spelling>Pojedz</spelling>
         <spelling>Pojedź</spelling>
         <spelling>idź</spelling>
@@ -59,5 +55,16 @@
 		<spelling>przejdź</spelling>
 		<spelling>popędź</spelling>
 		<spelling>popedz</spelling>
+		</funkcja>
+	<funkcja name = "Obroc">
+        <nazwa>Obroc</nazwa>
+		<parametr>Kierunek</parametr>
+        <spelling>obroc</spelling>
+        <spelling>obrocenie</spelling>
+        <spelling>obracanie</spelling>
+		<spelling>obkręć</spelling>
+		<spelling>obkręc</spelling>
+		<spelling>obkreć</spelling>
+		<spelling>obkrec</spelling>
 		</funkcja>
 </funkcje>
