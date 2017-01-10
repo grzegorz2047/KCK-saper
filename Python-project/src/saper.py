@@ -58,8 +58,6 @@ class Saper(object):
                     self.rect.bottom = wall.rect.top
                 if self.direction == 0: # Moving up; Hit the bottom side of the wall
                     self.rect.top = wall.rect.bottom
-                #return True
-        #return False
 
     def Move(self, meters):
         self.how = meters
@@ -67,13 +65,13 @@ class Saper(object):
 
     def Walk(self):
         if self.how != 0: #and self.Collision() == False:
-            if self.direction == 0 and self.rect.y > 0:
+            if self.direction == 0:
                 self.rect.y -= self.saper_height
-            elif self.direction == 1 and self.rect.y < 448 - self.saper_height:
+            elif self.direction == 1:
                 self.rect.y += self.saper_height
-            elif self.direction == 2 and self.rect.x < __main__.window_width - self.saper_width:
+            elif self.direction == 2:
                 self.rect.x += self.saper_width
-            elif self.direction == 3 and self.rect.x > 0:
+            elif self.direction == 3:
                 self.rect.x -= self.saper_width
             else:
                 self.how = 0
@@ -96,7 +94,7 @@ class Saper(object):
         print("Kierunek: %d" % self.direction)
 
     def Pick_up(self):
-        if self.rect.colliderect(__main__.bomb):
+        if self.rect.colliderect(__main__.bomb) and __main__.bomb.lifting == True:
             self.bomb = True
 
     def Drop(self):
