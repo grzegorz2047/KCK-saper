@@ -157,25 +157,27 @@ class Chat:
                 saved_object_name = object_word;
                 found_object = 1;
                 continue;
+
+            # PARAMETR
             parametr_word = self.find_word(self.parameters_file, word, 'parametr')
 
-            #PARAMETR
-            #NIE DZIALAJA LICZBY
-            try: #SPRAWDZAM CZY LICZBA, NIE DZIALA
-                word = word + 1;
-                print "ZNALEZIONO LICZBĘ"
-                print word;
-                found_parameter = 1;
-                saved_parameter_name = word;
-                continue;
-            except TypeError:
-                if (parametr_word!= ""):
-                    print "ZNALEZIONO PARAMETR:"
-                    print parametr_word
+            #SPRAWDZAM CZY NIE JEST LICZBĄ, NIE USUWAJCIE
+            try:
+                    word = float(word);
+                    word = int(word); #zaokrąglam części dziesiętne+
+                    print "ZNALEZIONO LICZBĘ"
                     print word;
                     found_parameter = 1;
                     saved_parameter_name = word;
                     continue;
+            except ValueError:
+                    if parametr_word!= "":
+                        print "ZNALEZIONO PARAMETR:"
+                        print parametr_word
+                        print word;
+                        found_parameter = 1;
+                        saved_parameter_name = word;
+                        continue;
 
 
 
