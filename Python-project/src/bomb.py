@@ -38,7 +38,7 @@ class Bomb(object):
             if self.type == 1 and self.disarmed == False:
                 self.color = __main__.red
             elif self.type == 2:
-                self.color = __main__.green
+                self.color = __main__.blue
             elif self.type == 3 and self.disarmed == False:
                 self.color = __main__.yellow
 

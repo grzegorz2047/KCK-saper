@@ -1,111 +1,134 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from Queue import Queue
 
-from extract_actions import *
-from visualize_example import get_command
 import xml.etree.cElementTree as ET
 import pygame
 import string
 import __main__
 
-
 class Chat:
     ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁ" + " "  # bedzie trzeba pokombinowac
     ACCEPTED = ACCEPTED.decode("utf-8")
-    def __init__(self):
-        self.active = False
+    def __init__(self, screen):
+        #ladowanie czcionki
+        self.font = pygame.font.SysFont("monospace", 15)
+
+        # okno gry :)
+        self.window = screen
+
+        #czy czat jest aktywny
+        self.active = True
+        self.unicode = False
+
+        #zegarek
+        self.time_start = pygame.time.get_ticks()
+        self.time_current = 0
+
         self.functions_file = ET.ElementTree(file='../Slownik/Funkcje.xml')
         self.objects_file = ET.ElementTree(file='../Slownik/Obiekty.xml')
         self.parameters_file = ET.ElementTree(file='../Slownik/Parametry.xml')
+
+        self.text = self.font.render("CHAT", 1, (255, 255, 255))
+        self.textpos = self.text.get_rect()
+        self.textpos.x = self.window.get_width() / 2 - self.text.get_width() / 2
+        self.textpos.y = self.window.get_height() - (2 * self.text.get_height() + 5)
+
+        self.fontobject = pygame.font.Font(None, 18)
+        self.current_string = []
+        self.zachecacz = " "
+        self.command = ""
         pass
 
-    # funkcja obiekt parametr
-
     def Update(self):
-        self.get_key()
+        if self.active == True:
+            self.time_current = (pygame.time.get_ticks() - self.time_start) / 1000
 
-
-    def find_all(self, words):
-        for word in words:
-            function_word = find_word(self.functions_file, word, 'funkcja')
-            if function_word != "":
-                print function_word
-                words.remove(word)
-            for word in words:
-                object_word = find_word(self.functions_file, word, 'obiekt')
-                if object_word != "":
-                    print object_word
-                    words.remove(word)
-                for word in words:
-                    try:
-                        word += 1
-                        print word
-                        words.remove(word)
-                    except TypeError:
-                        print word
-                        words.remove(word)
-
-    def get_key(self):
-        while 1:
-            event = pygame.event.poll()
-            if event.type == pygame.KEYDOWN:
-                if event.unicode in self.ACCEPTED:
-                    return event.unicode
-                else:
-                    return event.key
-
-    def ask(screen, question):
-        "ask(screen, question) -> answer"
-        pygame.font.init()
-        current_string = []
-        display_box(screen, question + ": " + string.join(current_string, ""))
-        while 1:
-            inkey = get_key()
-            if inkey == K_BACKSPACE:
-                current_string = current_string[0:-1]
-            elif inkey == K_RETURN:
-                break
-            elif inkey == K_MINUS:
-                current_string.append("_")
-            elif inkey == K_SPACE:
-                current_string.append(" ")
+            if self.time_current > 0.5:
+                self.time_start = pygame.time.get_ticks()
+                self.zachecacz = "|"
             else:
-                current_string.append(inkey)
-            display_box(screen, question + ": " + string.join(current_string, ""))
-        return string.join(current_string, "")
+                self.zachecacz = " "
 
-    def display_box(screen, message):
-        "Print a message in a box in the middle of the screen"
-        fontobject = pygame.font.Font(None, 18)
-        pygame.draw.rect(screen, (0, 0, 0),
-                         ((screen.get_width() / 2) - 100,
-                          (screen.get_height() / 2) - 10,
-                          200, 20), 0)
-        pygame.draw.rect(screen, (255, 255, 255),
-                         ((screen.get_width() / 2) - 102,
-                          (screen.get_height() / 2) - 12,
-                          204, 24), 1)
-        if len(message) != 0:
-            screen.blit(fontobject.render(message, 1, (255, 255, 255)),
-                        ((screen.get_width() / 2) - 100, (screen.get_height() / 2) - 10))
-        pygame.display.flip()
+    def Render(self):
+        #render ramki czatu
+        pygame.draw.rect(self.window, (122, 133, 144), [0, self.window.get_height() - 22, self.window.get_width(), 20], 0)
+        pygame.draw.rect(self.window, (255, 255, 255), [0, self.window.get_height() - 24, self.window.get_width(), 24], 1)
 
-    def find_word(xmlfile, action, wordtype):
-        root = xmlfile.getroot()
+        # render text
+        self.window.blit(self.text, self.textpos)
+        self.window.blit(self.fontobject.render("".join(self.current_string) + self.zachecacz, 1, (255, 255, 255)), (1, self.window.get_height() - 21))
 
-        for block in root.findall(wordtype):  # iteruje po wszystkich objektach
-            for spelling in block.findall('spelling'):  # dla kazdej mozliwej odmiany
-                if spelling.text.lower() == action.lower():  # lower by ignorowały duże/małe litery
-                    return block.find('nazwa').text  # wypisuje nazwe funkcji do wywolania
-        return ""
+    def get_key(self, event_key):
+            if event_key.unicode in self.ACCEPTED:
+                self.unicode = True
+                return event_key.unicode
+            else:
+                return event_key.key
 
+    def ask(self, event_key):
+            inkey = self.get_key(event_key)
+            length = len(self.current_string)
+            if inkey == pygame.K_BACKSPACE and length != 0:
+                self.current_string.pop()
+            elif inkey == pygame.K_MINUS:
+                self.current_string.append("_")
+            elif inkey == pygame.K_SPACE:
+                self.current_string.append(" ")
+            elif self.unicode == True:
+                self.unicode = False
+                self.current_string.append(inkey)
+            elif inkey == pygame.K_RETURN:
+                self.command = "".join(self.current_string)
+                print(self.command)
+                print(length)
+                while len(self.current_string) != 0:
+                    self.current_string.pop()
 
-    # def main():
-    #     queue = Queue()
-    #     command = get_command()
-    #     words = get_sentence_from_input_to_list(command)
-    #     chat = Chat()
-    #     chat.find_all(words)
+    # def find_all(self, words):
+    #     for word in words:
+    #         function_word = self.find_word(self.functions_file, word, 'funkcja')
+    #         if function_word != "":
+    #             print function_word
+    #             words.remove(word)
+    #         for word in words:
+    #             object_word = self.find_word(self.functions_file, word, 'obiekt')
+    #             if object_word != "":
+    #                 print object_word
+    #                 words.remove(word)
+    #             for word in words:
+    #                 try:
+    #                     word += 1
+    #                     print word
+    #                     words.remove(word)
+    #                 except TypeError:
+    #                     print word
+    #                     words.remove(word)
     #
-    # main()
+    # def find_word(xmlfile, action, wordtype):
+    #     root = xmlfile.getroot()
+    #
+    #     for block in root.findall(wordtype):  # iteruje po wszystkich objektach
+    #         for spelling in block.findall('spelling'):  # dla kazdej mozliwej odmiany
+    #             if spelling.text.lower() == action.lower():  # lower by ignorowały duże/małe litery
+    #                 return block.find('nazwa').text  # wypisuje nazwe funkcji do wywolania
+    #     return ""
+    #
+    # def get_textfield_value(self, screen, msg):
+    #     textfield = self.ask(screen, msg)
+    #     return textfield
+    #
+    # def create_label(self, screen, msg, pos):
+    #     # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
+    #     #myfont = pygame.font.SysFont("monospace", 15)
+    #
+    #     # render text
+    #     label = myfont.render(msg, 1, (255, 255, 255))
+    #     screen.blit(label, pos)
+    #     pygame.display.flip()
+    #
+    # def get_command(self):
+    #
+    #     screen = __main__.gameDisplay
+    #
+    #     input_value = self.get_textfield_value(screen, 'Polecenie')
+    #     return input_value
