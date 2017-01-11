@@ -62,6 +62,11 @@ class Chat:
         # render text
         self.window.blit(self.text, self.textpos)
         self.window.blit(self.fontobject.render("".join(self.current_string) + self.zachecacz, 1, (255, 255, 255)), (1, self.window.get_height() - 21))
+        self.chat_log.reverse()
+        for i in range(0, len(self.chat_log)):
+            self.window.blit(self.fontobject.render("".join(self.chat_log[i]), 1, (255, 255, 255)), (1, self.window.get_height() - 41 - i * 13))
+        self.chat_log.reverse()
+
 
     def get_key(self, event_key):
             if event_key.unicode in self.ACCEPTED:
@@ -88,7 +93,11 @@ class Chat:
                 self.current_string.append("\n")
                 plik.writelines(self.current_string)
                 plik.close()
-                #self.chat_log.append(linecache.getline("chat_log.txt", len(self.chat_log)))
+                self.current_string.pop()
+                if "".join(self.current_string) != "":
+                    self.chat_log.append("".join(self.current_string))
+                if len(self.chat_log) > 4:
+                    self.chat_log.pop(0)
                 print(self.chat_log)
                 while len(self.current_string) != 0:
                     self.current_string.pop()
