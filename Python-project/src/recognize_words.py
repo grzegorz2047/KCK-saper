@@ -4,6 +4,9 @@
 import xml.etree.cElementTree as ET
 import pygame
 import string
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 import linecache
 
 class Chat:

@@ -3,6 +3,9 @@ import map
 import saper
 import bomb
 import recognize_words
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 pygame.init()
 
@@ -28,7 +31,7 @@ map.Load('example_map')
 
 window_width = 800
 window_height = 600
-FPS = 10
+FPS = 60
 
 gameDisplay = pygame.display.set_mode((window_width, window_height))
 
