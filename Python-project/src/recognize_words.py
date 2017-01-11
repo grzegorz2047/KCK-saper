@@ -10,7 +10,7 @@ sys.setdefaultencoding('utf8')
 import linecache
 
 class Chat:
-    ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁ" + " "  # bedzie trzeba pokombinowac
+    ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁÓ" + " "  # bedzie trzeba pokombinowac
     ACCEPTED = ACCEPTED.decode("utf-8")
     def __init__(self, screen):
         #ladowanie czcionki
