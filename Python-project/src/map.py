@@ -41,9 +41,11 @@ class Map:
         for y in xrange(self.height):
             for x in xrange(self.width):
                 if int(self.data[x + y * self.width]) == 1:
-                    #wall.Wall((x * 32, y * 32))
-                    #pygame.draw.rect(__main__.gameDisplay, __main__.black, [x * 32, y * 32, 32, 32]) #wall
                     for wall in __main__.walls:
                         pygame.draw.rect(__main__.gameDisplay, __main__.black, wall.rect)
-                if int(self.data[x + y * self.width]) == 2:
-                    pygame.draw.rect(__main__.gameDisplay, __main__.white, [x * 32, y * 32, 32, 32])
+                elif int(self.data[x + y * self.width]) == 2:
+                    pygame.draw.rect(__main__.gameDisplay, __main__.floor, [x * 32, y * 32, 32, 32])
+                elif int(self.data[x + y * self.width]) == 3:
+                    pygame.draw.rect(__main__.gameDisplay, __main__.green, [x * 32, y * 32, 32, 32])
+                elif int(self.data[x + y * self.width]) == 4:
+                    pygame.draw.rect(__main__.gameDisplay, __main__.gray, [x * 32, y * 32, 32, 32])
