@@ -5,6 +5,7 @@ import xml.etree.cElementTree as ET
 import pygame
 import string
 import sys
+import extract_actions
 reload(sys)
 sys.setdefaultencoding('utf8')
 import linecache
@@ -105,31 +106,85 @@ class Chat:
                 while len(self.current_string) != 0:
                     self.current_string.pop()
 
-    # def find_all(self, words):
-    #     for word in words:
-    #         function_word = self.find_word(self.functions_file, word, 'funkcja')
-    #         if function_word != "":
-    #             print function_word
-    #             words.remove(word)
-    #         for word in words:
-    #             object_word = self.find_word(self.functions_file, word, 'obiekt')
-    #             if object_word != "":
-    #                 print object_word
-    #                 words.remove(word)
-    #             for word in words:
-    #                 try:
-    #                     word += 1
-    #                     print word
-    #                     words.remove(word)
-    #                 except TypeError:
-    #                     print word
-    #                     words.remove(word)
-    #
-    # def find_word(xmlfile, action, wordtype):
-    #     root = xmlfile.getroot()
-    #
-    #     for block in root.findall(wordtype):  # iteruje po wszystkich objektach
-    #         for spelling in block.findall('spelling'):  # dla kazdej mozliwej odmiany
-    #             if spelling.text.lower() == action.lower():  # lower by ignorowały duże/małe litery
-    #                 return block.find('nazwa').text  # wypisuje nazwe funkcji do wywolania
-    #     return ""
+                #WYWOLUJE PRZETWARZANIE JEZYKA - Mikolaj
+                self.przetwarzanie_jezyka();
+
+
+
+
+
+    #PRZETWARZANIE JEZYKA - Mikolaj
+
+    #GLOWNA FUNKCJA, TO WYWOLUJEMY RECZNIE TYLKO
+    def przetwarzanie_jezyka(self):
+        words = self.get_sentence_from_input_to_list(self.command);
+        self.find_all(words);
+
+
+    def get_sentence_from_input_to_list(self, command):
+        # rozkaz = raw_input('Czekam na komende: ')
+        # podzielonyrozkaz = rozkaz.split()
+        podzielonyrozkaz = command.split(" ")
+        # for i in range(len(podzielonyrozkaz)):
+        #     print (podzielonyrozkaz[i])
+        return podzielonyrozkaz
+
+
+
+    def find_all(self, words):
+        #PRZETWARZANIE JEZYKA main part
+        #Znajdzie funkcje, parametr, obiekt w dowolnej kolejnosi. Nie potrafi jeszcze powiedziec, czy akurat ta funkcja pasuje do tego parametru/obiektu.
+        found_function = 0;
+        found_object = 0;
+        found_parameter = 0;
+        for word in words:
+
+            #FUNKCJA
+            function_word = self.find_word(self.functions_file, word, 'funkcja')
+            if function_word != "":
+                print "ZNALEZIONO FUNKCJE:"
+                print function_word
+                saved_function_name = function_word;
+                found_function = 1;
+                #words.remove(word)
+                continue
+
+            #OBIEKT
+            object_word = self.find_word(self.objects_file, word, 'obiekt')
+            if object_word != "":
+                print "ZNALEZIONO OBIEKT:"
+                print object_word
+                saved_object_name = object_word;
+                found_object = 1;
+                continue;
+            parametr_word = self.find_word(self.parameters_file, word, 'parametr')
+
+            #PARAMETR
+            #NIE DZIALAJA LICZBY
+            try: #SPRAWDZAM CZY LICZBA, NIE DZIALA
+                word = word + 1;
+                print "ZNALEZIONO LICZBĘ"
+                print word;
+                found_parameter = 1;
+                saved_parameter_name = word;
+                continue;
+            except TypeError:
+                if (parametr_word!= ""):
+                    print "ZNALEZIONO PARAMETR:"
+                    print parametr_word
+                    print word;
+                    found_parameter = 1;
+                    saved_parameter_name = word;
+                    continue;
+
+
+
+
+    def find_word(self, nazwaplikuxml, action, wordtype):
+        root = nazwaplikuxml.getroot()
+
+        for block in root.findall(wordtype):  # iteruje po wszystkich obiektach
+            for spelling in block.findall('spelling'):  # dla kazdej mozliwej odmiany
+                if spelling.text.lower() == action.lower():  # lower by ignorowały duże/małe litery
+                    return block.find('nazwa').text  # wypisuje nazwe funkcji do wywolania
+        return ""
