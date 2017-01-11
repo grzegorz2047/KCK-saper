@@ -19,7 +19,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁ" + " "  # bedzie trzeba pokombinowac
+ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁÓ" + " "  # bedzie trzeba pokombinowac
 ACCEPTED = ACCEPTED.decode("utf-8")
 
 
