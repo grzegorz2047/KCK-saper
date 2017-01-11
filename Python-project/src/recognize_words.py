@@ -4,7 +4,7 @@
 import xml.etree.cElementTree as ET
 import pygame
 import string
-import __main__
+import linecache
 
 class Chat:
     ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁ" + " "  # bedzie trzeba pokombinowac
@@ -37,6 +37,8 @@ class Chat:
         self.current_string = []
         self.zachecacz = " "
         self.command = ""
+
+        self.chat_log = []
         pass
 
     def Update(self):
@@ -50,6 +52,9 @@ class Chat:
                 self.zachecacz = " "
 
     def Render(self):
+        #render historia czatu
+        pygame.draw.rect(self.window, (122, 133, 144), [0, self.window.get_height() - 22 - 3 * 22, self.window.get_width(), 64], 0)
+        pygame.draw.rect(self.window, (255, 255, 255), [0, self.window.get_height() - 24 - 3 * 22, self.window.get_width(), 68], 1)
         #render ramki czatu
         pygame.draw.rect(self.window, (122, 133, 144), [0, self.window.get_height() - 22, self.window.get_width(), 20], 0)
         pygame.draw.rect(self.window, (255, 255, 255), [0, self.window.get_height() - 24, self.window.get_width(), 24], 1)
@@ -74,13 +79,17 @@ class Chat:
                 self.current_string.append("_")
             elif inkey == pygame.K_SPACE:
                 self.current_string.append(" ")
-            elif self.unicode == True:
+            elif self.unicode:
                 self.unicode = False
                 self.current_string.append(inkey)
             elif inkey == pygame.K_RETURN:
                 self.command = "".join(self.current_string)
-                print(self.command)
-                print(length)
+                plik = open('chat_log.txt', 'a')
+                self.current_string.append("\n")
+                plik.writelines(self.current_string)
+                plik.close()
+                #self.chat_log.append(linecache.getline("chat_log.txt", len(self.chat_log)))
+                print(self.chat_log)
                 while len(self.current_string) != 0:
                     self.current_string.pop()
 
@@ -112,23 +121,3 @@ class Chat:
     #             if spelling.text.lower() == action.lower():  # lower by ignorowały duże/małe litery
     #                 return block.find('nazwa').text  # wypisuje nazwe funkcji do wywolania
     #     return ""
-    #
-    # def get_textfield_value(self, screen, msg):
-    #     textfield = self.ask(screen, msg)
-    #     return textfield
-    #
-    # def create_label(self, screen, msg, pos):
-    #     # initialize font; must be called after 'pygame.init()' to avoid 'Font not Initialized' error
-    #     #myfont = pygame.font.SysFont("monospace", 15)
-    #
-    #     # render text
-    #     label = myfont.render(msg, 1, (255, 255, 255))
-    #     screen.blit(label, pos)
-    #     pygame.display.flip()
-    #
-    # def get_command(self):
-    #
-    #     screen = __main__.gameDisplay
-    #
-    #     input_value = self.get_textfield_value(screen, 'Polecenie')
-    #     return input_value
