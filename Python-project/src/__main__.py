@@ -3,6 +3,9 @@ import map
 import saper
 import bomb
 import recognize_words
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 pygame.init()
 
@@ -18,7 +21,7 @@ saper_head = (40, 0, 200)
 bomb_color = (102, 0, 51)
 floor = (249, 137, 17)
 
-chat = recognize_words.Chat()
+
 map = map.Map()
 saper = saper.Saper()
 bomb = bomb.Bomb()
@@ -28,9 +31,12 @@ map.Load('example_map')
 
 window_width = 800
 window_height = 600
-FPS = 10
+FPS = 60
 
 gameDisplay = pygame.display.set_mode((window_width, window_height))
+
+chat = recognize_words.Chat(gameDisplay)
+
 pygame.display.set_caption('Saper')
 
 gameExit = False
@@ -42,6 +48,9 @@ while not gameExit: #game_loop
         if event.type == pygame.QUIT:
             gameExit = True
         if event.type == pygame.KEYDOWN:
+            #CZAT
+            chat.ask(event)
+
             if event.key == pygame.K_ESCAPE:
                 gameExit = True
             if event.key == pygame.K_LEFT:
@@ -73,16 +82,16 @@ while not gameExit: #game_loop
                 else:
                     saper.Drop()
 
-            if event.key == pygame.K_RETURN:
-                chat.active = True        #DO ZROBIENIA
-
-
     saper.Update()
     bomb.Update()
+    chat.Update()
+
     gameDisplay.fill(blue)
     map.Render()
     saper.Render()
     bomb.Render()
+    chat.Render()
+
     pygame.display.update()
 
     clock.tick(FPS)

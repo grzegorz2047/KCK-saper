@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 
 def get_sentence_from_input_to_list(command):

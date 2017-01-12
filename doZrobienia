@@ -1,0 +1,9 @@
+Liniowe pole widzenia sapera (w linii)
+wyslanie komunikatu przez sapera, jezeli w jego polu widzenia jest bomba
+Saper pyta sie czy ma podjechac do bomby
+Po odpowiedzi twierdzacej, saper podjezdza
+Czat zapisuje sie do pliku
+Jezeli saper nie rozpozna komendy, wyswietla w oknie dialogowym komunikat o nie zrozumieniu komendy
+Mozna zrobic serwer w javie, ktory bedzie przyjmowal glos, przetwarzal na mowe i zapisywal linie do pliku a python bedzie sprawdzal czy plik jest pusty, jezeli nie, to wykona komende
+Raport trzeba zrobic z dnia 11.01.2017
+Komunikacja sapera z uzytkownikiem

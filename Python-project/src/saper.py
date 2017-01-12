@@ -91,7 +91,6 @@ class Saper(object):
         elif self.direction == 3:
             self.direction = 0
         self.walk = False
-        print("Kierunek: %d" % self.direction)
 
     def Pick_up(self):
         if self.rect.colliderect(__main__.bomb) and __main__.bomb.lifting == True:
