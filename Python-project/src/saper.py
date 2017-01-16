@@ -1,6 +1,6 @@
 import pygame
 import __main__
-import map
+import text
 
 class Saper(object):
     def __init__(self):
@@ -22,6 +22,7 @@ class Saper(object):
         self.rect = pygame.Rect(self.saper_x * 32, self.saper_y * 32, self.saper_width, self.saper_height)
 
         self.bomb = False
+        self.bylo = False
 
     def Update(self):
         if self.walk == True:
@@ -42,6 +43,41 @@ class Saper(object):
             self.head.x = self.rect.x
             self.head.y = self.rect.y + 8
 
+        if __main__.chat.saved_function_name == "Pojedz" and self.walk == False and __main__.chat.found_number == True:
+            self.Rotate_dir(__main__.chat.saved_parameter_name)
+            self.Move(__main__.chat.saved_number)
+            __main__.chat.saved_function_name = ""
+            __main__.chat.saved_parameter_name = ""
+            __main__.chat.saved_number = 0
+            __main__.chat.found_number = False
+        elif __main__.chat.saved_function_name == "Pojedz" and self.bylo == False and self.walk == False:
+            __main__.chat.chat_log.append(text.Text("O ile kratek mam sie przemiescic?", __main__.chat.saper_color))
+            self.bylo = True
+
+        if __main__.chat.saved_function_name == "Podnies" and  __main__.chat.saved_object_name == "Bomba":
+            if self.Pick_up() != True and self.bylo == False:
+                __main__.chat.chat_log.append(text.Text("Nie jestem w zasiegu bomby.", __main__.chat.saper_color))
+                self.bylo = True
+            elif self.Pick_up():
+                __main__.chat.chat_log.append(text.Text("Mam.", __main__.chat.saper_color))
+                __main__.chat.saved_function_name = ""
+                __main__.chat.saved_object_name = ""
+
+        elif __main__.chat.saved_function_name == "Podnies" and self.bylo == False:
+            __main__.chat.chat_log.append(text.Text("Nie wiem co mam podniesc.", __main__.chat.saper_color))
+            self.bylo = True
+
+        if __main__.chat.saved_function_name == "Obroc":
+            if self.Rotate_dir(__main__.chat.saved_parameter_name):
+                __main__.chat.chat_log.append(text.Text("Obrocilem sie.", __main__.chat.saper_color))
+                __main__.chat.saved_function_name = ""
+                __main__.chat.saved_parameter_name = ""
+            elif self.bylo == False:
+                __main__.chat.chat_log.append(text.Text("W ktora strone mam sie obrocic?", __main__.chat.saper_color))
+                self.bylo = True
+
+        if len(__main__.chat.chat_log) > 4:
+            __main__.chat.chat_log.pop(0)
 
     def Render(self):
         pygame.draw.rect(__main__.gameDisplay, __main__.saper_color, self.rect)
@@ -92,9 +128,28 @@ class Saper(object):
             self.direction = 0
         self.walk = False
 
+    def Rotate_dir(self, direction):
+        if(direction == 'Lewo'):
+            self.direction = 3
+            return True
+        elif (direction == 'Prawo'):
+            self.direction = 2
+            return True
+        elif (direction == 'Tyl'):
+            self.direction = 1
+            return True
+        elif (direction == 'Przod'):
+            self.direction = 0
+            return True
+        return False
+
+
+
     def Pick_up(self):
         if self.rect.colliderect(__main__.bomb) and __main__.bomb.lifting == True:
             self.bomb = True
+            return True
+        return False
 
     def Drop(self):
         if self.bomb == True:

@@ -70,18 +70,6 @@ while not gameExit: #game_loop
                 if saper.walk == False:
                     saper.Move(1)
 
-            #test
-            if event.key == pygame.K_t:
-                if saper.walk == False:
-                    saper.Move(5)
-            if event.key == pygame.K_r:
-                saper.Rotate()
-            if event.key == pygame.K_y:
-                if saper.bomb == False:
-                    saper.Pick_up()
-                else:
-                    saper.Drop()
-
     saper.Update()
     bomb.Update()
     chat.Update()

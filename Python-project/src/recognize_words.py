@@ -8,7 +8,8 @@ import sys
 import extract_actions
 reload(sys)
 sys.setdefaultencoding('utf8')
-import linecache
+import text
+import __main__
 
 class Chat:
     ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁÓ" + " "  # bedzie trzeba pokombinowac
@@ -43,6 +44,19 @@ class Chat:
         self.command = ""
 
         self.chat_log = []
+        self.user_color = (255, 255, 255)
+        self.saper_color = (255, 20, 20)
+
+        #do przetwarzania
+        self.found_function = False
+        self.found_object = False
+        self.found_parametr = False
+        self.found_number = False
+
+        self.saved_function_name = ""
+        self.saved_object_name = ""
+        self.saved_number = 0
+        self.saved_parameter_name = ""
         pass
 
     def Update(self):
@@ -68,7 +82,7 @@ class Chat:
         self.window.blit(self.fontobject.render("".join(self.current_string) + self.zachecacz, 1, (255, 255, 255)), (1, self.window.get_height() - 21))
         self.chat_log.reverse()
         for i in range(0, len(self.chat_log)):
-            self.window.blit(self.fontobject.render("".join(self.chat_log[i]), 1, (255, 255, 255)), (1, self.window.get_height() - 41 - i * 13))
+            self.window.blit(self.fontobject.render("".join(self.chat_log[i].text), 1, self.chat_log[i].color), (1, self.window.get_height() - 41 - i * 13))
         self.chat_log.reverse()
 
 
@@ -82,6 +96,7 @@ class Chat:
     def ask(self, event_key):
             inkey = self.get_key(event_key)
             length = len(self.current_string)
+            remove = False
             if inkey == pygame.K_BACKSPACE and length != 0:
                 self.current_string.pop()
             elif inkey == pygame.K_MINUS:
@@ -99,10 +114,10 @@ class Chat:
                 plik.close()
                 self.current_string.pop()
                 if "".join(self.current_string) != "":
-                    self.chat_log.append("".join(self.current_string))
+                    #self.chat_log.append("".join(self.current_string))
+                    self.chat_log.append(text.Text("".join(self.current_string), self.user_color))
                 if len(self.chat_log) > 4:
                     self.chat_log.pop(0)
-                print(self.chat_log)
                 while len(self.current_string) != 0:
                     self.current_string.pop()
 
@@ -142,9 +157,16 @@ class Chat:
             #FUNKCJA
             function_word = self.find_word(self.functions_file, word, 'funkcja')
             if function_word != "":
+                self.found_function = True #
                 print "ZNALEZIONO FUNKCJE:"
                 print function_word
-                saved_function_name = function_word;
+                __main__.saper.bylo = False
+                self.found_number = False
+                self.saved_function_name = ""
+                self.saved_object_name = ""
+                self.saved_number = 0
+                self.saved_parameter_name = ""
+                self.saved_function_name = function_word;
                 found_function = 1;
                 #words.remove(word)
                 continue
@@ -152,9 +174,10 @@ class Chat:
             #OBIEKT
             object_word = self.find_word(self.objects_file, word, 'obiekt')
             if object_word != "":
+                self.found_object = True #
                 print "ZNALEZIONO OBIEKT:"
-                print object_word
-                saved_object_name = object_word;
+                print object_word;
+                self.saved_object_name = object_word;
                 found_object = 1;
                 continue;
 
@@ -164,18 +187,20 @@ class Chat:
             try:
                 word = float(word);
                 word = int(word);  # zaokrąglam części dziesiętne+
+                self.found_number = True
                 print "ZNALEZIONO LICZBĘ"
                 print word;
                 found_parameter = 1;
-                saved_parameter_name = word;
+                self.saved_number = word;
                 continue;
             except ValueError:
                 if parametr_word != "":
+                    self.found_parametr = True
                     print "ZNALEZIONO PARAMETR:"
                     print parametr_word
                     print word;
                     found_parameter = 1;
-                    saved_parameter_name = word;
+                    self.saved_parameter_name = parametr_word;
                     continue;
         
 
