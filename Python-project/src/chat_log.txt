@@ -1,0 +1,57 @@
+idz 5 w prawo
+idz 5 w dol
+idz 3 dol
+idz 2 prawo
+tak
+rozbroj
+podnies
+idz 5 prawo
+idz 5 lewo
+upusc
+idz 1 
+idz 10 prawo
+idz 8 dol
+tak
+idz 10 prawo
+idz 10 dol
+tak
+idz 10 prawo
+idz 10 dol
+tak
+idz 5 prawo
+idz 10 dol
+tak
+tak
+idz 5 prawo
+upusc
+idz 1 lewo
+idz 5 prawo
+idz 4 prawo
+idz 6 dol
+idz 1 dol
+idz 1 dol
+idz 1 dol
+tak
+idz 9 prawo
+idz 10dol
+10
+idz 1 lewo
+idz 10 dol
+idz 1 gora
+idz 1 gora
+idz 1 gora
+tak
+podnies
+idz 1 prawo
+idz 5 prawo
+idz 1 prawo
+idz 5 gora
+idz
+10 dol
+podnies
+podnies bombe
+idz 1 lewo
+upusc
+idz 5 lewo
+podnies bombe
+idz 5 prawo

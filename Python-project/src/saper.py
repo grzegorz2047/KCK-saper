@@ -70,10 +70,12 @@ class Saper(object):
         elif self.answer1 == True:
             if __main__.chat.saved_function_name == "Podnies":
                 self.Pick_up()
+                self.answer1 = False
                 __main__.chat.chat_log.append(text.Text("Ale ciezka.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
             elif __main__.chat.saved_function_name == "Rozbroj":
                 self.Defuse(__main__.bomb)
+                self.answer1 = False
                 __main__.chat.chat_log.append(text.Text("Sie robi.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
             elif __main__.chat.saved_function_name == "Zaprzeczenie":
@@ -83,11 +85,13 @@ class Saper(object):
         elif self.answer2 == True:
             if __main__.chat.saved_function_name == "Podnies" or __main__.chat.saved_function_name == "Zgoda":
                 self.Pick_up()
+                self.answer2 = False
                 __main__.chat.chat_log.append(text.Text("Gotowe.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
         elif self.answer3 == True:
             if __main__.chat.saved_function_name == "Rozbroj" or __main__.chat.saved_function_name == "Zgoda":
                 self.Defuse(__main__.bomb)
+                self.answer3 = False
                 __main__.chat.chat_log.append(text.Text("Uff, zyje!", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
 
@@ -167,7 +171,7 @@ class Saper(object):
         self.walk = True
 
     def Walk(self):
-        if self.how != 0: #and self.Collision() == False:
+        if self.how != 0:
             if self.direction == 0:
                 self.rect.y -= self.saper_height
             elif self.direction == 1:
@@ -232,7 +236,7 @@ class Saper(object):
     #(math.fabs(self.rect.x - __main__.bomb.rect.x) / 32 < 8 and int(self.rect.y / 32) == int(__main__.bomb.rect.y / 32)) or (math.fabs(self.rect.y - __main__.bomb.rect.y) / 32 < 8 and int(self.rect.x / 32) == int(__main__.bomb.rect.x / 32))
 
     def Find_bomb(self):
-        if  self.Distance(__main__.bomb.rect) < 4:
+        if  self.Distance(__main__.bomb.rect) < 6 and self.Distance(__main__.bomb.rect) > 1 and self.walk == False:
             self.to_find_bomb = False
             self.to_answer = True
             __main__.chat.chat_log.append(text.Text("Zauwazylem bombe, podjechac do niej?", __main__.chat.saper_color))
@@ -242,18 +246,19 @@ class Saper(object):
         x2 = __main__.bomb.rect.x / 32
         y1 = self.rect.y / 32
         y2 = __main__.bomb.rect.y / 32
-        if x1 < x2:
-            self.direction = 2
-            self.rect.x += self.saper_width
-        elif x1 > x2:
-            self.direction = 3
-            self.rect.x -= self.saper_width
-        elif y1 > y2:
-            self.direction = 0
-            self.rect.y -= self.saper_height
-        elif y1 < y2:
-            self.direction = 1
-            self.rect.y += self.saper_height
+        if self.Distance(__main__.bomb.rect) > 1:
+            if x1 < x2:
+                self.direction = 2
+                self.rect.x += self.saper_width
+            elif x1 > x2:
+                self.direction = 3
+                self.rect.x -= self.saper_width
+            elif y1 > y2:
+                self.direction = 0
+                self.rect.y -= self.saper_height
+            elif y1 < y2:
+                self.direction = 1
+                self.rect.y += self.saper_height
         else:
             self.answer = False
             if __main__.bomb.type == 1:
