@@ -112,16 +112,15 @@
         <spelling>prawa</spelling>
         <spelling>prawą</spelling>
     </parametr>
-    <parametr name = "Tyl">
-        <nazwa>Tyl</nazwa>
+    <parametr name = "Dol">
+        <nazwa>Dol</nazwa>
         <typ>Kierunek</typ>
-        <spelling>tył</spelling>
-        <spelling>tyłu</spelling>
-        <spelling>tylnym</spelling>
-        <spelling>tyl</spelling>
-        <spelling>tylu</spelling>
-        <spelling>dol</spelling>
+        <spelling>Dol</spelling>
         <spelling>dół</spelling>
+        <spelling>dołu</spelling>
+        <spelling>dolu</spelling>
+        <spelling>dol</spelling>
+        <spelling>dołu</spelling>
     </parametr>
     <parametr name = "Przod">
         <nazwa>Przod</nazwa>
@@ -129,9 +128,24 @@
         <spelling>przodu</spelling>
         <spelling>przodem</spelling>
         <spelling>przód</spelling>
+    </parametr>
+      <parametr name = "Gora">
+        <nazwa>Gora</nazwa>
+        <typ>Kierunek</typ>
+        <spelling>góra</spelling>
+        <spelling>gora</spelling>
         <spelling>górę</spelling>
         <spelling>gore</spelling>
         <spelling>góre</spelling>
+          <spelling>gorę</spelling>
     </parametr>
+       <parametr name = "Tyl">
+        <nazwa>Tyl</nazwa>
+        <typ>Kierunek</typ>
+        <spelling>tył</spelling>
+        <spelling>tyłu</spelling>
+        <spelling>tyl</spelling>
+        <spelling>tylu</spelling>
+       </parametr>
 </parametry>
 

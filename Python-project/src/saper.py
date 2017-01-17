@@ -135,11 +135,27 @@ class Saper(object):
         elif (direction == 'Prawo'):
             self.direction = 2
             return True
-        elif (direction == 'Tyl'):
+        elif (direction == 'Dol'):
             self.direction = 1
             return True
         elif (direction == 'Przod'):
+            return True
+        elif (direction == 'Gora'):
             self.direction = 0
+            return True
+        elif (direction == 'Tyl'):
+            if (self.direction == 1):
+                self.direction = 0;
+
+            elif (self.direction == 2):
+                self.direction = 3;
+
+            elif (self.direction == 0):
+                self.direction = 1;
+
+            elif (self.direction == 3):
+                self.direction = 2;
+
             return True
         return False
 
