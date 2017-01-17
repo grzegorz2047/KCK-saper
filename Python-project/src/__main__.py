@@ -31,7 +31,7 @@ map.Load('example_map')
 
 window_width = 800
 window_height = 600
-FPS = 60
+FPS = 30
 
 gameDisplay = pygame.display.set_mode((window_width, window_height))
 
@@ -53,22 +53,6 @@ while not gameExit: #game_loop
 
             if event.key == pygame.K_ESCAPE:
                 gameExit = True
-            if event.key == pygame.K_LEFT:
-                saper.direction = 3
-                if saper.walk == False:
-                    saper.Move(1)
-            if event.key == pygame.K_RIGHT:
-                saper.direction = 2
-                if saper.walk == False:
-                    saper.Move(1)
-            if event.key == pygame.K_DOWN:
-                saper.direction = 1
-                if saper.walk == False:
-                    saper.Move(1)
-            if event.key == pygame.K_UP:
-                saper.direction = 0
-                if saper.walk == False:
-                    saper.Move(1)
 
     saper.Update()
     bomb.Update()

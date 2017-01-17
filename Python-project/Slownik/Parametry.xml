@@ -122,13 +122,6 @@
         <spelling>dol</spelling>
         <spelling>dołu</spelling>
     </parametr>
-    <parametr name = "Przod">
-        <nazwa>Przod</nazwa>
-        <typ>Kierunek</typ>
-        <spelling>przodu</spelling>
-        <spelling>przodem</spelling>
-        <spelling>przód</spelling>
-    </parametr>
       <parametr name = "Gora">
         <nazwa>Gora</nazwa>
         <typ>Kierunek</typ>

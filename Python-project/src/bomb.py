@@ -13,6 +13,7 @@ class Bomb(object):
         self.type = random.randint(1, 3) # randomowy typ bomby (do zrobienia)
 
         self.disarmed = False
+        self.defused = False
 
         if self.type == 1: #mozna rozbroic, mozna podniesc
             self.lifting = True
@@ -34,7 +35,7 @@ class Bomb(object):
         self.time_current = (pygame.time.get_ticks() - self.time_start)/1000 #sekundy
         if self.time_current % 2 == 0:
             self.color = __main__.bomb_color
-        else:
+        elif self.defused == False:
             if self.type == 1 and self.disarmed == False:
                 self.color = __main__.red
             elif self.type == 2:

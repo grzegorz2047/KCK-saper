@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <funkcje>
+	<funkcja name = "Zaprzeczenie">
+        <nazwa>Zaprzeczenie</nazwa>
+        <spelling>Nie</spelling>
+        <spelling>nie</spelling>
+        <spelling>nigdy</spelling>
+        <spelling>chcialbys</spelling>
+        <spelling>spadaj</spelling>
+        <spelling>zamilcz</spelling>
+    </funkcja>
+	<funkcja name = "Zgoda">
+        <nazwa>Zgoda</nazwa>
+        <spelling>Tak</spelling>
+        <spelling>tak</spelling>
+        <spelling>TAK</spelling>
+        <spelling>oczywiscie</spelling>
+        <spelling>smialo</spelling>
+        <spelling>normalo</spelling>
+    </funkcja>
     <funkcja name = "Podnies">
         <nazwa>Podnies</nazwa>
         <obiekt>Przedmiot</obiekt>
@@ -40,6 +58,21 @@
 		<spelling>odpalić</spelling>
 		<spelling>odpalic</spelling>
     </funkcja>
+	<funkcja name = "Rozbroj">
+        <nazwa>Rozbroj</nazwa>
+		<obiekt>Bomba</obiekt>
+		<spelling>rozbroj</spelling>
+		<spelling>rozbroic</spelling>
+        <spelling>deaktywuj</spelling>
+		<spelling>wylacz</spelling>
+		<spelling>wyłącz</spelling>
+		<spelling>wylaczyc</spelling>
+		<spelling>wyłączyć</spelling>
+		<spelling>zgas</spelling>
+		<spelling>zgaś</spelling>
+		<spelling>zgasić</spelling>
+		<spelling>zgasic</spelling>
+    </funkcja>
     <funkcja name = "Pojedz">
         <nazwa>Pojedz</nazwa>
 		<parametr>Liczba</parametr>
@@ -74,5 +107,15 @@
 		<spelling>obkręc</spelling>
 		<spelling>obkreć</spelling>
 		<spelling>obkrec</spelling>
+		</funkcja>
+	<funkcja name = "Upusc">
+		<nazwa>Upusc</nazwa>
+        <spelling>upuść</spelling>
+        <spelling>upusc</spelling>
+        <spelling>upuśc</spelling>
+		<spelling>upusć</spelling>
+		<spelling>rzuć</spelling>
+		<spelling>wyrzuć</spelling>
+		<spelling>puść</spelling>
 		</funkcja>
 </funkcje>
