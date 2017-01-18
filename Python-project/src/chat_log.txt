@@ -241,3 +241,41 @@ tak
 tak
 to spoko
 xD
+eldo
+jak to
+idz w prawo
+5
+idz w dol
+10
+tak
+idz o prawo 5
+idz prawo 2
+idz prawo 1
+idz dol 10
+tak
+tak
+xD
+siema
+idz prawo
+5
+idz w gore o 1
+idz w dol o 5
+tak
+podnies
+idz w gore o 1
+upusc
+idz w prawo 5
+podnies
+podnies bombe
+idz leo
+idz lewo
+4
+podnies bombe
+idz w gore 1000
+idz w tyl 10
+idz w lewo jedon
+rozboj bombe
+upusc
+rozbroj bome
+rozbroj bombe
+siema

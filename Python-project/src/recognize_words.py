@@ -45,7 +45,7 @@ class Chat:
 
         self.chat_log = []
         self.user_color = (255, 255, 255)
-        self.saper_color = (255, 20, 20)
+        self.saper_color = (0, 0, 0)
 
         #do przetwarzania
         self.found_function = False
