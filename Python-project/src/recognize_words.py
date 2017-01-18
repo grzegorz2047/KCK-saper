@@ -36,9 +36,9 @@ class Chat:
         self.text = self.font.render("CHAT", 1, (255, 255, 255))
         self.textpos = self.text.get_rect()
         self.textpos.x = self.window.get_width() / 2 - self.text.get_width() / 2
-        self.textpos.y = self.window.get_height() - (2 * self.text.get_height() + 5)
+        self.textpos.y = self.window.get_height() - (2 * self.text.get_height() + 6)
 
-        self.fontobject = pygame.font.Font(None, 18)
+        self.fontobject = pygame.font.Font(None, 30)
         self.current_string = []
         self.zachecacz = " "
         self.command = ""
@@ -73,18 +73,18 @@ class Chat:
 
     def Render(self):
         #render historia czatu
-        pygame.draw.rect(self.window, (122, 133, 144), [0, self.window.get_height() - 22 - 3 * 22, self.window.get_width(), 64], 0)
-        pygame.draw.rect(self.window, (255, 255, 255), [0, self.window.get_height() - 24 - 3 * 22, self.window.get_width(), 68], 1)
+        pygame.draw.rect(self.window, (122, 133, 144), [0, self.window.get_height() - 130 - 3 * 22, self.window.get_width(), 170], 0)
+        pygame.draw.rect(self.window, (255, 255, 255), [0, self.window.get_height() - 130 - 3 * 22, self.window.get_width(), 170], 1)
         #render ramki czatu
-        pygame.draw.rect(self.window, (122, 133, 144), [0, self.window.get_height() - 22, self.window.get_width(), 20], 0)
-        pygame.draw.rect(self.window, (255, 255, 255), [0, self.window.get_height() - 24, self.window.get_width(), 24], 1)
+        pygame.draw.rect(self.window, (122, 133, 144), [0, self.window.get_height() - 28, self.window.get_width(), 28], 0)
+        pygame.draw.rect(self.window, (255, 255, 255), [0, self.window.get_height() - 28, self.window.get_width(), 28], 1)
 
         # render text
         self.window.blit(self.text, self.textpos)
         self.window.blit(self.fontobject.render("".join(self.current_string) + self.zachecacz, 1, (255, 255, 255)), (1, self.window.get_height() - 21))
         self.chat_log.reverse()
         for i in range(0, len(self.chat_log)):
-            self.window.blit(self.fontobject.render("".join(self.chat_log[i].text), 1, self.chat_log[i].color), (1, self.window.get_height() - 41 - i * 13))
+            self.window.blit(self.fontobject.render("".join(self.chat_log[i].text), 1, self.chat_log[i].color), (1, self.window.get_height() - 50 - i * 18))
         self.chat_log.reverse()
 
 
@@ -118,7 +118,7 @@ class Chat:
                 if "".join(self.current_string) != "":
                     #self.chat_log.append("".join(self.current_string))
                     self.chat_log.append(text.Text("".join(self.current_string), self.user_color))
-                if len(self.chat_log) > 4:
+                if len(self.chat_log) > 9:
                     self.chat_log.pop(0)
                 while len(self.current_string) != 0:
                     self.current_string.pop()

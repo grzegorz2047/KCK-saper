@@ -144,7 +144,7 @@ class Saper(object):
             __main__.chat.chat_log.append(text.Text("Nie rozumiem chinskiego.", __main__.chat.saper_color))
             __main__.chat.dont_understand = False
 
-        while len(__main__.chat.chat_log) > 4:
+        while len(__main__.chat.chat_log) > 9:
             __main__.chat.chat_log.pop(0)
         ###############################################################################################################3
 
@@ -165,8 +165,8 @@ class Saper(object):
                 if self.direction == 0: # Moving up; Hit the bottom side of the wall
                     self.rect.top = wall.rect.bottom
                 __main__.chat.chat_log.append(text.Text("Twarda sciana.", __main__.chat.saper_color))
-                if len(__main__.chat.chat_log) > 4:
-                    __main__.chat.chat_log.pop(0)
+                #if len(__main__.chat.chat_log) > 10:
+                    #__main__.chat.chat_log.pop(0)
                 self.walk = False
 
     def Move(self, meters):

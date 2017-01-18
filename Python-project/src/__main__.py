@@ -29,8 +29,8 @@ bomb = bomb.Bomb()
 walls = [] # lista scian
 map.Load('example_map')
 
-window_width = 800
-window_height = 600
+window_width = 1000
+window_height = 800
 FPS = 30
 
 gameDisplay = pygame.display.set_mode((window_width, window_height))
