@@ -198,16 +198,14 @@ class Chat:
                     print "ZNALEZIONO PARAMETR:"
                     print parametr_word
                     print word;
-                    self.saved_parameter_name = parametr_word;
                     self.dont_understand = False
                     found_parameter = 1;
                     try: #SPRAWDZENIE CZY JEST LICZBĄ SŁOWNIE ZAPISANĄ
                         parametr_word = int(parametr_word);
-                        self.found_number = True
+                        self.found_number = True;
                         self.saved_number = parametr_word;
                     except ValueError:
                         self.saved_parameter_name = parametr_word;
-
                     continue;
         
 
