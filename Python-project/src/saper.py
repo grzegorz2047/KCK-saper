@@ -140,6 +140,9 @@ class Saper(object):
         elif __main__.chat.saved_function_name == "Rozbroj" and self.bylo == False:
             __main__.chat.chat_log.append(text.Text("Nie wiem co mam rozbroic.", __main__.chat.saper_color))
             self.bylo = True
+        elif __main__.chat.dont_understand:
+            __main__.chat.chat_log.append(text.Text("Nie rozumiem chinskiego.", __main__.chat.saper_color))
+            __main__.chat.dont_understand = False
 
         while len(__main__.chat.chat_log) > 4:
             __main__.chat.chat_log.pop(0)
@@ -300,4 +303,4 @@ class Saper(object):
             __main__.chat.chat_log.append(text.Text("Musze byc blizej bomby.", __main__.chat.saper_color))
             self.bylo = True
 
-    #def Detonate(self):
+    #def Detonate(self, bomb):

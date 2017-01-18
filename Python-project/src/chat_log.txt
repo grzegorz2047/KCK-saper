@@ -55,3 +55,189 @@ upusc
 idz 5 lewo
 podnies bombe
 idz 5 prawo
+idz o 1
+idz w prawo 10
+idz w dol 6
+tak
+nie
+podnies bombe
+upusc
+idz 1 gora
+podnies bombe
+idz 5 w prawo
+idz 2 prawo
+1 gora
+idz
+10 gora
+upusc
+idz 2 dol
+idz 2 dol
+idz 2 dol
+idz 2 lewo
+idz 3 lewo
+idz 2 prawo
+idz
+4 
+nie idz w prwo
+nie
+idz w dol 4
+normalo
+tak
+nie idz w gore
+0
+pojedz w prawo
+5
+idz
+5 dol
+tak
+podnies
+rozbroj bombe
+idz 1 gora
+upusc
+idz 2 gora
+idz 1 lewo
+idz 2 gora
+idz 5 dol
+idz 5 lewo
+idz 5 gora
+idz prawo 5
+idz 4  dol
+podnies
+bombe
+upusc
+pomoz saper
+idz 2 dol
+idz 2 prawo
+idz 1 gora
+clear
+pojedz 5 prawo 
+idz 5 dol
+tak
+tak
+upusc
+podnies
+bombe
+upusc
+siema
+siema
+siema
+siema
+siema
+siema
+siema
+siema
+siema
+siema
+siema
+siema
+siema
+idz
+5lewo
+5 lewo
+idz 5 prawo
+idz 5 prawo
+idz
+1
+podnies
+bombe
+podnies
+bome
+podnies bombe
+podnies bombe
+podnies
+bome
+podnies bombe
+podnies
+bome
+podnies bome
+podnies bombe
+idz 4 lewo
+idz 1
+podnies bombe
+idz 5 lewo
+upusc bombe
+obroc sie
+prawo
+gore
+obroc sie w gore
+obroc sie w dol
+obroc sie
+lewo
+obroc sie i idz w prawo o 5
+orboc sie i idz w lewo o 10
+idz 
+1
+idz prawo 2
+eldo
+eldo
+serio
+no wez
+eldo
+eldo
+eldo
+jak to
+no wez
+pogadajmy
+plz
+idz w dol o 1
+idz w dol o 2
+xD
+jak to nie rozumiesz
+idz w prawo
+1
+elo
+co
+czemu
+nie dziala
+idz w dol o 5
+nie dziala
+xD
+co jest
+elo
+pojedz
+1 prawo
+elo
+idz
+1 prawo
+idz w prawo o 5
+siema ziomecdzku
+dassaddsagsdfg
+safsdgsdgsad
+xczvxzcv
+sdfsad
+fsdafzxcvbxzcvsdfasd
+fxzcvzadsfgsdagsxcvasdfsadf
+xzcvsadfsdavsdav
+sdavgfsadfsdfsdgf
+sdag
+sdg
+sdg
+sd
+gsda
+gs
+adg
+sadg
+sd
+gsd
+g
+sdag
+sad
+g
+sadg
+sdag
+sad
+gs
+adg
+sdg
+sda
+gsa
+dg
+sdag
+
+sdagsd
+g
+idz w dol o 5
+tak
+tak
+to spoko
+xD

@@ -57,6 +57,8 @@ class Chat:
         self.saved_object_name = ""
         self.saved_number = 0
         self.saved_parameter_name = ""
+
+        self.dont_understand = False
         pass
 
     def Update(self):
@@ -148,10 +150,6 @@ class Chat:
 
     def find_all(self, words):
         #PRZETWARZANIE JEZYKA main part
-        #Znajdzie funkcje, parametr, obiekt w dowolnej kolejnosi. Nie potrafi jeszcze powiedziec, czy akurat ta funkcja pasuje do tego parametru/obiektu.
-        found_function = 0;
-        found_object = 0;
-        found_parameter = 0;
         for word in words:
 
             #FUNKCJA
@@ -167,9 +165,10 @@ class Chat:
                 self.saved_number = 0
                 self.saved_parameter_name = ""
                 self.saved_function_name = function_word;
-                found_function = 1;
-                #words.remove(word)
+                self.dont_understand = False
                 continue
+            else:
+                self.dont_understand = True
 
             #OBIEKT
             object_word = self.find_word(self.objects_file, word, 'obiekt')
@@ -178,7 +177,7 @@ class Chat:
                 print "ZNALEZIONO OBIEKT:"
                 print object_word;
                 self.saved_object_name = object_word;
-                found_object = 1;
+                self.dont_understand = False
                 continue;
 
             #parametr
@@ -190,8 +189,8 @@ class Chat:
                 self.found_number = True
                 print "ZNALEZIONO LICZBĘ"
                 print word;
-                found_parameter = 1;
                 self.saved_number = word;
+                self.dont_understand = False
                 continue;
             except ValueError:
                 if parametr_word != "":
@@ -199,8 +198,8 @@ class Chat:
                     print "ZNALEZIONO PARAMETR:"
                     print parametr_word
                     print word;
-                    found_parameter = 1;
                     self.saved_parameter_name = parametr_word;
+                    self.dont_understand = False
                     continue;
         
 
