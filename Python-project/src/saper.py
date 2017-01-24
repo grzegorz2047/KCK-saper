@@ -96,7 +96,12 @@ class Saper(object):
                 self.answer3 = False
                 __main__.chat.chat_log.append(text.Text("Uff, zyje!", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
-
+        elif __main__.chat.saved_function_name == "Zaprzeczenie":
+            __main__.chat.saved_function_name = ""
+            __main__.chat.saved_parameter_name = ""
+            __main__.chat.saved_number = 0
+            __main__.chat.found_number = False
+            __main__.chat.chat_log.append(text.Text("Nie wykonam rozkazu poprzedzonego zaprzeczeniem", __main__.chat.saper_color))
         elif __main__.chat.saved_function_name == "Pojedz" and self.walk == False and __main__.chat.found_number == True:
             self.Rotate_dir(__main__.chat.saved_parameter_name)
             self.Move(__main__.chat.saved_number)
@@ -143,7 +148,7 @@ class Saper(object):
             __main__.chat.chat_log.append(text.Text("Nie wiem co mam rozbroic.", __main__.chat.saper_color))
             self.bylo = True
         elif __main__.chat.dont_understand:
-            __main__.chat.chat_log.append(text.Text("Nie rozumiem chinskiego.", __main__.chat.saper_color))
+            __main__.chat.chat_log.append(text.Text("Nie rozumiem.", __main__.chat.saper_color))
             __main__.chat.dont_understand = False
 
         while len(__main__.chat.chat_log) > 9:

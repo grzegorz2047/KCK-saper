@@ -162,7 +162,7 @@ class Chat:
 
             #FUNKCJA
             function_word = self.find_word(self.functions_file, word, 'funkcja')
-            if function_word != "":
+            if function_word != "" and self.saved_function_name!="Zaprzeczenie":
                 self.found_function = True #
                 print "ZNALEZIONO FUNKCJE:"
                 print function_word
