@@ -619,3 +619,23 @@ xD
 pieknie
 asdasdasd
 asdasdas
+idz w prawo 1
+idz w prawo 10
+idz w dol 1
+idz w dol 2
+idz w dol 1
+tak
+podnies
+idz w prawo
+11
+idz w gore
+1
+idz w lewo 2
+idz w prawo 50
+idz w dol 15
+idz w lewo 20
+idz w gore 1
+tak
+tak
+idz w prawo 1
+idz w gore 2

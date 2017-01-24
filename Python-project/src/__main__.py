@@ -29,7 +29,7 @@ bomb = bomb.Bomb()
 walls = [] # lista scian
 map.Load('example_map')
 
-window_width = 1000
+window_width = 992
 window_height = 800
 FPS = 30
 
