@@ -11,6 +11,7 @@ sys.setdefaultencoding('utf8')
 import text
 import __main__
 
+
 class Chat:
     ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁÓ" + " "  # bedzie trzeba pokombinowac
     ACCEPTED = ACCEPTED.decode("utf-8")
@@ -134,9 +135,11 @@ class Chat:
 
     #GLOWNA FUNKCJA, TO WYWOLUJEMY RECZNIE TYLKO
     def przetwarzanie_jezyka(self):
-        words = self.get_sentence_from_input_to_list(self.command);
-        self.find_all(words);
-
+        rozkazy = self.podziel_po_kropki(self.command)
+        for rozkaz in rozkazy:
+            words = self.get_sentence_from_input_to_list(rozkaz);
+            self.find_all(words);
+            __main__.saper.Polecenia();
 
     def get_sentence_from_input_to_list(self, command):
         # rozkaz = raw_input('Czekam na komende: ')
@@ -144,6 +147,11 @@ class Chat:
         podzielonyrozkaz = command.split(" ")
         # for i in range(len(podzielonyrozkaz)):
         #     print (podzielonyrozkaz[i])
+        return podzielonyrozkaz
+
+    def podziel_po_kropki(self, command):
+        podzielonyrozkaz = command.split(".")
+        print podzielonyrozkaz;
         return podzielonyrozkaz
 
 
@@ -207,7 +215,6 @@ class Chat:
                     except ValueError:
                         self.saved_parameter_name = parametr_word;
                     continue;
-        
 
 
 

@@ -54,7 +54,9 @@ class Saper(object):
             self.head.x = self.rect.x
             self.head.y = self.rect.y + 8
 
+        self.Polecenia(); #Wykonywanie polecen
 
+    def Polecenia(self):
         #wykonywanie polecen
         if self.to_answer == True:
             if __main__.chat.saved_function_name == "Zaprzeczenie":
