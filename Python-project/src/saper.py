@@ -54,7 +54,7 @@ class Saper(object):
             self.head.x = self.rect.x
             self.head.y = self.rect.y + 8
 
-        self.Polecenia(); #Wykonywanie polecen
+        #self.Polecenia(); #Wykonywanie polecen - przeniesione do recognize_words po wywolaniu przetwarzania
 
     def Polecenia(self):
         #wykonywanie polecen
@@ -63,37 +63,44 @@ class Saper(object):
                 __main__.chat.chat_log.append(text.Text("Ok.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
                 self.to_answer = False
+                __main__.chat.actiondone = True;
 
             if __main__.chat.saved_function_name == "Zgoda":
                 __main__.chat.chat_log.append(text.Text("Jade do niej.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
                 self.to_answer = False
                 self.answer = True
+                __main__.chat.actiondone = True;
         elif self.answer1 == True:
             if __main__.chat.saved_function_name == "Podnies":
                 self.Pick_up()
                 self.answer1 = False
                 __main__.chat.chat_log.append(text.Text("Ale ciezka.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
+                __main__.chat.actiondone = True;
             elif __main__.chat.saved_function_name == "Rozbroj":
                 self.Defuse(__main__.bomb)
                 self.answer1 = False
                 __main__.chat.chat_log.append(text.Text("Sie robi.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
+                __main__.chat.actiondone = True;
             elif __main__.chat.saved_function_name == "Zaprzeczenie":
                 self.answer1 = False
                 __main__.chat.chat_log.append(text.Text("Nie to nie.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
+                __main__.chat.actiondone = True;
         elif self.answer2 == True:
             if __main__.chat.saved_function_name == "Podnies" or __main__.chat.saved_function_name == "Zgoda":
                 self.Pick_up()
                 self.answer2 = False
                 __main__.chat.chat_log.append(text.Text("Gotowe.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
+                __main__.chat.actiondone = True;
         elif self.answer3 == True:
             if __main__.chat.saved_function_name == "Rozbroj" or __main__.chat.saved_function_name == "Zgoda":
                 self.Defuse(__main__.bomb)
                 self.answer3 = False
+                __main__.chat.actiondone = True;
                 __main__.chat.chat_log.append(text.Text("Uff, zyje!", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
         elif __main__.chat.saved_function_name == "Zaprzeczenie":
@@ -101,6 +108,7 @@ class Saper(object):
             __main__.chat.saved_parameter_name = ""
             __main__.chat.saved_number = 0
             __main__.chat.found_number = False
+            __main__.chat.actiondone = True;
             __main__.chat.chat_log.append(text.Text("Nie wykonam rozkazu poprzedzonego zaprzeczeniem", __main__.chat.saper_color))
         elif __main__.chat.saved_function_name == "Pojedz" and self.walk == False and __main__.chat.found_number == True:
             self.Rotate_dir(__main__.chat.saved_parameter_name)
@@ -109,34 +117,42 @@ class Saper(object):
             __main__.chat.saved_parameter_name = ""
             __main__.chat.saved_number = 0
             __main__.chat.found_number = False
+            __main__.chat.actiondone = True;
         elif __main__.chat.saved_function_name == "Pojedz" and self.bylo == False and self.walk == False:
             __main__.chat.chat_log.append(text.Text("O ile kratek mam sie przemiescic?", __main__.chat.saper_color))
             self.bylo = True
+            __main__.chat.actiondone = True;
 
         elif __main__.chat.saved_function_name == "Podnies" and  __main__.chat.saved_object_name == "Bomba" and self.Pick_up():
             __main__.chat.chat_log.append(text.Text("Podnioslem.", __main__.chat.saper_color))
             __main__.chat.saved_function_name = ""
             __main__.chat.saved_object_name = ""
+            __main__.chat.actiondone = True;
 
         elif __main__.chat.saved_function_name == "Podnies" and self.bylo == False:
             __main__.chat.chat_log.append(text.Text("Nie wiem co mam podniesc.", __main__.chat.saper_color))
             self.bylo = True
+            __main__.chat.actiondone = True;
 
         elif __main__.chat.saved_function_name == "Obroc":
             if self.Rotate_dir(__main__.chat.saved_parameter_name):
                 __main__.chat.chat_log.append(text.Text("Obrocilem sie.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
                 __main__.chat.saved_parameter_name = ""
+                __main__.chat.actiondone = True;
             elif self.bylo == False:
                 __main__.chat.chat_log.append(text.Text("W ktora strone mam sie obrocic?", __main__.chat.saper_color))
                 self.bylo = True
+                __main__.chat.actiondone = True;
 
         elif __main__.chat.saved_function_name == "Upusc":
             if self.Drop() == True:
                 __main__.chat.chat_log.append(text.Text("Gotowe.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
+                __main__.chat.actiondone = True;
             elif self.bylo == False:
                 self.bylo = True
+                __main__.chat.actiondone = True;
                 __main__.chat.chat_log.append(text.Text("Nie mam co upuscic.", __main__.chat.saper_color))
 
         elif __main__.chat.saved_function_name == "Rozbroj" and  __main__.chat.saved_object_name == "Bomba":
@@ -144,10 +160,12 @@ class Saper(object):
             __main__.chat.chat_log.append(text.Text("Rozborilem.", __main__.chat.saper_color))
             __main__.chat.saved_function_name = ""
             __main__.chat.saved_object_name = ""
+            __main__.chat.actiondone = True;
         elif __main__.chat.saved_function_name == "Rozbroj" and self.bylo == False:
             __main__.chat.chat_log.append(text.Text("Nie wiem co mam rozbroic.", __main__.chat.saper_color))
             self.bylo = True
-        elif __main__.chat.dont_understand:
+            __main__.chat.actiondone = True;
+        elif __main__.chat.actiondone == False:
             __main__.chat.chat_log.append(text.Text("Nie rozumiem.", __main__.chat.saper_color))
             __main__.chat.dont_understand = False
 
