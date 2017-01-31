@@ -12,8 +12,7 @@ class Bomb(object):
 
         self.active = 1
 
-        #self.type = random.randint(1, 3) # randomowy typ bomby (do zrobienia)
-        self.type = 2
+        self.type = random.randint(1, 3) # randomowy typ bomby (do zrobienia)
 
         self.disarmed = False
         self.defused = False

@@ -1049,3 +1049,60 @@ upusc
 idz w gore 2
 idz w prawo 10
 help
+idz w dol 2
+idz w dol 2
+tak
+podnies
+idz w prawo 10
+upusc
+idz lewo 1
+rozbroj
+bombe
+rozbroj bombe
+rozbroj
+bombe
+podnies
+bombe
+detonuj
+bombe
+podnies bombe
+podnies
+bombe
+rozbroj
+bombe
+detonuj
+bome
+bombe
+detonuj bombe
+detonuj
+bome
+bombe
+detonuj
+bombe
+detonuj bombe
+detonuj
+bombe
+detonuj bombe
+detonuj
+bombe
+detonuj bombe
+detonuj bombe
+detonuj bombe
+deotnuj
+bombe
+detonuj
+bombe
+ok
+idz w prawo 10
+idz w dol 2
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
