@@ -4,6 +4,7 @@ import saper
 import bomb
 import recognize_words
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -21,12 +22,11 @@ saper_head = (40, 0, 200)
 bomb_color = (102, 0, 51)
 floor = (249, 137, 17)
 
-
 map = map.Map()
 saper = saper.Saper()
 bomb = bomb.Bomb()
 
-walls = [] # lista scian
+walls = []  # lista scian
 map.Load('example_map')
 
 window_width = 992
@@ -43,26 +43,26 @@ gameExit = False
 
 clock = pygame.time.Clock()
 
-while not gameExit: #game_loop
-    for event in pygame.event.get(): #event_loop
+while not gameExit:  # game_loop
+    for event in pygame.event.get():  # event_loop
         if event.type == pygame.QUIT:
             gameExit = True
         if event.type == pygame.KEYDOWN:
-            #CZAT
+            # CZAT
             chat.ask(event)
 
             if event.key == pygame.K_ESCAPE:
                 gameExit = True
 
-    saper.Update()
+    saper.update()
     bomb.Update()
-    chat.Update()
+    chat.update()
 
     gameDisplay.fill(blue)
-    map.Render()
-    saper.Render()
+    map.render()
+    saper.render()
     bomb.Render()
-    chat.Render()
+    chat.render()
 
     pygame.display.update()
 

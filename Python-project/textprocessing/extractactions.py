@@ -1,5 +1,6 @@
 import sys
 
+
 def getSentenceFromInputToList():
     print "Witaj!"
     rozkaz = raw_input('Czekam na komende: ')
@@ -8,7 +9,8 @@ def getSentenceFromInputToList():
         sys.stdout.write(podzielonyrozkaz[i])
     return podzielonyrozkaz
 
-def saveToFile(list):
+
+def saveToFile(string_list):
     file = open('test.txt', 'w')
-    for item in list:
+    for item in string_list:
         file.write("%s\n" % item)

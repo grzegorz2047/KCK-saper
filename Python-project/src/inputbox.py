@@ -16,6 +16,7 @@
 import pygame, pygame.font, pygame.event, pygame.draw, string
 from pygame.locals import *
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -69,7 +70,6 @@ def ask(screen, question):
             current_string.append(inkey)
         display_box(screen, question + ": " + string.join(current_string, ""))
     return string.join(current_string, "")
-
 
 
 def main():

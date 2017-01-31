@@ -639,3 +639,20 @@ tak
 tak
 idz w prawo 1
 idz w gore 2
+ef
+wa
+wd
+wd
+wda
+awd
+Test
+Pojedz w prawo o 5 metrow
+Pojedz o piec metrow
+Pojedź 5 metrow
+Obróc się na dół
+Pojedź 10 do przodu
+obroc sie w lewo
+pojedz do przodu
+3
+tak
+tak
