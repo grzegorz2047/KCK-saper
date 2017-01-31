@@ -1,9 +1,9 @@
-import pygame
-import __main__
 import random
 
+import pygame
 
-class Bomb(object):
+
+class Bomb:
     def __init__(self, game_logic_arg, game_display_arg):
         self.game_display = game_display_arg
         self.game_logic = game_logic_arg

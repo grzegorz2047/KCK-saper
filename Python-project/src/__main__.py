@@ -6,6 +6,7 @@ from recognize_words import Chat
 from bomb import Bomb
 from game_map import GameMap
 from saper import Saper
+import xml.etree.cElementTree as ET
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -24,6 +25,12 @@ class Colors:
     bomb_color = (102, 0, 51)
     floor = (249, 137, 17)
 
+class FileController:
+    def __init__(self):
+        self.functions_file = ET.ElementTree(file='../Slownik/Funkcje.xml')
+        self.objects_file = ET.ElementTree(file='../Slownik/Obiekty.xml')
+        self.parameters_file = ET.ElementTree(file='../Slownik/Parametry.xml')
+
 
 class GameLogic:
     def __init__(self, colors_arg):
@@ -33,7 +40,7 @@ class GameLogic:
     def loadMap(self, game_map):
         game_map.load('example_map')
 
-    def runGameLoop(self, game_display, game_map, saper, bomb, chat, FPS):
+    def runGameLoop(self, game_display, game_map, saper, bomb, chat, fps, file_controller):
         quitted = False
 
         clock = pygame.time.Clock()
@@ -44,7 +51,7 @@ class GameLogic:
                     quitted = True
                 if event.type == pygame.KEYDOWN:
                     # CZAT
-                    chat.ask(event, saper)
+                    chat.ask(event, saper, file_controller)
 
                     if event.key == pygame.K_ESCAPE:
                         quitted = True
@@ -61,7 +68,7 @@ class GameLogic:
 
             pygame.display.update()
 
-            clock.tick(FPS)
+            clock.tick(fps)
 
 
 def __main__():
@@ -72,6 +79,7 @@ def __main__():
     game_display = pygame.display.set_mode((window_width, window_height))
     pygame.display.set_caption('Saper')
 
+    file_controller = FileController()
     chat = Chat(game_display)
     game_logic = GameLogic(Colors())
 
@@ -80,7 +88,8 @@ def __main__():
     saper = Saper(game_logic, bomb, chat, game_display)
 
     game_logic.loadMap(game_map)
-    game_logic.runGameLoop(game_display, game_map, saper, bomb, chat, fps)
+
+    game_logic.runGameLoop(game_display, game_map, saper, bomb, chat, fps, file_controller)
     pygame.quit()
     quit()
 

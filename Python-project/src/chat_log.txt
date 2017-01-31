@@ -680,3 +680,28 @@ obroc sie na dol
 idz 5 metrow
 tak
 tak
+obroc sie w prawo
+idz do przodu na 10 metrow
+d
+wad
+dw
+adad
+File
+obroc sie w prawo
+idz do przodu o 5 metrow
+obroc sie w prawo
+obroc
+obroc
+obroc
+ibroc
+o
+o
+obroc
+obroc sie o 2 metry
+idz do przodu o 5 metrow
+obroc sie w prawo
+obroc sie w dol
+obroc sie w lewo
+obroc sie w dol
+idz 5 metrow do przodu
+pojedz 5 metrow w prawo
