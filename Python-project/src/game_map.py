@@ -46,10 +46,10 @@ class GameMap:
             for x in xrange(self.width):
                 if int(self.data[x + y * self.width]) == 1:
                     for game_wall in self.walls.walls:
-                        pygame.draw.rect(self.game_display, self.game_logic.black, game_wall.rect)
+                        pygame.draw.rect(self.game_display, self.game_logic.colors.black, game_wall.rect)
                 elif int(self.data[x + y * self.width]) == 2:
-                    pygame.draw.rect(self.game_display, self.game_logic.floor, [x * 32, y * 32, 32, 32])
+                    pygame.draw.rect(self.game_display, self.game_logic.colors.floor, [x * 32, y * 32, 32, 32])
                 elif int(self.data[x + y * self.width]) == 3:
-                    pygame.draw.rect(self.game_display, self.game_logic.green, [x * 32, y * 32, 32, 32])
+                    pygame.draw.rect(self.game_display, self.game_logic.colors.green, [x * 32, y * 32, 32, 32])
                 elif int(self.data[x + y * self.width]) == 4:
-                    pygame.draw.rect(self.game_display, self.game_logic.gray, [x * 32, y * 32, 32, 32])
+                    pygame.draw.rect(self.game_display, self.game_logic.colors.gray, [x * 32, y * 32, 32, 32])

@@ -38,14 +38,14 @@ class Bomb(object):
         # miganie bomby
         self.time_current = (pygame.time.get_ticks() - self.time_start) / 1000  # sekundy
         if self.time_current % 2 == 0:
-            self.color = self.game_logic.bomb_color
+            self.color = self.game_logic.colors.bomb_color
         elif not self.defused:
-            if self.type == 1 and not self.disarmed :
-                self.color = self.game_logic.red
+            if self.type == 1 and not self.disarmed:
+                self.color = self.game_logic.colors.red
             elif self.type == 2:
-                self.color = self.game_logic.blue
+                self.color = self.game_logic.colors.blue
             elif self.type == 3 and not self.disarmed:
-                self.color = self.game_logic.yellow
+                self.color = self.game_logic.colors.yellow
 
     def Render(self):
         pygame.draw.rect(self.game_display, self.color, self.rect)

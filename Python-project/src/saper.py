@@ -21,7 +21,7 @@ class Saper(object):
         # kierunek {"North" : 0, "South" : 1, "East" : 2, "West" : 3}
         self.direction = 0
 
-        self.walk = False
+        self.walking = False
 
         self.how = 0
         self.head = pygame.Rect(self.saper_x * 32 + 8, self.saper_y * 32, self.saper_width / 2, self.saper_height / 2)
@@ -36,13 +36,13 @@ class Saper(object):
         self.answer2 = False
         self.answer3 = False
 
-    def update(self):
+    def update(self, wall):
         if self.to_find_bomb:
             self.find_bomb()
         if self.answer:
             self.move_to_bomb()
-        if self.walk:
-            self.walk()
+        if self.walking:
+            self.walk(wall)
         if self.bomb:
             self.bomb_obj.rect.x = self.rect.x + self.bomb_obj.bomb_width / 2
             self.bomb_obj.rect.y = self.rect.y + self.bomb_obj.bomb_height / 2
@@ -108,14 +108,14 @@ class Saper(object):
             self.chat.found_number = False
             self.chat.chat_log.append(
                 text.Text("Nie wykonam rozkazu poprzedzonego zaprzeczeniem", self.chat.saper_color))
-        elif self.chat.saved_function_name == "Pojedz" and self.walk == False and self.chat.found_number == True:
+        elif self.chat.saved_function_name == "Pojedz" and self.walking == False and self.chat.found_number == True:
             self.rotate_dir(self.chat.saved_parameter_name)
             self.move(self.chat.saved_number)
             self.chat.saved_function_name = ""
             self.chat.saved_parameter_name = ""
             self.chat.saved_number = 0
             self.chat.found_number = False
-        elif self.chat.saved_function_name == "Pojedz" and self.bylo == False and self.walk == False:
+        elif self.chat.saved_function_name == "Pojedz" and self.bylo == False and self.walking == False:
             self.chat.chat_log.append(
                 text.Text("O ile kratek mam sie przemiescic?", self.chat.saper_color))
             self.bylo = True
@@ -166,11 +166,11 @@ class Saper(object):
             # ##############################################################################################################3
 
     def render(self):
-        pygame.draw.rect(self.game_display, self.game_logic.saper_color, self.rect)
-        pygame.draw.rect(self.game_display, self.game_logic.saper_head, self.head)
+        pygame.draw.rect(self.game_display, self.game_logic.colors.saper_color, self.rect)
+        pygame.draw.rect(self.game_display, self.game_logic.colors.saper_head, self.head)
 
-    def colission(self):
-        for wall in self.game_logic.walls:
+    def colission(self, wall):
+        for wall in wall.walls:
             if self.rect.colliderect(wall.rect):
                 if self.direction == 2:  # Moving right; Hit the left side of the wall
                     self.rect.right = wall.rect.left
@@ -183,13 +183,13 @@ class Saper(object):
                 self.chat.chat_log.append(text.Text("Twarda sciana.", self.chat.saper_color))
                 # if len(self.chat.chat_log) > 10:
                 # self.chat.chat_log.pop(0)
-                self.walk = False
+                self.walking = False
 
     def move(self, meters):
         self.how = meters
-        self.walk = True
+        self.walking = True
 
-    def walk(self):
+    def walk(self, wall):
         if self.how != 0:
             if self.direction == 0:
                 self.rect.y -= self.saper_height
@@ -201,11 +201,11 @@ class Saper(object):
                 self.rect.x -= self.saper_width
             else:
                 self.how = 0
-                self.walk = False
+                self.walking = False
             self.how -= 1
         else:
-            self.walk = False
-        self.colission()
+            self.walking = False
+        self.colission(wall)
 
     def rotate(self):
         if self.direction == 0:
@@ -216,7 +216,7 @@ class Saper(object):
             self.direction = 1
         elif self.direction == 3:
             self.direction = 0
-        self.walk = False
+        self.walking = False
 
     def rotate_dir(self, direction):
         if direction == 'Lewo':
@@ -257,7 +257,7 @@ class Saper(object):
     # self.rect.x / 32) == int( self.bomb_obj.rect.x / 32))
 
     def find_bomb(self):
-        if 6 > self.distance(self.bomb_obj.rect) > 1 and not self.walk:
+        if 6 > self.distance(self.bomb_obj.rect) > 1 and not self.walking:
             self.to_find_bomb = False
             self.to_answer = True
             self.chat.chat_log.append(

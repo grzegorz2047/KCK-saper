@@ -11,7 +11,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 
-class GameLogic:
+class Colors:
     white = (255, 255, 255)
     black = (0, 0, 0)
     red = (255, 0, 0)
@@ -24,7 +24,10 @@ class GameLogic:
     bomb_color = (102, 0, 51)
     floor = (249, 137, 17)
 
-    def __init__(self):
+
+class GameLogic:
+    def __init__(self, colors_arg):
+        self.colors = colors_arg
         pass
 
     def loadMap(self, game_map):
@@ -46,11 +49,11 @@ class GameLogic:
                     if event.key == pygame.K_ESCAPE:
                         quitted = True
 
-            saper.update()
+            saper.update(game_map.walls)
             bomb.Update()
             chat.update()
 
-            game_display.fill(self.blue)
+            game_display.fill(self.colors.blue)
             game_map.render()
             saper.render()
             bomb.Render()
@@ -70,7 +73,7 @@ def __main__():
     pygame.display.set_caption('Saper')
 
     chat = Chat(game_display)
-    game_logic = GameLogic()
+    game_logic = GameLogic(Colors())
 
     game_map = GameMap(game_logic, game_display)
     bomb = Bomb(game_logic, game_display)
