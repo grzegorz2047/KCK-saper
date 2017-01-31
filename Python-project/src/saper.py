@@ -6,11 +6,12 @@ import math
 
 class Saper(object):
     def __init__(self, game_logic_arg, bomb_arg, chat_arg, game_display_arg):
-        # lokalizacja_startowa
+
         self.game_display = game_display_arg
         self.chat = chat_arg
         self.bomb_obj = bomb_arg
         self.game_logic = game_logic_arg
+        # lokalizacja_startowa
         self.saper_x = 1
         self.saper_y = 1
 
@@ -28,15 +29,15 @@ class Saper(object):
         self.rect = pygame.Rect(self.saper_x * 32, self.saper_y * 32, self.saper_width, self.saper_height)
 
     def update(self, wall):
-        if self.to_find_bomb:
-            self.find_bomb()
-        if self.answer:
-            self.move_to_bomb()
+        # if self.to_find_bomb:
+        #     self.find_bomb()
+        # if self.answer:
+        #     self.move_to_bomb()
         if self.walking:
             self.walk(wall)
-        if self.bomb:
-            self.bomb_obj.rect.x = self.rect.x + self.bomb_obj.bomb_width / 2
-            self.bomb_obj.rect.y = self.rect.y + self.bomb_obj.bomb_height / 2
+        # if self.bomb:
+        #     self.bomb_obj.rect.x = self.rect.x + self.bomb_obj.bomb_width / 2
+        #     self.bomb_obj.rect.y = self.rect.y + self.bomb_obj.bomb_height / 2
         if self.direction == 0:
             self.head.x = self.rect.x + 8
             self.head.y = self.rect.y
