@@ -1,72 +1,84 @@
-import pygame
-import map
-import saper
-import bomb
-import recognize_words
 import sys
+
+import pygame
+
+from recognize_words import Chat
+from bomb import Bomb
+from game_map import GameMap
+from saper import Saper
 
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-pygame.init()
 
-white = (255, 255, 255)
-black = (0, 0, 0)
-red = (255, 0, 0)
-green = (0, 255, 0)
-blue = (0, 0, 255)
-gray = (107, 113, 122)
-yellow = (228, 239, 71)
-saper_color = (38, 51, 73)
-saper_head = (40, 0, 200)
-bomb_color = (102, 0, 51)
-floor = (249, 137, 17)
+class GameLogic:
+    white = (255, 255, 255)
+    black = (0, 0, 0)
+    red = (255, 0, 0)
+    green = (0, 255, 0)
+    blue = (0, 0, 255)
+    gray = (107, 113, 122)
+    yellow = (228, 239, 71)
+    saper_color = (38, 51, 73)
+    saper_head = (40, 0, 200)
+    bomb_color = (102, 0, 51)
+    floor = (249, 137, 17)
 
-map = map.Map()
-saper = saper.Saper()
-bomb = bomb.Bomb()
+    def __init__(self):
+        pass
 
-walls = []  # lista scian
-map.Load('example_map')
+    def loadMap(self, game_map):
+        game_map.load('example_map')
 
-window_width = 992
-window_height = 668
-FPS = 30
+    def runGameLoop(self, game_display, game_map, saper, bomb, chat, FPS):
+        quitted = False
 
-gameDisplay = pygame.display.set_mode((window_width, window_height))
+        clock = pygame.time.Clock()
 
-chat = recognize_words.Chat(gameDisplay)
+        while not quitted:  # game_loop
+            for event in pygame.event.get():  # event_loop
+                if event.type == pygame.QUIT:
+                    quitted = True
+                if event.type == pygame.KEYDOWN:
+                    # CZAT
+                    chat.ask(event)
 
-pygame.display.set_caption('Saper')
+                    if event.key == pygame.K_ESCAPE:
+                        quitted = True
 
-gameExit = False
+            saper.update()
+            bomb.Update()
+            chat.update()
 
-clock = pygame.time.Clock()
+            game_display.fill(self.blue)
+            game_map.render()
+            saper.render()
+            bomb.Render()
+            chat.render()
 
-while not gameExit:  # game_loop
-    for event in pygame.event.get():  # event_loop
-        if event.type == pygame.QUIT:
-            gameExit = True
-        if event.type == pygame.KEYDOWN:
-            # CZAT
-            chat.ask(event)
+            pygame.display.update()
 
-            if event.key == pygame.K_ESCAPE:
-                gameExit = True
+            clock.tick(FPS)
 
-    saper.update()
-    bomb.Update()
-    chat.update()
 
-    gameDisplay.fill(blue)
-    map.render()
-    saper.render()
-    bomb.Render()
-    chat.render()
+def __main__():
+    pygame.init()
+    window_width = 992
+    window_height = 668
+    fps = 30
+    game_display = pygame.display.set_mode((window_width, window_height))
+    pygame.display.set_caption('Saper')
 
-    pygame.display.update()
+    chat = Chat(game_display)
+    game_logic = GameLogic()
 
-    clock.tick(FPS)
+    game_map = GameMap(game_logic)
+    saper = Saper(game_logic)
+    bomb = Bomb(game_logic)
+    game_logic.loadMap(game_map)
+    game_logic.runGameLoop(game_display, game_map, saper, bomb, chat, fps)
+    pygame.quit()
+    quit()
 
-pygame.quit()
-quit()
+
+__main__()

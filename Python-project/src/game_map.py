@@ -1,10 +1,13 @@
 import pygame
+
 import __main__
-import wall
-import linecache
+from wall import Wall
 
 
-class Map:
+class GameMap:
+    def __init__(self, game_logic_arg):
+        self.game_logic = game_logic_arg
+
     width = 0
     height = 0
 
@@ -13,10 +16,10 @@ class Map:
     data = []
     amount = 0
 
-    def Load(self, file_name):
-        file = open(file_name + ".txt")
+    def load(self, file_name):
+        map_file = open(file_name + ".txt")
         try:
-            for lane in file:
+            for lane in map_file:
                 lane.strip()
                 lane.split()
                 if self.count == 0:
@@ -31,21 +34,21 @@ class Map:
                             self.data.append(word)
         finally:
             self.amount = self.width * self.height
-            file.close()
+            map_file.close()
             for y in xrange(self.height):
                 for x in xrange(self.width):
                     if int(self.data[x + y * self.width]) == 1:
-                        wall.Wall((x * 32, y * 32))
+                        self.walls = Wall((x * 32, y * 32))
 
     def render(self):
         for y in xrange(self.height):
             for x in xrange(self.width):
                 if int(self.data[x + y * self.width]) == 1:
-                    for game_wall in __main__.walls:
-                        pygame.draw.rect(__main__.gameDisplay, __main__.black, game_wall.rect)
+                    for game_wall in self.walls.walls:
+                        pygame.draw.rect(self.game_logic.gameDisplay, self.game_logic.black, game_wall.rect)
                 elif int(self.data[x + y * self.width]) == 2:
-                    pygame.draw.rect(__main__.gameDisplay, __main__.floor, [x * 32, y * 32, 32, 32])
+                    pygame.draw.rect(self.game_logic.gameDisplay, self.game_logic.floor, [x * 32, y * 32, 32, 32])
                 elif int(self.data[x + y * self.width]) == 3:
-                    pygame.draw.rect(__main__.gameDisplay, __main__.green, [x * 32, y * 32, 32, 32])
+                    pygame.draw.rect(self.game_logic.gameDisplay, self.game_logic.green, [x * 32, y * 32, 32, 32])
                 elif int(self.data[x + y * self.width]) == 4:
-                    pygame.draw.rect(__main__.gameDisplay, __main__.gray, [x * 32, y * 32, 32, 32])
+                    pygame.draw.rect(self.game_logic.gameDisplay, self.game_logic.gray, [x * 32, y * 32, 32, 32])
