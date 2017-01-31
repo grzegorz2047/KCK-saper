@@ -135,6 +135,7 @@ class Chat:
 
     #GLOWNA FUNKCJA, TO WYWOLUJEMY RECZNIE TYLKO
     def przetwarzanie_jezyka(self):
+        self.actiondone = False;  # sprawdza, czy dla danego rozkazu zostało coś wykonane.
         rozkazy = self.podziel_po_kropki(self.command)
         for rozkaz in rozkazy:
             words = self.get_sentence_from_input_to_list(rozkaz);
@@ -176,7 +177,8 @@ class Chat:
                 self.dont_understand = False
                 continue
             else:
-                self.dont_understand = True
+                self.dont_understand = True;
+
 
             #OBIEKT
             object_word = self.find_word(self.objects_file, word, 'obiekt')
