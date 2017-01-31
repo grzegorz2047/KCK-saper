@@ -30,7 +30,7 @@ walls = [] # lista scian
 map.Load('example_map')
 
 window_width = 992
-window_height = 800
+window_height = 668
 FPS = 30
 
 gameDisplay = pygame.display.set_mode((window_width, window_height))
