@@ -103,7 +103,12 @@ class Saper(object):
                 __main__.chat.actiondone = True;
                 __main__.chat.chat_log.append(text.Text("Uff, zyje!", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
-        elif __main__.chat.saved_function_name == "Zaprzeczenie":
+            elif (__main__.chat.saved_function_name == "Zaprzeczenie"):
+                self.answer3 = False
+                __main__.chat.actiondone = True;
+                __main__.chat.chat_log.append(text.Text("Nie probuje rozbroic bomby", __main__.chat.saper_color))
+                __main__.chat.saved_function_name = ""
+        elif (__main__.chat.saved_function_name == "Zaprzeczenie"):
             __main__.chat.saved_function_name = ""
             __main__.chat.saved_parameter_name = ""
             __main__.chat.saved_number = 0
@@ -157,7 +162,7 @@ class Saper(object):
 
         elif __main__.chat.saved_function_name == "Rozbroj" and  __main__.chat.saved_object_name == "Bomba":
             self.Defuse(__main__.bomb)
-            __main__.chat.chat_log.append(text.Text("Rozborilem.", __main__.chat.saper_color))
+            __main__.chat.chat_log.append(text.Text("Rozbroilem.", __main__.chat.saper_color))
             __main__.chat.saved_function_name = ""
             __main__.chat.saved_object_name = ""
             __main__.chat.actiondone = True;
