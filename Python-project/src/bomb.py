@@ -4,7 +4,8 @@ import random
 
 
 class Bomb(object):
-    def __init__(self, game_logic_arg):
+    def __init__(self, game_logic_arg, game_display_arg):
+        self.game_display = game_display_arg
         self.game_logic = game_logic_arg
         self.bomb_x = 10
         self.bomb_y = 10
@@ -47,4 +48,4 @@ class Bomb(object):
                 self.color = self.game_logic.yellow
 
     def Render(self):
-        pygame.draw.rect(self.game_logic.gameDisplay, self.color, self.rect)
+        pygame.draw.rect(self.game_display, self.color, self.rect)

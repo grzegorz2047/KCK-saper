@@ -5,8 +5,11 @@ import math
 
 
 class Saper(object):
-    def __init__(self, game_logic_arg):
+    def __init__(self, game_logic_arg, bomb_arg, chat_arg, game_display_arg):
         # lokalizacja_startowa
+        self.game_display = game_display_arg
+        self.chat = chat_arg
+        self.bomb_obj = bomb_arg
         self.game_logic = game_logic_arg
         self.saper_x = 1
         self.saper_y = 1
@@ -41,8 +44,8 @@ class Saper(object):
         if self.walk:
             self.walk()
         if self.bomb:
-            self.game_logic.bomb.rect.x = self.rect.x + self.game_logic.bomb.bomb_width / 2
-            self.game_logic.bomb.rect.y = self.rect.y + self.game_logic.bomb.bomb_height / 2
+            self.bomb_obj.rect.x = self.rect.x + self.bomb_obj.bomb_width / 2
+            self.bomb_obj.rect.y = self.rect.y + self.bomb_obj.bomb_height / 2
         if self.direction == 0:
             self.head.x = self.rect.x + 8
             self.head.y = self.rect.y
@@ -61,110 +64,110 @@ class Saper(object):
     def polecenia(self):
         # wykonywanie polecen
         if self.to_answer:
-            if self.game_logic.chat.saved_function_name == "Zaprzeczenie":
-                self.game_logic.chat.chat_log.append(text.Text("Ok.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
+            if self.chat.saved_function_name == "Zaprzeczenie":
+                self.chat.chat_log.append(text.Text("Ok.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
                 self.to_answer = False
 
-            if self.game_logic.chat.saved_function_name == "Zgoda":
-                self.game_logic.chat.chat_log.append(text.Text("Jade do niej.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
+            if self.chat.saved_function_name == "Zgoda":
+                self.chat.chat_log.append(text.Text("Jade do niej.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
                 self.to_answer = False
                 self.answer = True
         elif self.answer1:
-            if self.game_logic.chat.saved_function_name == "Podnies":
+            if self.chat.saved_function_name == "Podnies":
                 self.pick_up()
                 self.answer1 = False
-                self.game_logic.chat.chat_log.append(text.Text("Ale ciezka.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
-            elif self.game_logic.chat.saved_function_name == "Rozbroj":
-                self.Defuse(self.game_logic.bomb)
+                self.chat.chat_log.append(text.Text("Ale ciezka.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
+            elif self.chat.saved_function_name == "Rozbroj":
+                self.Defuse(self.bomb_obj)
                 self.answer1 = False
-                self.game_logic.chat.chat_log.append(text.Text("Sie robi.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
-            elif self.game_logic.chat.saved_function_name == "Zaprzeczenie":
+                self.chat.chat_log.append(text.Text("Sie robi.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
+            elif self.chat.saved_function_name == "Zaprzeczenie":
                 self.answer1 = False
-                self.game_logic.chat.chat_log.append(text.Text("Nie to nie.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
+                self.chat.chat_log.append(text.Text("Nie to nie.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
         elif self.answer2:
-            if self.game_logic.chat.saved_function_name == "Podnies" or self.game_logic.chat.saved_function_name == "Zgoda":
+            if self.chat.saved_function_name == "Podnies" or self.chat.saved_function_name == "Zgoda":
                 self.pick_up()
                 self.answer2 = False
-                self.game_logic.chat.chat_log.append(text.Text("Gotowe.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
-        elif self.answer3 == True:
-            if self.game_logic.chat.saved_function_name == "Rozbroj" or self.game_logic.chat.saved_function_name == "Zgoda":
-                self.Defuse(self.game_logic.bomb)
+                self.chat.chat_log.append(text.Text("Gotowe.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
+        elif self.answer3:
+            if self.chat.saved_function_name == "Rozbroj" or self.chat.saved_function_name == "Zgoda":
+                self.Defuse(self.bomb_obj)
                 self.answer3 = False
-                self.game_logic.chat.chat_log.append(text.Text("Uff, zyje!", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
-        elif self.game_logic.chat.saved_function_name == "Zaprzeczenie":
-            self.game_logic.chat.saved_function_name = ""
-            self.game_logic.chat.saved_parameter_name = ""
-            self.game_logic.chat.saved_number = 0
-            self.game_logic.chat.found_number = False
-            self.game_logic.chat.chat_log.append(
-                text.Text("Nie wykonam rozkazu poprzedzonego zaprzeczeniem", self.game_logic.chat.saper_color))
-        elif self.game_logic.chat.saved_function_name == "Pojedz" and self.walk == False and self.game_logic.chat.found_number == True:
-            self.rotate_dir(self.game_logic.chat.saved_parameter_name)
-            self.move(self.game_logic.chat.saved_number)
-            self.game_logic.chat.saved_function_name = ""
-            self.game_logic.chat.saved_parameter_name = ""
-            self.game_logic.chat.saved_number = 0
-            self.game_logic.chat.found_number = False
-        elif self.game_logic.chat.saved_function_name == "Pojedz" and self.bylo == False and self.walk == False:
-            self.game_logic.chat.chat_log.append(
-                text.Text("O ile kratek mam sie przemiescic?", self.game_logic.chat.saper_color))
+                self.chat.chat_log.append(text.Text("Uff, zyje!", self.chat.saper_color))
+                self.chat.saved_function_name = ""
+        elif self.chat.saved_function_name == "Zaprzeczenie":
+            self.chat.saved_function_name = ""
+            self.chat.saved_parameter_name = ""
+            self.chat.saved_number = 0
+            self.chat.found_number = False
+            self.chat.chat_log.append(
+                text.Text("Nie wykonam rozkazu poprzedzonego zaprzeczeniem", self.chat.saper_color))
+        elif self.chat.saved_function_name == "Pojedz" and self.walk == False and self.chat.found_number == True:
+            self.rotate_dir(self.chat.saved_parameter_name)
+            self.move(self.chat.saved_number)
+            self.chat.saved_function_name = ""
+            self.chat.saved_parameter_name = ""
+            self.chat.saved_number = 0
+            self.chat.found_number = False
+        elif self.chat.saved_function_name == "Pojedz" and self.bylo == False and self.walk == False:
+            self.chat.chat_log.append(
+                text.Text("O ile kratek mam sie przemiescic?", self.chat.saper_color))
             self.bylo = True
 
-        elif self.game_logic.chat.saved_function_name == "Podnies" and self.game_logic.chat.saved_object_name == "Bomba" and self.pick_up():
-            self.game_logic.chat.chat_log.append(text.Text("Podnioslem.", self.game_logic.chat.saper_color))
-            self.game_logic.chat.saved_function_name = ""
-            self.game_logic.chat.saved_object_name = ""
+        elif self.chat.saved_function_name == "Podnies" and self.chat.saved_object_name == "Bomba" and self.pick_up():
+            self.chat.chat_log.append(text.Text("Podnioslem.", self.chat.saper_color))
+            self.chat.saved_function_name = ""
+            self.chat.saved_object_name = ""
 
-        elif self.game_logic.chat.saved_function_name == "Podnies" and self.bylo == False:
-            self.game_logic.chat.chat_log.append(
-                text.Text("Nie wiem co mam podniesc.", self.game_logic.chat.saper_color))
+        elif self.chat.saved_function_name == "Podnies" and self.bylo == False:
+            self.chat.chat_log.append(
+                text.Text("Nie wiem co mam podniesc.", self.chat.saper_color))
             self.bylo = True
 
-        elif self.game_logic.chat.saved_function_name == "Obroc":
-            if self.rotate_dir(self.game_logic.chat.saved_parameter_name):
-                self.game_logic.chat.chat_log.append(text.Text("Obrocilem sie.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
-                self.game_logic.chat.saved_parameter_name = ""
+        elif self.chat.saved_function_name == "Obroc":
+            if self.rotate_dir(self.chat.saved_parameter_name):
+                self.chat.chat_log.append(text.Text("Obrocilem sie.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
+                self.chat.saved_parameter_name = ""
             elif not self.bylo:
-                self.game_logic.chat.chat_log.append(
-                    text.Text("W ktora strone mam sie obrocic?", self.game_logic.chat.saper_color))
+                self.chat.chat_log.append(
+                    text.Text("W ktora strone mam sie obrocic?", self.chat.saper_color))
                 self.bylo = True
 
-        elif self.game_logic.chat.saved_function_name == "Upusc":
+        elif self.chat.saved_function_name == "Upusc":
             if self.drop():
-                self.game_logic.chat.chat_log.append(text.Text("Gotowe.", self.game_logic.chat.saper_color))
-                self.game_logic.chat.saved_function_name = ""
+                self.chat.chat_log.append(text.Text("Gotowe.", self.chat.saper_color))
+                self.chat.saved_function_name = ""
             elif not self.bylo:
                 self.bylo = True
-                self.game_logic.chat.chat_log.append(text.Text("Nie mam co upuscic.", self.game_logic.chat.saper_color))
+                self.chat.chat_log.append(text.Text("Nie mam co upuscic.", self.chat.saper_color))
 
-        elif self.game_logic.chat.saved_function_name == "Rozbroj" and self.game_logic.chat.saved_object_name == "Bomba":
-            self.Defuse(self.game_logic.bomb)
-            self.game_logic.chat.chat_log.append(text.Text("Rozborilem.", self.game_logic.chat.saper_color))
-            self.game_logic.chat.saved_function_name = ""
-            self.game_logic.chat.saved_object_name = ""
-        elif self.game_logic.chat.saved_function_name == "Rozbroj" and self.bylo == False:
-            self.game_logic.chat.chat_log.append(
-                text.Text("Nie wiem co mam rozbroic.", self.game_logic.chat.saper_color))
+        elif self.chat.saved_function_name == "Rozbroj" and self.chat.saved_object_name == "Bomba":
+            self.Defuse(self.bomb_obj)
+            self.chat.chat_log.append(text.Text("Rozborilem.", self.chat.saper_color))
+            self.chat.saved_function_name = ""
+            self.chat.saved_object_name = ""
+        elif self.chat.saved_function_name == "Rozbroj" and self.bylo == False:
+            self.chat.chat_log.append(
+                text.Text("Nie wiem co mam rozbroic.", self.chat.saper_color))
             self.bylo = True
-        elif self.game_logic.chat.dont_understand:
-            self.game_logic.chat.chat_log.append(text.Text("Nie rozumiem.", self.game_logic.chat.saper_color))
-            self.game_logic.chat.dont_understand = False
+        elif self.chat.dont_understand:
+            self.chat.chat_log.append(text.Text("Nie rozumiem.", self.chat.saper_color))
+            self.chat.dont_understand = False
 
-        while len(self.game_logic.chat.chat_log) > 9:
-            self.game_logic.chat.chat_log.pop(0)
+        while len(self.chat.chat_log) > 9:
+            self.chat.chat_log.pop(0)
             # ##############################################################################################################3
 
     def render(self):
-        pygame.draw.rect(self.game_logic.gameDisplay, self.game_logic.saper_color, self.rect)
-        pygame.draw.rect(self.game_logic.gameDisplay, self.game_logic.saper_head, self.head)
+        pygame.draw.rect(self.game_display, self.game_logic.saper_color, self.rect)
+        pygame.draw.rect(self.game_display, self.game_logic.saper_head, self.head)
 
     def colission(self):
         for wall in self.game_logic.walls:
@@ -177,9 +180,9 @@ class Saper(object):
                     self.rect.bottom = wall.rect.top
                 if self.direction == 0:  # Moving up; Hit the bottom side of the wall
                     self.rect.top = wall.rect.bottom
-                self.game_logic.chat.chat_log.append(text.Text("Twarda sciana.", self.game_logic.chat.saper_color))
-                # if len(self.game_logic.chat.chat_log) > 10:
-                # self.game_logic.chat.chat_log.pop(0)
+                self.chat.chat_log.append(text.Text("Twarda sciana.", self.chat.saper_color))
+                # if len(self.chat.chat_log) > 10:
+                # self.chat.chat_log.pop(0)
                 self.walk = False
 
     def move(self, meters):
@@ -249,23 +252,23 @@ class Saper(object):
     def distance(self, game_object):
         return math.sqrt(pow(game_object.x / 32 - self.rect.x / 32, 2) + pow(game_object.y / 32 - self.rect.y / 32, 2))
 
-    # (math.fabs(self.rect.x - self.game_logic.bomb.rect.x) / 32 < 8 and int(self.rect.y / 32) == int(
-    # self.game_logic.bomb.rect.y / 32)) or (math.fabs(self.rect.y - self.game_logic.bomb.rect.y) / 32 < 8 and int(
-    # self.rect.x / 32) == int( self.game_logic.bomb.rect.x / 32))
+    # (math.fabs(self.rect.x - self.bomb_obj.rect.x) / 32 < 8 and int(self.rect.y / 32) == int(
+    # self.bomb_obj.rect.y / 32)) or (math.fabs(self.rect.y - self.bomb_obj.rect.y) / 32 < 8 and int(
+    # self.rect.x / 32) == int( self.bomb_obj.rect.x / 32))
 
     def find_bomb(self):
-        if 6 > self.distance(self.game_logic.bomb.rect) > 1 and not self.walk:
+        if 6 > self.distance(self.bomb_obj.rect) > 1 and not self.walk:
             self.to_find_bomb = False
             self.to_answer = True
-            self.game_logic.chat.chat_log.append(
-                text.Text("Zauwazylem bombe, podjechac do niej?", self.game_logic.chat.saper_color))
+            self.chat.chat_log.append(
+                text.Text("Zauwazylem bombe, podjechac do niej?", self.chat.saper_color))
 
     def move_to_bomb(self):
         x1 = self.rect.x / 32
-        x2 = self.game_logic.bomb.rect.x / 32
+        x2 = self.bomb_obj.rect.x / 32
         y1 = self.rect.y / 32
-        y2 = self.game_logic.bomb.rect.y / 32
-        if self.distance(self.game_logic.bomb.rect) > 1:
+        y2 = self.bomb_obj.rect.y / 32
+        if self.distance(self.bomb_obj.rect) > 1:
             if x1 < x2:
                 self.direction = 2
                 self.rect.x += self.saper_width
@@ -280,28 +283,28 @@ class Saper(object):
                 self.rect.y += self.saper_height
         else:
             self.answer = False
-            if self.game_logic.bomb.type == 1:
-                self.game_logic.chat.chat_log.append(
-                    text.Text("Podniesc ja, a moze rozbroic?", self.game_logic.chat.saper_color))
+            if self.bomb_obj.type == 1:
+                self.chat.chat_log.append(
+                    text.Text("Podniesc ja, a moze rozbroic?", self.chat.saper_color))
                 self.answer1 = True
-            elif self.game_logic.bomb.type == 2:
-                self.game_logic.chat.chat_log.append(text.Text("Mam podniesc bombe?", self.game_logic.chat.saper_color))
+            elif self.bomb_obj.type == 2:
+                self.chat.chat_log.append(text.Text("Mam podniesc bombe?", self.chat.saper_color))
                 self.answer2 = True
-            elif self.game_logic.bomb.type == 3:
-                self.game_logic.chat.chat_log.append(text.Text("Sprobowac rozbroic?", self.game_logic.chat.saper_color))
+            elif self.bomb_obj.type == 3:
+                self.chat.chat_log.append(text.Text("Sprobowac rozbroic?", self.chat.saper_color))
                 self.answer3 = True
 
     def pick_up(self):
-        if self.distance(self.game_logic.bomb.rect) <= 1 and self.game_logic.bomb.lifting == True:
+        if self.distance(self.bomb_obj.rect) <= 1 and self.bomb_obj.lifting == True:
             self.bomb = True
             return True
         elif not self.bylo:
-            if self.distance(self.game_logic.bomb.rect) > 1:
-                self.game_logic.chat.chat_log.append(
-                    text.Text("Nie mam tak dlugich raczek.", self.game_logic.chat.saper_color))
-            elif not self.game_logic.bomb.lifting:
-                self.game_logic.chat.chat_log.append(
-                    text.Text("Nie moge podniesc tej bomby.", self.game_logic.chat.saper_color))
+            if self.distance(self.bomb_obj.rect) > 1:
+                self.chat.chat_log.append(
+                    text.Text("Nie mam tak dlugich raczek.", self.chat.saper_color))
+            elif not self.bomb_obj.lifting:
+                self.chat.chat_log.append(
+                    text.Text("Nie moge podniesc tej bomby.", self.chat.saper_color))
             self.bylo = True
         return False
 
@@ -312,14 +315,14 @@ class Saper(object):
         return False
 
     def Defuse(self, bomb):
-        if (bomb.type == 1 or bomb.type == 3) and self.distance(self.game_logic.bomb.rect) <= 1:
+        if (bomb.type == 1 or bomb.type == 3) and self.distance(self.bomb_obj.rect) <= 1:
             bomb.defused = True
         elif self.bylo == False and bomb.type == 2:
-            self.game_logic.chat.chat_log.append(
-                text.Text("Nie moge rozbroic tej bomby.", self.game_logic.chat.saper_color))
+            self.chat.chat_log.append(
+                text.Text("Nie moge rozbroic tej bomby.", self.chat.saper_color))
             self.bylo = True
         else:
-            self.game_logic.chat.chat_log.append(text.Text("Musze byc blizej bomby.", self.game_logic.chat.saper_color))
+            self.chat.chat_log.append(text.Text("Musze byc blizej bomby.", self.chat.saper_color))
             self.bylo = True
 
             # def Detonate(self, bomb):

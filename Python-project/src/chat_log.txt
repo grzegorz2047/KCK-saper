@@ -656,3 +656,8 @@ pojedz do przodu
 3
 tak
 tak
+Obroc się w lewo
+Obróć się w prawo
+obróc sie w prawo
+obroc sie w prawo
+obroc sie w prawo

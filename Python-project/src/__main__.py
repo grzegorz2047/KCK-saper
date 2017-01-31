@@ -41,7 +41,7 @@ class GameLogic:
                     quitted = True
                 if event.type == pygame.KEYDOWN:
                     # CZAT
-                    chat.ask(event)
+                    chat.ask(event, saper)
 
                     if event.key == pygame.K_ESCAPE:
                         quitted = True
@@ -72,9 +72,10 @@ def __main__():
     chat = Chat(game_display)
     game_logic = GameLogic()
 
-    game_map = GameMap(game_logic)
-    saper = Saper(game_logic)
-    bomb = Bomb(game_logic)
+    game_map = GameMap(game_logic, game_display)
+    bomb = Bomb(game_logic, game_display)
+    saper = Saper(game_logic, bomb, chat, game_display)
+
     game_logic.loadMap(game_map)
     game_logic.runGameLoop(game_display, game_map, saper, bomb, chat, fps)
     pygame.quit()

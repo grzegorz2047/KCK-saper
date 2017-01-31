@@ -102,7 +102,7 @@ class Chat:
         else:
             return event_key.key
 
-    def ask(self, event_key):
+    def ask(self, event_key, saper):
         inkey = self.get_key(event_key)
         length = len(self.current_string)
         remove = False
@@ -131,17 +131,17 @@ class Chat:
                 self.current_string.pop()
 
             # WYWOLUJE PRZETWARZANIE JEZYKA - Mikolaj
-            self.przetwarzanie_jezyka();
+            self.przetwarzanie_jezyka(saper)
 
     # PRZETWARZANIE JEZYKA - Mikolaj
 
     # GLOWNA FUNKCJA, TO WYWOLUJEMY RECZNIE TYLKO
-    def przetwarzanie_jezyka(self):
+    def przetwarzanie_jezyka(self, saper):
         rozkazy = self.podziel_po_kropki(self.command)
         for rozkaz in rozkazy:
             words = self.get_sentence_from_input_to_list(rozkaz)
-            self.find_all(words)
-            __main__.saper.Polecenia()
+            self.find_all(words, saper)
+            saper.polecenia()
 
     def get_sentence_from_input_to_list(self, command):
         # rozkaz = raw_input('Czekam na komende: ')
@@ -153,10 +153,10 @@ class Chat:
 
     def podziel_po_kropki(self, command):
         podzielonyrozkaz = command.split(".")
-        print podzielonyrozkaz;
+        print podzielonyrozkaz
         return podzielonyrozkaz
 
-    def find_all(self, words):
+    def find_all(self, words, saper):
         # PRZETWARZANIE JEZYKA main part
         for word in words:
 
@@ -166,7 +166,7 @@ class Chat:
                 self.found_function = True  #
                 print "ZNALEZIONO FUNKCJE:"
                 print function_word
-                __main__.saper.bylo = False
+                saper.bylo = False
                 self.found_number = False
                 self.saved_function_name = ""
                 self.saved_object_name = ""
