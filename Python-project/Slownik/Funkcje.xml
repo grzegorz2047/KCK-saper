@@ -124,4 +124,9 @@
 		<spelling>wyrzuć</spelling>
 		<spelling>puść</spelling>
 		</funkcja>
+	<funkcja name = "Reset">
+		<nazwa>Reset</nazwa>
+        <spelling>Restart</spelling>
+		<spelling>Reset</spelling>
+		</funkcja>
 </funkcje>

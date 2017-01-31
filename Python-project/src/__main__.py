@@ -27,6 +27,7 @@ saper = saper.Saper()
 bomb = bomb.Bomb()
 
 walls = [] # lista scian
+strefa_detonacji = []
 map.Load('example_map')
 
 window_width = 992

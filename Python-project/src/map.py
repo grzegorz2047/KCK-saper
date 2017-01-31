@@ -36,6 +36,8 @@ class Map:
                 for x in xrange(self.width):
                     if int(self.data[x + y * self.width]) == 1:
                         wall.Wall((x * 32, y * 32))
+                    elif int(self.data[x + y * self.width]) == 3:
+                        wall.Strefa((x * 32, y * 32))
 
     def Render(self):
         for y in xrange(self.height):
@@ -46,6 +48,8 @@ class Map:
                 elif int(self.data[x + y * self.width]) == 2:
                     pygame.draw.rect(__main__.gameDisplay, __main__.floor, [x * 32, y * 32, 32, 32])
                 elif int(self.data[x + y * self.width]) == 3:
-                    pygame.draw.rect(__main__.gameDisplay, __main__.green, [x * 32, y * 32, 32, 32])
+                    for wall in __main__.strefa_detonacji:
+                        pygame.draw.rect(__main__.gameDisplay, __main__.green, wall.rect)
+                    #pygame.draw.rect(__main__.gameDisplay, __main__.green, [x * 32, y * 32, 32, 32])
                 elif int(self.data[x + y * self.width]) == 4:
                     pygame.draw.rect(__main__.gameDisplay, __main__.gray, [x * 32, y * 32, 32, 32])

@@ -35,7 +35,7 @@ class Saper(object):
         if self.to_find_bomb == True:
             self.Find_bomb()
         if self.answer == True:
-            self.Move_to_bomb()
+            self.Move_to_bomb(1)
         if self.walk == True:
             self.Walk()
         if self.bomb == True:
@@ -63,7 +63,7 @@ class Saper(object):
                 __main__.chat.chat_log.append(text.Text("Ok.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
                 self.to_answer = False
-                __main__.chat.actiondone = True;
+                #__main__.chat.actiondone = True;
 
             if __main__.chat.saved_function_name == "Zgoda":
                 __main__.chat.chat_log.append(text.Text("Jade do niej.", __main__.chat.saper_color))
@@ -96,6 +96,12 @@ class Saper(object):
                 __main__.chat.chat_log.append(text.Text("Gotowe.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
                 __main__.chat.actiondone = True;
+            elif __main__.chat.saved_function_name == "Zaprzeczenie":
+                self.answer2 = False
+                __main__.chat.chat_log.append(text.Text("Zrozumialem.", __main__.chat.saper_color))
+                __main__.chat.saved_function_name = ""
+                __main__.chat.actiondone = True;
+
         elif self.answer3 == True:
             if __main__.chat.saved_function_name == "Rozbroj" or __main__.chat.saved_function_name == "Zgoda":
                 self.Defuse(__main__.bomb)
@@ -128,16 +134,17 @@ class Saper(object):
             self.bylo = True
             __main__.chat.actiondone = True;
 
-        elif __main__.chat.saved_function_name == "Podnies" and  __main__.chat.saved_object_name == "Bomba" and self.Pick_up():
-            __main__.chat.chat_log.append(text.Text("Podnioslem.", __main__.chat.saper_color))
-            __main__.chat.saved_function_name = ""
-            __main__.chat.saved_object_name = ""
-            __main__.chat.actiondone = True;
-
+        elif __main__.chat.saved_function_name == "Podnies" and  __main__.chat.saved_object_name == "Bomba": #and self.Pick_up():
+            self.Pick_up()
+            if self.bomb == True:
+                __main__.chat.chat_log.append(text.Text("Podnioslem.", __main__.chat.saper_color))
+                __main__.chat.saved_function_name = ""
+                __main__.chat.saved_object_name = ""
+                __main__.chat.actiondone = True;
         elif __main__.chat.saved_function_name == "Podnies" and self.bylo == False:
             __main__.chat.chat_log.append(text.Text("Nie wiem co mam podniesc.", __main__.chat.saper_color))
             self.bylo = True
-            __main__.chat.actiondone = True;
+            #__main__.chat.actiondone = True;
 
         elif __main__.chat.saved_function_name == "Obroc":
             if self.Rotate_dir(__main__.chat.saved_parameter_name):
@@ -162,14 +169,34 @@ class Saper(object):
 
         elif __main__.chat.saved_function_name == "Rozbroj" and  __main__.chat.saved_object_name == "Bomba":
             self.Defuse(__main__.bomb)
-            __main__.chat.chat_log.append(text.Text("Rozbroilem.", __main__.chat.saper_color))
-            __main__.chat.saved_function_name = ""
-            __main__.chat.saved_object_name = ""
-            __main__.chat.actiondone = True;
+            if __main__.bomb.defused == True:
+                __main__.chat.chat_log.append(text.Text("Rozbroilem.", __main__.chat.saper_color))
+                __main__.chat.saved_function_name = ""
+                __main__.chat.saved_object_name = ""
+                __main__.chat.actiondone = True;
         elif __main__.chat.saved_function_name == "Rozbroj" and self.bylo == False:
             __main__.chat.chat_log.append(text.Text("Nie wiem co mam rozbroic.", __main__.chat.saper_color))
             self.bylo = True
+            #__main__.chat.actiondone = True;
+
+        elif __main__.chat.saved_function_name == "Detonuj" and  __main__.chat.saved_object_name == "Bomba":
+            self.Detonate(__main__.bomb)
+            if __main__.bomb.active == 0:
+                __main__.chat.chat_log.append(text.Text("Boom.", __main__.chat.saper_color))
+                __main__.chat.saved_function_name = ""
+                __main__.chat.saved_object_name = ""
+                __main__.chat.actiondone = True;
+        elif __main__.chat.saved_function_name == "Detonuj" and self.bylo == False:
+            __main__.chat.chat_log.append(text.Text("Nie wiem co mam zdetonowac.", __main__.chat.saper_color))
+            self.bylo = True
+            #__main__.chat.actiondone = True;
+
+        elif __main__.chat.saved_function_name == "Reset":
+            __main__.chat.chat_log.append(text.Text("Szukaj nowej bomby.", __main__.red))
+            __main__.chat.saved_function_name = ""
             __main__.chat.actiondone = True;
+            __main__.bomb.Reset()
+
         elif __main__.chat.actiondone == False:
             __main__.chat.chat_log.append(text.Text("Nie rozumiem.", __main__.chat.saper_color))
             __main__.chat.dont_understand = False
@@ -264,9 +291,7 @@ class Saper(object):
         return False
 
     def Distance(self, object):
-        return math.sqrt(pow(object.x / 32 - self.rect.x / 32, 2) + pow(object.y / 32 - self.rect.y / 32, 2))
-
-    #(math.fabs(self.rect.x - __main__.bomb.rect.x) / 32 < 8 and int(self.rect.y / 32) == int(__main__.bomb.rect.y / 32)) or (math.fabs(self.rect.y - __main__.bomb.rect.y) / 32 < 8 and int(self.rect.x / 32) == int(__main__.bomb.rect.x / 32))
+        return math.fabs(math.sqrt(pow(object.x / 32 - self.rect.x / 32, 2) + pow(object.y / 32 - self.rect.y / 32, 2)))
 
     def Find_bomb(self):
         if  self.Distance(__main__.bomb.rect) < 6 and self.Distance(__main__.bomb.rect) > 1 and self.walk == False:
@@ -274,12 +299,12 @@ class Saper(object):
             self.to_answer = True
             __main__.chat.chat_log.append(text.Text("Zauwazylem bombe, podjechac do niej?", __main__.chat.saper_color))
 
-    def Move_to_bomb(self):
+    def Move_to_bomb(self, dist):
         x1 = self.rect.x / 32
         x2 = __main__.bomb.rect.x / 32
         y1 = self.rect.y / 32
         y2 = __main__.bomb.rect.y / 32
-        if self.Distance(__main__.bomb.rect) > 1:
+        if self.Distance(__main__.bomb.rect) > dist:
             if x1 < x2:
                 self.direction = 2
                 self.rect.x += self.saper_width
@@ -308,14 +333,14 @@ class Saper(object):
     def Pick_up(self):
         if self.Distance(__main__.bomb.rect) <= 1 and __main__.bomb.lifting == True:
             self.bomb = True
-            return True
-        elif self.bylo == False:
-            if self.Distance(__main__.bomb.rect) > 1:
-                __main__.chat.chat_log.append(text.Text("Nie mam tak dlugich raczek.", __main__.chat.saper_color))
-            elif __main__.bomb.lifting == False:
-                __main__.chat.chat_log.append(text.Text("Nie moge podniesc tej bomby.", __main__.chat.saper_color))
+            #return True
+        elif self.Distance(__main__.bomb.rect) > 1:
+            __main__.chat.chat_log.append(text.Text("Nie mam tak dlugich raczek.", __main__.chat.saper_color))
             self.bylo = True
-        return False
+        elif __main__.bomb.lifting == False:
+            __main__.chat.chat_log.append(text.Text("Nie moge podniesc tej bomby.", __main__.chat.saper_color))
+            self.bylo = True
+        #return False
 
     def Drop(self):
         if self.bomb == True:
@@ -333,4 +358,16 @@ class Saper(object):
             __main__.chat.chat_log.append(text.Text("Musze byc blizej bomby.", __main__.chat.saper_color))
             self.bylo = True
 
-    #def Detonate(self, bomb):
+    def Detonate(self, bomb):
+        if bomb.type == 2 and self.Distance(__main__.bomb.rect) <= 1:
+            if bomb.Detonate():
+                __main__.chat.chat_log.append(text.Text("Ale wybuch!", __main__.chat.saper_color))
+                self.bomb = False
+            else:
+                __main__.chat.chat_log.append(text.Text("Nie zdetonuje w tym miejscu bomby!", __main__.chat.saper_color))
+        elif self.bylo == False and bomb.type != 2:
+            __main__.chat.chat_log.append(text.Text("Nie moge zdetonowac tej bomby.", __main__.chat.saper_color))
+            self.bylo = True
+        else:
+            __main__.chat.chat_log.append(text.Text("Najpierw musze znalezc bombe.", __main__.chat.saper_color))
+            self.bylo = True

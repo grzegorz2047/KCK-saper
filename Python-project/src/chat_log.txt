@@ -639,3 +639,413 @@ tak
 tak
 idz w prawo 1
 idz w gore 2
+oborc sie w prawo
+obroc
+prawo
+obroc sie w lewo
+obroc sie w dol
+idz 10
+idz 10 w prawo
+tak
+tak
+idz 10 w dol
+idz 7prawo
+idz 7 w prawo
+idz 1 w prawo
+nie
+idz 1 prawo
+tak
+podnies bombe
+podnies bombe
+rozbroj bombe
+rozbroj bombe
+rozbroj bombe
+podnies bombe
+idz 1 prawo
+podnies bombe
+idz w prawo 10
+idz w dol 2
+idz w dol 1
+idz w dol 2
+tak
+tak
+idz w prawo
+10
+upusc
+idz w gore
+1
+detonuj
+detonuj bombe
+rozbroj
+rozbroj bombe
+rozbroj
+bombe
+idz prawo 10
+idz w dol 10
+tak
+nie
+rozbroj bombe
+rozbroj
+podnies
+bombe
+bombe
+idz w prawo 1
+idz w dol 1
+tak
+nie
+idz 
+1
+prawo
+1
+idz
+idz prawo 10
+idz w dol 5
+tak
+nie
+idz 
+prawo
+1
+idz w prawo 5
+idz w dol 5
+tak
+nie
+idz w prawo 1
+tak
+podnies
+Podnies
+rozbroj
+idz  wprawo 5
+idz 5
+idz w prawo 5
+idz  w dol 5
+tak
+nie
+idz w dol 2
+idz  w dol 10
+idz gore 1
+idz w gore 2
+idz w gore 10
+idz w prawo 1
+idz w dol 5
+podnies
+bombe
+podnies bombe
+idz  w lewo 10
+idz w prawo 5
+idz w prawo 4
+podnies bombe
+upusc
+podnies
+bombe
+upusc
+idz  wprawo 1
+podnies
+bombe
+upusc
+podneis bombe
+nie idz w prawo
+idz w dol 1
+idz w dol 5
+idz w prawo 5
+nie
+idz w prawo 2
+idz w dol 2
+idz w prawo 2
+podnies
+bombe
+upusc
+idz w prawo 5
+idz w prawo 5
+idz w dol 5
+tak
+nie
+podnies
+bombe
+upusc
+podnies
+bombe
+upusc
+idz w prawo 5
+idz w dol 5
+tak
+nie
+detonuj
+detonuj bombe
+detonuj
+bombe
+detonuj bombe
+detonuj bombe
+detonuj bombe
+1
+1
+1
+1
+1
+detonuj bombe
+idz  w dol 5
+idz w prawo 5
+tak
+nie
+detonuj
+bombe
+detonuj bombe
+detonuj bombe
+idz w dol 2
+idz w gore 2
+detonuj
+detonuj bombe
+siema
+detonuj bombe
+idz w prawo 5
+idz w dol 5
+tak
+nie
+detonuj bombe
+podnies bombe
+idz w prawo 5
+idz w prawo 10
+idz w gore 5
+detonuj bombe
+idz w prawo 5
+idz w gore 1
+idz w lewo 1
+idz w dol 1
+upusc bombe
+idz w gore
+1
+detnuj
+detonuj
+detonuj bombe
+detonuj
+bombe
+detonuj
+bombe
+idz w prawo
+10
+idz w dol 5
+tak
+tak
+idz w prawo 10
+idz w prawo 5
+idz w gore 5
+detonuj
+bombe
+idz w prawo
+4
+idz w dol
+5
+tak
+tak
+idz w prawo
+10
+rozbroj bombe
+detonuj
+bombe
+Reset
+reset
+restart
+reset
+restart
+resert
+reset
+restart
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+idz w dol 5
+idz w dol 
+3
+idz w dol 2
+idz w dol 1
+tak
+tak
+idz w prawo 10
+idz w gore 1
+idz w gore 20
+idz w prawo 10
+detonuj bombe
+reset
+idz w dol 1
+idz w dol 20
+idz w gore 10
+idz w gore 2
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+resert
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+reset
+idz prawo
+10
+idz dol
+10
+idz lewo 5
+tak
+idz w prawo 10
+idz w dol
+2
+idz dol
+5
+tak
+reset
+reset
+reset
+nie
+reset
+idz w prawo
+5
+idz w dol 3
+idz dol 6
+reset
+nie
+reset
+tak
+idz gora 10
+tak
+idz gora 10
+reset
+idz w lewo 3
+idz w dol 7
+nie
+idz gora 10
+idz dol 10
+idz gora 10
+reset
+idz prawo 5
+idz prawo 5
+idz dol 9
+idz dol 2
+tak
+ofc
+oczywiscie
+podnies bombe
+podnies bombe
+podnies bombe
+podnies
+bombe
+podnies bombe
+rozbroj
+bombe
+rozbroj bombe
+upusc
+bombe
+upusc bombe
+pojedz
+10
+pojedz 5
+pojedz w prawo 5
+obroc
+lewo
+obroc
+tyl
+obroc tyl
+siema
+Podnies
+bombe
+podnies bombe
+badbasd
+detonuj
+bombe
+podnies
+bombe
+podnies bombe
+Podnies
+bombe
+podnies bombe
+Podnies
+bombe
+Podnies bombe
+Podnies bombe
+Podnies
+bombe
+podnies
+bombe
+podnies bombe
+podnies bombe
+idz prawo 10
+idz dol 5
+tak
+nie
+podnies
+bombe
+upusc
+podnies
+bombe
+rozbroj
+bombe
+Podnies
+bombe
+podnies bombe
+podnies bombe
+idz do bomby
+10
+idz w prawo
+10
+idz w dol 5
+idz w lewo
+10
+idz w dol 5
+idz w dol 1
+idz w prawo 10
+idz  dol 5
+idz w dol 2
+tak
+tak
+upusc
+idz w gore 2
+idz w prawo 10
+help
