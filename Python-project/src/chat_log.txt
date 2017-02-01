@@ -1106,3 +1106,37 @@ reset
 reset
 reset
 reset
+idz o dwanaście w prawo
+12
+idz o trzynascie w dol
+trzynascie
+13
+podnies bombe
+idz o 10 w lewo
+idz o 25 w prawo
+idz o osiem w gore
+udz o 3 w gore
+idz o 3 w gore
+rozbroj
+rozbroj bombe
+idz o 1 w dol
+upusc bombe
+idz o 10 w dol
+idz o 3 w prawo
+tak
+rozbroj
+idz o 10 w lewo
+idz o 10 w prawo
+idz o 20 w dol
+tak
+tak
+idz o 10 2 prawo
+idz o 10 w prawo. idz o 20 w gore
+idz o 20 w gore
+upusc bombe
+rozbroj bombe
+reset
+wyjdz
+wyjścoe
+wyjście
+zamknij

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <funkcje>
+	<funkcja name = "Wyjdz">
+        <nazwa>Wyjdz</nazwa>
+        <spelling>wyjdź</spelling>
+		<spelling>wyjdz</spelling>
+		<spelling>wyjscie</spelling>
+        <spelling>wyjście</spelling>
+        <spelling>zamknij</spelling>
+        <spelling>zamknięcie</spelling>
+		<spelling>zamkniecie</spelling>
+    </funkcja>
 	<funkcja name = "Zaprzeczenie">
         <nazwa>Zaprzeczenie</nazwa>
         <spelling>Nie</spelling>

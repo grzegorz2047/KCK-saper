@@ -197,6 +197,9 @@ class Saper(object):
             __main__.chat.actiondone = True;
             __main__.bomb.Reset()
 
+        elif __main__.chat.saved_function_name == "Wyjdz":
+            exit(0);
+
         elif __main__.chat.actiondone == False:
             __main__.chat.chat_log.append(text.Text("Nie rozumiem.", __main__.chat.saper_color))
             __main__.chat.dont_understand = False
