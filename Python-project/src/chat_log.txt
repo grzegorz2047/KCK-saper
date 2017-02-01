@@ -705,3 +705,6 @@ obroc sie w lewo
 obroc sie w dol
 idz 5 metrow do przodu
 pojedz 5 metrow w prawo
+Obto
+Obroc
+sie w prawo

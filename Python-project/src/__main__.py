@@ -13,6 +13,9 @@ sys.setdefaultencoding('utf8')
 
 
 class Colors:
+    def __init__(self):
+        pass
+
     white = (255, 255, 255)
     black = (0, 0, 0)
     red = (255, 0, 0)
@@ -24,6 +27,7 @@ class Colors:
     saper_head = (40, 0, 200)
     bomb_color = (102, 0, 51)
     floor = (249, 137, 17)
+
 
 class FileController:
     def __init__(self):
