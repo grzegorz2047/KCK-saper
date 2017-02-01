@@ -60,6 +60,7 @@ class Chat:
         self.saved_parameter_name = ""
 
         self.dont_understand = False
+        self.actiondone = True;
         pass
 
     def Update(self):

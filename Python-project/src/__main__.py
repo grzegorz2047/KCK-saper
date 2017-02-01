@@ -21,7 +21,6 @@ saper_head = (40, 0, 200)
 bomb_color = (102, 0, 51)
 floor = (249, 137, 17)
 
-
 map = map.Map()
 saper = saper.Saper()
 bomb = bomb.Bomb()

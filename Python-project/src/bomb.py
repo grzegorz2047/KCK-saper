@@ -44,10 +44,13 @@ class Bomb(object):
             self.lifting = False
             self.disarming = True
         self.active = 1
-        self.rect.x = random.randint(1, 16) * 32
-        self.rect.y = random.randint(10, 17) * 32
+        self.bomb_x = random.randint(1, 16)
+        self.bomb_y = random.randint(10, 17)
         __main__.saper.to_find_bomb = True
         __main__.saper.to_answer = False
+        self.defused = False
+        self.rect = pygame.Rect(self.bomb_x * 32 + self.bomb_width / 2, self.bomb_y * 32 + self.bomb_height / 2,
+                                self.bomb_width, self.bomb_height)
 
 
     def Update(self):
@@ -70,5 +73,7 @@ class Bomb(object):
         for wall in __main__.strefa_detonacji:
             if self.rect.colliderect(wall.rect):
                 self.active = 0
+                self.rect.x = -1 * 32
+                self.rect.y = -1 * 32
                 return True
         return False

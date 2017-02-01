@@ -54,7 +54,7 @@ class Saper(object):
             self.head.x = self.rect.x
             self.head.y = self.rect.y + 8
 
-        #self.Polecenia(); #Wykonywanie polecen - przeniesione do recognize_words po wywolaniu przetwarzania
+        self.Polecenia(); #Wykonywanie polecen - przeniesione do recognize_words po wywolaniu przetwarzania
 
     def Polecenia(self):
         #wykonywanie polecen
@@ -169,7 +169,7 @@ class Saper(object):
 
         elif __main__.chat.saved_function_name == "Rozbroj" and  __main__.chat.saved_object_name == "Bomba":
             self.Defuse(__main__.bomb)
-            if __main__.bomb.defused == True:
+            if __main__.bomb.defused == True and __main__.bomb.disarming == True:
                 __main__.chat.chat_log.append(text.Text("Rozbroilem.", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
                 __main__.chat.saved_object_name = ""
@@ -203,6 +203,7 @@ class Saper(object):
         elif __main__.chat.actiondone == False:
             __main__.chat.chat_log.append(text.Text("Nie rozumiem.", __main__.chat.saper_color))
             __main__.chat.dont_understand = False
+            __main__.chat.actiondone = True;
 
         while len(__main__.chat.chat_log) > 9:
             __main__.chat.chat_log.pop(0)
@@ -301,6 +302,8 @@ class Saper(object):
             self.to_find_bomb = False
             self.to_answer = True
             __main__.chat.chat_log.append(text.Text("Zauwazylem bombe, podjechac do niej?", __main__.chat.saper_color))
+            while len(__main__.chat.chat_log) > 9:
+                __main__.chat.chat_log.pop(0)
 
     def Move_to_bomb(self, dist):
         x1 = self.rect.x / 32
@@ -331,6 +334,8 @@ class Saper(object):
             elif __main__.bomb.type == 3:
                 __main__.chat.chat_log.append(text.Text("Sprobowac rozbroic?", __main__.chat.saper_color))
                 self.answer3 = True
+        while len(__main__.chat.chat_log) > 9:
+            __main__.chat.chat_log.pop(0)
 
 
     def Pick_up(self):
@@ -354,7 +359,7 @@ class Saper(object):
     def Defuse(self, bomb):
         if (bomb.type == 1 or bomb.type == 3) and self.Distance(__main__.bomb.rect) <= 1:
             bomb.defused = True
-        elif self.bylo == False and bomb.type == 2:
+        elif bomb.type == 2:
             __main__.chat.chat_log.append(text.Text("Nie moge rozbroic tej bomby.", __main__.chat.saper_color))
             self.bylo = True
         else:
