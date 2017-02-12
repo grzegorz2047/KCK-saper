@@ -13,7 +13,7 @@ import __main__
 
 
 class Chat:
-    ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁÓ" + " "  # bedzie trzeba pokombinowac
+    ACCEPTED = string.ascii_letters + string.digits + string.punctuation + "ęĘóĆśŚąĄżŻźŹćĆłŁÓ" + " "  # dodanie polskich znaków
     ACCEPTED = ACCEPTED.decode("utf-8")
     def __init__(self, screen):
         #ladowanie czcionki
@@ -132,17 +132,22 @@ class Chat:
 
 
 
-    #PRZETWARZANIE JEZYKA - Mikolaj
-
-    #GLOWNA FUNKCJA, TO WYWOLUJEMY RECZNIE TYLKO
+    #PRZETWARZANIE JEZYKA - wywołanie. Mikolaj Balcerek
+    #GLOWNA FUNKCJA do przetwarzania języka.
     def przetwarzanie_jezyka(self):
-        self.actiondone = False;  # sprawdza, czy dla danego rozkazu zostało coś wykonane.
-        rozkazy = self.podziel_po_kropki(self.command)
-        for rozkaz in rozkazy:
-            words = self.get_sentence_from_input_to_list(rozkaz);
-            self.find_all(words);
-            __main__.saper.Polecenia();
+        self.actiondone = False;  # Parametr odpowiadający za sprawdzanie, czy dla pojedynczego rozkazu coś było zrozumiane i wykonane. Służy do odpowiedzi "Nie rozumiem".
+        rozkazy = self.podziel_po_kropki(self.command) #Wywołanie funkcji dzielącej rozkaz po kropkach (Może zostać wykonane kilka rozkazów w ten sposób oddzielonych)
+        self.found_number = False #Restartujemy stan przetwarzania dla każdego rozkazu oddzielonego kropką.
+        self.saved_function_name = ""
+        self.saved_object_name = ""
+        self.saved_number = 0
+        self.saved_parameter_name = ""
+        for rozkaz in rozkazy: #pętla na podstawie ilości rozkazów po kropce
+            words = self.get_sentence_from_input_to_list(rozkaz); #dzielimy pojedynczy rozkaz na slowa
+            self.find_all(words); #wywołujemy przetwarzanie pojedynczych słów
+            __main__.saper.Polecenia(); #Po znalezieniu i sklasyfikowaniu słów w pojedynczym rozkazie wywołujemy moduł rozmówek i sterowania saperem
 
+    #Grzegorz Boiński
     def get_sentence_from_input_to_list(self, command):
         # rozkaz = raw_input('Czekam na komende: ')
         # podzielonyrozkaz = rozkaz.split()
@@ -157,32 +162,29 @@ class Chat:
         return podzielonyrozkaz
 
 
-
+        #Funkcja klasyfikująca i rozróżniająca słowa rozkazu
+        #Mikołaj Balcerek, Arek Powęska
     def find_all(self, words):
-        #PRZETWARZANIE JEZYKA main part
-        for word in words:
+        for word in words:  #dla każdego słowa wykonujemy te operacje
+            #Sprawdzamy, czy dane słowo należy do słownika podzielonego na trzy kategorie
 
             #FUNKCJA
-            function_word = self.find_word(self.functions_file, word, 'funkcja')
-            if function_word != "" and self.saved_function_name!="Zaprzeczenie":
-                self.found_function = True #
+            function_word = self.find_word(self.functions_file, word, 'funkcja') #W pliku Funkcje.xml szukamy obecnie przeglądanego słowa za pomocą funkcji find_word
+            if function_word != "" and self.saved_function_name!="Zaprzeczenie": #jeżeli dane słowo zostało znalezione w Funkcje.xml i nie jest funkcją zaprzeczenia przechodzimy wewnątrz warunku
+                self.found_function = True #znaleziono funkcje
                 print "ZNALEZIONO FUNKCJE:"
-                print function_word
-                __main__.saper.bylo = False
-                self.found_number = False
-                self.saved_function_name = ""
-                self.saved_object_name = ""
-                self.saved_number = 0
-                self.saved_parameter_name = ""
-                self.saved_function_name = function_word;
-                self.dont_understand = False
+                print function_word #nazwa typu funkcji znalezionej (np "Podnies")
+                __main__.saper.bylo = False #funkcja nie została wykonana
+                self.saved_function_name = function_word; #zapis nazwy znalezionej funkcji
+                self.dont_understand = False #sprawdzanie, czy saper zrozumiał rozkaz
                 continue
             else:
                 self.dont_understand = True;
 
 
             #OBIEKT
-            object_word = self.find_word(self.objects_file, word, 'obiekt')
+            #Analogicznie jak dla funkcji, sprawdzamy czy słowo jest może obiektem
+            object_word = self.find_word(self.objects_file, word, 'obiekt') #sprawdzamy czy słowo zawiera się w pliku Obiekty.xml
             if object_word != "":
                 self.found_object = True #
                 print "ZNALEZIONO OBIEKT:"
@@ -191,42 +193,45 @@ class Chat:
                 self.dont_understand = False
                 continue;
 
-            #parametr
-            parametr_word = self.find_word(self.parameters_file, word, 'parametr')
-            # SPRAWDZAM CZY NIE JEST LICZBĄ, NIE USUWAJCIE
+            #PARAMETR
+            #sprawdzamy czy słowo/liczba spełnia warunki parametru
+            parametr_word = self.find_word(self.parameters_file, word, 'parametr') #szukamy słowa w Parametry.xml
+            #Poniżej znajduje się sprawdzanie, czy dane słowo nie jest przypadkiem liczbą arabską
             try:
-                word = float(word);
+                word = float(word); #konwersja słowa do typu float, wyjdzie z try jeżeli jest to string
                 word = int(word);  # zaokrąglam części dziesiętne+
-                self.found_number = True
+                self.found_number = True #znaleziono liczbę
                 print "ZNALEZIONO LICZBĘ"
                 print word;
-                self.saved_number = word;
+                self.saved_number = word; #zapisano liczbę
                 self.dont_understand = False
-                continue;
-            except ValueError:
-                if parametr_word != "":
+                continue; #przeskakujemy do obsługi kolejnego słowa rozkazu
+            except ValueError: #słowo nie jest liczbą
+                if parametr_word != "": #czy słowo zostało znalezione w pliku Parametry.xml?
                     self.found_parametr = True
                     print "ZNALEZIONO PARAMETR:"
                     print parametr_word
                     print word;
                     self.dont_understand = False
                     found_parameter = 1;
-                    try: #SPRAWDZENIE CZY JEST LICZBĄ SŁOWNIE ZAPISANĄ
-                        parametr_word = int(parametr_word);
-                        self.found_number = True;
-                        self.saved_number = parametr_word;
+                    try: #SPRAWDZENIE CZY JEST LICZBĄ SŁOWNIE ZAPISANĄ - np. jeden, dwa
+                        parametr_word = int(parametr_word); #funkcja wyszukiwania słów jest w stanie przekonwertować "jeden" w "1" (bo jeden to pisownia 1 zapisana w słowniku)
+                        self.found_number = True; #należy jednak sprawdzić, czy "1" (string) jest liczbą)
+                        self.saved_number = parametr_word; #zapisano liczbę
                     except ValueError:
-                        self.saved_parameter_name = parametr_word;
+                        self.saved_parameter_name = parametr_word; #okazany parametr nie jest liczbą zapisaną słownie, a zwykłym parametrem np. w górę
                     continue;
 
 
 
-
+    #Mikołaj Balcerek
+    #Funkcja szukająca danego słowa w słowniku XML. Wymaga podania nazwy pliku.
     def find_word(self, nazwaplikuxml, action, wordtype):
-        root = nazwaplikuxml.getroot()
-
+        root = nazwaplikuxml.getroot() #pobiera początek pliku-drzewa XML
+        #w pętli będziemy przechodzić po pliku XML, przeglądając pola <spelling>
+        #gdy znajdziemy słowo w polu <spelling>, zwracamy nazwę większego obiektu
         for block in root.findall(wordtype):  # iteruje po wszystkich obiektach
-            for spelling in block.findall('spelling'):  # dla kazdej mozliwej odmiany
-                if spelling.text.lower() == action.lower():  # lower by ignorowały duże/małe litery
-                    return block.find('nazwa').text  # wypisuje nazwe funkcji do wywolania
+            for spelling in block.findall('spelling'):  # dla kazdej mozliwej odmiany slowa, alternatywnych pisowniach
+                if spelling.text.lower() == action.lower():  # lower ignoruje duże/małe litery
+                    return block.find('nazwa').text  # zwraca nazwę ogólnej kategorii szukanego słowa. Np dla "podniesiony" zwróci "Podnieś"
         return ""

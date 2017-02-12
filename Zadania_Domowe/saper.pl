@@ -1,5 +1,5 @@
 /*Gramatyka "Automatyczny Saper" */
-
+/* Rozszerzenie przykładu z ćwiczeń - Mikołaj Balcerek */
 /*Przykłady wykorzystania
 
 rozkaz(A,B,[chwyć,bombę],[]).

@@ -114,9 +114,9 @@ class Saper(object):
                 __main__.chat.actiondone = True;
                 __main__.chat.chat_log.append(text.Text("Nie probuje rozbroic bomby", __main__.chat.saper_color))
                 __main__.chat.saved_function_name = ""
-        elif (__main__.chat.saved_function_name == "Zaprzeczenie"):
-            __main__.chat.saved_function_name = ""
-            __main__.chat.saved_parameter_name = ""
+        elif (__main__.chat.saved_function_name == "Zaprzeczenie"): #Mikołaj Balcerek
+            __main__.chat.saved_function_name = "" #Jeżeli zaprzeczenie wystapi nie w rozmowie z saperem (czytaj poprzedza rozkaz), to nie zostanie ten rozkaz wykonany
+            __main__.chat.saved_parameter_name = "" #parametry są czyszczone, bo zaprzeczenie rozkazu = brak rozkazu
             __main__.chat.saved_number = 0
             __main__.chat.found_number = False
             __main__.chat.actiondone = True;
@@ -278,7 +278,8 @@ class Saper(object):
         elif (direction == 'Gora'):
             self.direction = 0
             return True
-        elif (direction == 'Tyl'):
+        elif (direction == 'Tyl'): #Mikolaj Balcerek
+            #Tył to zawsze 180 stopni w stosunku do obecnego kierunku sapera
             if (self.direction == 1):
                 self.direction = 0;
 

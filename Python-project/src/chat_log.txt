@@ -1329,3 +1329,36 @@ idz w dol o 5. idz w prawo o 3.
 idz w dol . idz w prawo
 5
 5
+idz w dol o 5. idz w prawo o 20.
+fdsfds
+dsffds
+fsddf
+10 metrów w dół
+10 metrów w dół idź
+10
+idź o 5 metrów w dół
+idź o 7 metrów w prawo
+nie
+idz w dol o 5
+idz w dol o 20. idz w prawo o 5.
+nie
+idź w dół o 50 do góry
+idź w dół o 3
+idź w prawo o 3. idź w dół o 5
+idź w dół o 6
+idź w lewo o 10
+idź w górę o o 1
+idź w prawo o 1
+podnieś bombę
+idź w dół o 10
+idź w dół o 5
+idź w prawo o 10
+tak
+tak
+detonuj bombę
+idź do góry o 10
+idź w prawo o 10
+idź w prawo o 1
+idź w prawo o 5
+detonuj
+detonuj bombę
